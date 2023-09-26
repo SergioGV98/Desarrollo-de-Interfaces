@@ -16,6 +16,8 @@ import android.widget.TextView;
  * </ol>
  */
 
+//TODO ejemplo de tarea por hace
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView tvMessageStart;
