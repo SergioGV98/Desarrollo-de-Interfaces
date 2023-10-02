@@ -1,8 +1,10 @@
-package com.example.sendmessage;
+package com.sergio98.sendmessage;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.sendmessage.R;
 
 public class SendMessageActivity extends AppCompatActivity {
 

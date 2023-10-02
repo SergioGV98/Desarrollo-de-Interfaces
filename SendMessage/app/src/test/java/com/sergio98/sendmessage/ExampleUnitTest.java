@@ -1,4 +1,4 @@
-package com.example.sendmessage;
+package com.sergio98.sendmessage;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.example.sendmessage;
+package com.sergio98.sendmessage;
 
 import android.content.Context;
 

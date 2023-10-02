@@ -13,10 +13,10 @@
         android:theme="@style/Theme.SendMessage"
         tools:targetApi="31">
         <activity
-            android:name=".ViewActivity"
+            android:name="com.sergio98.sendmessage.ViewActivity"
             android:exported="false" />
         <activity
-            android:name=".SendMessageActivity"
+            android:name="com.sergio98.sendmessage.SendMessageActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
