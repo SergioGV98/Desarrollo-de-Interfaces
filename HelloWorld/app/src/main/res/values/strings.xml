@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">Esto no es una APP</string>
-    <string name="tvMessageStartText">Sleep</string>
-    <string name="tvMessageEndText">Dormir</string>
-    <string name="txtMessageOptimist">En este maravilloso dia</string>
-</resources>
