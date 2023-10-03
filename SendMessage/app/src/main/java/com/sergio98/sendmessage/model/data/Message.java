@@ -1,5 +1,6 @@
 package com.sergio98.sendmessage.model.data;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -7,8 +8,9 @@ import java.util.Objects;
  * @author Sergio Garcia Vico
  * @version 1.0
  */
-public class Message {
+public class Message implements Serializable {
 
+    public static final String KEY = "message";
     private String content;
     private Person sender;
     private Person receiver;
