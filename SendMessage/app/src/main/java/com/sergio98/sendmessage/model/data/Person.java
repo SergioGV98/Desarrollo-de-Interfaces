@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -12,7 +13,7 @@ import java.util.Objects;
  * @author Sergio Garcia Vico
  * @version 1.0
  */
-public class Person implements Parcelable {
+public class Person implements Parcelable, Serializable {
 
     public static final String KEY = "Person";
     private String name;
