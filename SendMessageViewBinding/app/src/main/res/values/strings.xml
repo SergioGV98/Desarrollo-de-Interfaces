@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SendMessage</string>
+    <string name="app_name">SendMessageViewBinding</string>
     <string name="tvTitleMessage">"Escribe un mensaje: "</string>
     <string name="tvUserInfoText">Muestra la informacion del usuario.</string>
     <string name="tvMessageText">Muestra la informacion del mensaje.</string>
