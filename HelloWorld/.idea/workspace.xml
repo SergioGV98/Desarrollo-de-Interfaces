@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AnalysisUIOptions">
-    <option name="SCOPE_TYPE" value="8" />
-    <option name="CUSTOM_SCOPE_NAME" value="DOC" />
-  </component>
   <component name="AndroidLayouts">
     <shared>
       <config />
@@ -13,60 +9,50 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f72ea304-279c-4c7e-97ee-8647c4667756" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-    </list>
+    <list default="true" id="9b422c43-ba10-45f8-a5f3-4009ca5c308b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\Alumno\.android\avd\Pixel_5_API_33.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="NamedScopeManager">
-    <scope name="DOC" pattern="src[HelloWorld.app.main]:com.example.helloworld.*" />
-  </component>
-  <component name="ProjectId" id="2VysuvMXutcTsQ0ypH23urviFrP" />
+  <component name="ProjectId" id="2VhJnsYERiWveEzYR41k99Pn8Es" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "ResourceManagerPrefKey.ModuleName": "HelloWorld.app.main",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
-    "TODO_SCOPE": "All Places",
     "cidr.known.project.marker": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "last_opened_file_path": "C:/Users/Sergio/Desktop/Estudios/Desarrollo-de-Interfaces/HelloWorld",
-    "project.structure.last.edited": "Dependencies",
+    "last_opened_file_path": "C:/Users/Alumno/Desktop/Estudios/Desarrollo-de-Interfaces",
+    "project.structure.last.edited": "Suggestions",
     "project.structure.proportion": "0.17",
-    "project.structure.side.proportion": "0.2068528",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.new.ui"
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
 }]]></component>
   <component name="PsdUISettings">
-    <option name="MODULE_TAB" value="Properties" />
+    <option name="MODULE_TAB" value="Signing Configs" />
     <option name="LAST_EDITED_SIGNING_CONFIG" value="debug" />
     <option name="LAST_EDITED_BUILD_TYPE" value="release" />
   </component>
   <component name="RunManager">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
-      <module name="HelloWorld.app.main" />
+      <module name="Hola_mundo.app.main" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
       <option name="DEPLOY_AS_INSTANT" value="false" />
@@ -135,11 +121,11 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f72ea304-279c-4c7e-97ee-8647c4667756" name="Changes" comment="" />
-      <created>1695819882306</created>
+      <changelist id="9b422c43-ba10-45f8-a5f3-4009ca5c308b" name="Changes" comment="" />
+      <created>1695282552319</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1695819882306</updated>
+      <updated>1695282552319</updated>
     </task>
     <servers />
   </component>
