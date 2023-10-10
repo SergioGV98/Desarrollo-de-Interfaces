@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.sergio98.sendmessageviewbinding.databinding.ActivitySendMessageBinding;
 import com.sergio98.sendmessageviewbinding.model.data.Message;
@@ -22,6 +25,26 @@ public class SendMessageActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         binding.fab.setOnClickListener(v -> sendMessage());
         Log.d(TAG, "SendMessageActivity -> onCreate()");
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.ic_aboutas:
+                Intent intent = new Intent(this, MainMenu.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     //region METODOS DEL CICLO DE VIDA DE LA ACTIVITY
