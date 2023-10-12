@@ -8,7 +8,12 @@ import android.widget.Toast;
 
 import com.sergio98.sendmessageviewbinding.databinding.ActivityViewBinding;
 import com.sergio98.sendmessageviewbinding.model.data.Message;
-
+/**
+ * Clase `ViewActivity` que representa una actividad para ver un mensaje. Esta actividad muestra el remitente, el contenido del mensaje y otros detalles.
+ * Extiende la clase `AppCompatActivity` de Android y proporciona funcionalidad para visualizar mensajes.
+ * @author Sergio Garcia Vico
+ * @version 1.0.0
+ */
 public class ViewActivity extends AppCompatActivity {
 
     private ActivityViewBinding binding;

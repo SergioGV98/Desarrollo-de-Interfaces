@@ -12,7 +12,12 @@ import android.view.MenuItem;
 import com.sergio98.sendmessageviewbinding.databinding.ActivitySendMessageBinding;
 import com.sergio98.sendmessageviewbinding.model.data.Message;
 import com.sergio98.sendmessageviewbinding.model.data.Person;
-
+/**
+ * Clase `SendMessageActivity` que representa la actividad principal de la aplicación para enviar mensajes.
+ * Extiende la clase `AppCompatActivity` de Android y proporciona funcionalidad para enviar mensajes a través de otra actividad.
+ * @author Sergio Garcia Vico
+ * @version 1.0.0
+ */
 public class SendMessageActivity extends AppCompatActivity {
 
     private ActivitySendMessageBinding binding;

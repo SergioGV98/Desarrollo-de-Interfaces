@@ -13,6 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:layout_margin="12dp"
+        android:textSize="15sp"
+        android:background="@color/container"
         android:text="@string/tvUserInfoText" />
 
     <TextView
@@ -21,5 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:layout_margin="12dp"
+        android:textSize="15sp"
+        android:background="@color/container"
         android:text="@string/tvMessageText" />
 </LinearLayout>
