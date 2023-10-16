@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">SendMessageViewBinding</string>
+    <string name="tvTitleMessage">"ESCRIBE UN MENSAJE: "</string>
+    <string name="tvUserInfoText">Muestra la informacion del usuario.</string>
+    <string name="tvMessageText">Muestra la informacion del mensaje.</string>
+    <string name="aboutAs">About As</string>
+    <string name="autorTitle">Autor</string>
+    <string name="nameCard">Sergio García Vico</string>
+    <string name="descriptionCard">Alum. módulo DEINT</string>
+    <string name="githubCard">Fork on GitHUB</string>
+    <string name="versionText">Version</string>
+    <string name="versionInfo">1.0.0</string>
+</resources>
