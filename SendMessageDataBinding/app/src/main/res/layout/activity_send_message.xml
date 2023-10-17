@@ -28,7 +28,7 @@
 
         <EditText
             android:id="@+id/edMessage"
-            android:text="@{message.content}"
+            android:text="@={message.content}"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="16dp"

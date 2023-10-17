@@ -26,6 +26,7 @@ public class ViewActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         Bundle bundle = getIntent().getExtras();
         message = bundle.getParcelable(Message.KEY);
+        binding.setMessage(message);
         initialiceView();
     }
 
