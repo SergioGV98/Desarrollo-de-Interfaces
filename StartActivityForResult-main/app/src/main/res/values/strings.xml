@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">StartActivityForResult</string>
+    <string name="txvTitle">Suma de números</string>
+    <string name="tvX">X =</string>
+    <string name="txY">Y =</string>
+    <string name="btnResult">Calcular resultado</string>
+    <string name="tvResult">X + Y</string>
+    <string name="txvSecondTitle">Resultado final</string>
+    <string name="btnSendResult">Volver actividad anterior</string>
+    <string name="setnumber">Debe introducir los valores X e Y</string>
+    <string name="onlydigit">Sólo se permiten números</string>
+</resources>

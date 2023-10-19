@@ -36,6 +36,7 @@ public class SendMessageActivity extends AppCompatActivity {
         message.setReceiver(persond);
         binding.setMessage(message);
         binding.fab.setOnClickListener(v -> sendMessage());
+        binding.setLifecycleOwner(this);
         Log.d(TAG, "SendMessageActivity -> onCreate()");
     }
 
