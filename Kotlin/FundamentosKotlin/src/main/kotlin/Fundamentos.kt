@@ -102,11 +102,23 @@ fun trabajoconarray(){
     dias[5] = "Sabado"
     dias[6] = "Domingo"
 
+    val vacaciones = arrayOfNulls<String>(7)
+
     val meses : Array<String?>
     meses = arrayOf("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre")
 
-    for(dia in dias){
-        println(dia)
+    for(mes in meses){
+        /*
+        if (mes.equals("Diciembre"))
+            print("$mes")
+        else
+            println("$mes")
+        */
+        //print("${if (mes.equals("Diciembre")) "$mes \n" else "$mes, " }")
+        println(if (mes.equals("Diciembre")) "$mes \n" else "$mes, ")
     }
-    println(meses.joinToString())
+    println(meses.joinToString(" - "))
+
+    var loteria = intArrayOf(23, 25, 67, 34, 67, 98)
+    loteria[2] = 1
 }
