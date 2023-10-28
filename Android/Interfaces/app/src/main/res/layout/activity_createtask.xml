@@ -9,14 +9,13 @@
     android:layout_marginEnd="15dp"
     tools:context=".CreateTaskActivity">
 
-    <!-- TextInputLayout para el nombre del cliente -->
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:startIconDrawable="@drawable/baseline_person_24">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/task_creation_txv_customer"
+            android:id="@+id/task_info_txv_customer"
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,7 +23,6 @@
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- TextInputLayout para el nombre de la tarea -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/task_creation_txv_name"
         android:layout_width="match_parent"
@@ -39,7 +37,6 @@
             android:textSize="14sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- TextInputLayout para la descripción de la tarea -->
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -58,7 +55,6 @@
             android:scrollHorizontally="false" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- TextInputLayout para el tipo de tarea y estado -->
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
