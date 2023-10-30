@@ -8,14 +8,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.interfaces.adapter.TaskAdapter
 import com.example.interfaces.databinding.ActivityTaskBinding
+import com.example.interfaces.databinding.ActivityTaskBinding.*
+import com.example.interfaces.databinding.FragmentTaskActivityBinding
 
 class TaskActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityTaskBinding
+    private lateinit var binding: FragmentTaskActivityBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityTaskBinding.inflate(layoutInflater)
+        binding = FragmentTaskActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initRecyclerView()
     }
