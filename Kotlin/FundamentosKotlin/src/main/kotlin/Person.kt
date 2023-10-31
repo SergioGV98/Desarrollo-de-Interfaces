@@ -53,7 +53,9 @@ open class Person (name: String, surname: String) : SerVivo, Mamifero() {
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (other !is Person) return false
+        //if (other !is Person) return false
+
+        other as Person
 
         if (name != other.name) return false
         if (surname != other.surname) return false
