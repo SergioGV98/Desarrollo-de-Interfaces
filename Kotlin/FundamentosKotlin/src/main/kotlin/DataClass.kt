@@ -1,3 +1,8 @@
+/**
+ * Las funciones de nivel superior, se importan como si fueran de nivel superior
+ */
+import utils.clone
+
 fun main(){
     dataclass()
 }
@@ -31,10 +36,6 @@ fun dataclass() {
     println(igualReferencia)
     println(p4)
 
-    val cat = Cat("Yuki", null)
-    println(cat)
-    cat.age = 5
-    println("La edad del gato ${cat.age} y el chip es ${cat.chip}")
 
 }
 

@@ -10,4 +10,10 @@ data class Cat(val nickname : String, val chip : Int?, val owner : String?){
 
     //Constructor secundario
     constructor(nickname: String, chip: Int?): this(nickname, chip, null)
+
+    //Un objeto acompañante de la clase CAT. Un objeto comun a todas las instancias de GATO
+    //No existe el concepto STATIC
+    companion object{
+        const val NUM_LEG = 4
+    }
 }
