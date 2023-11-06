@@ -68,7 +68,7 @@
         android:id="@+id/spinner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tvType"
+        app:layout_constraintBottom_toBottomOf="@+id/tvType"
         app:layout_constraintEnd_toStartOf="@+id/gdlEnd"
         app:layout_constraintStart_toEndOf="@+id/barrier"
         tools:layout_editor_absoluteY="283dp" />
@@ -77,7 +77,7 @@
         android:id="@+id/spinner2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tvProfile"
+        app:layout_constraintBottom_toBottomOf="@+id/tvProfile"
         app:layout_constraintEnd_toStartOf="@+id/gdlEnd"
         app:layout_constraintStart_toEndOf="@+id/barrier" />
 
@@ -89,6 +89,15 @@
         app:constraint_referenced_ids="tvType,tvProfile" />
 
     <TextView
+        android:id="@+id/tvProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/gdlStart"
+        app:layout_constraintTop_toBottomOf="@+id/tvType" />
+
+    <TextView
         android:id="@+id/tvType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -97,13 +106,5 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
         app:layout_constraintStart_toStartOf="@+id/gdlStart" />
 
-    <TextView
-        android:id="@+id/tvProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="@+id/gdlStart"
-        app:layout_constraintTop_toBottomOf="@+id/tvType" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
