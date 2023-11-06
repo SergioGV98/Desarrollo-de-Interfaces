@@ -7,4 +7,13 @@
     <style name="SignIntextInputLayout">
         <item name="hintTextColor">@color/signinhintcolor</item>
     </style>
+    <style name="ButttonTransparent">
+        <item name="android:background">@drawable/selector_button</item>
+    </style>
+
+    <!-- Se puede utilizar la herencia entre los estilos definidos pro el desarrollador -->
+    <style name="ButttonTransparent.TextColor">
+        <item name="android:textColor">@color/design_default_color_secondary</item>
+    </style>
+
 </resources>
