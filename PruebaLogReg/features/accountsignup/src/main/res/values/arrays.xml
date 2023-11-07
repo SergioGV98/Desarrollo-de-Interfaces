@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="typeuser">
+        <item>User</item>
+        <item>Admin</item>
+        <item>Guess</item>
+        <item>Client</item>
+    </array>
+</resources>

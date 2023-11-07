@@ -20,7 +20,7 @@
         app:layout_constraintGuide_end="40dp" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
+        android:id="@+id/tilEmailSignUp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -29,55 +29,60 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tieEmailSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="hint" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout2"
+        android:id="@+id/tilPasswordSignUp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         app:layout_constraintEnd_toStartOf="@+id/gdlEnd"
         app:layout_constraintStart_toStartOf="@+id/gdlStart"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/tilEmailSignUp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiePasswordSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="hint" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout3"
+        android:id="@+id/tilPasswordVerifySignUp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         app:layout_constraintEnd_toStartOf="@+id/gdlEnd"
         app:layout_constraintStart_toStartOf="@+id/gdlStart"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
+        app:layout_constraintTop_toBottomOf="@+id/tilPasswordSignUp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiePasswordVerifySignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="hint" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spType"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/tvType"
+        android:entries="@array/typeuser"
+        android:minHeight="48dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvType"
         app:layout_constraintEnd_toStartOf="@+id/gdlEnd"
-        app:layout_constraintStart_toEndOf="@+id/barrier"
-        tools:layout_editor_absoluteY="283dp" />
+        app:layout_constraintStart_toEndOf="@+id/barrier" />
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/spProfile"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/tvProfile"
+        android:minHeight="48dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvProfile"
         app:layout_constraintEnd_toStartOf="@+id/gdlEnd"
         app:layout_constraintStart_toEndOf="@+id/barrier" />
 
@@ -89,22 +94,61 @@
         app:constraint_referenced_ids="tvType,tvProfile" />
 
     <TextView
-        android:id="@+id/tvProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="@+id/gdlStart"
-        app:layout_constraintTop_toBottomOf="@+id/tvType" />
-
-    <TextView
         android:id="@+id/tvType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="TextViewaaaaaaa"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
+        android:text="@string/tvType"
+        app:layout_constraintTop_toBottomOf="@+id/tilPasswordVerifySignUp"
         app:layout_constraintStart_toStartOf="@+id/gdlStart" />
+
+    <TextView
+        android:id="@+id/tvProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/tvProfile"
+        app:layout_constraintStart_toStartOf="@+id/gdlStart"
+        app:layout_constraintTop_toBottomOf="@+id/tvType" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:text="@string/calificacionUsuario"
+        app:layout_constraintEnd_toStartOf="@+id/gdlEnd"
+        app:layout_constraintStart_toStartOf="@+id/gdlStart"
+        app:layout_constraintTop_toBottomOf="@+id/tvProfile" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toStartOf="@+id/gdlEnd"
+        app:layout_constraintStart_toStartOf="@+id/gdlStart"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RadioButton" />
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RadioButton" />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RadioButton" />
+    </RadioGroup>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
