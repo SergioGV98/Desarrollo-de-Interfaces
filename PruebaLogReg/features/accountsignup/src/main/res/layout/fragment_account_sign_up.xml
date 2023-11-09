@@ -112,7 +112,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvType" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/user_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -129,7 +129,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toStartOf="@+id/gdlEnd"
         app:layout_constraintStart_toStartOf="@+id/gdlStart"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/user_email">
 
         <RadioButton
             android:id="@+id/radioButton3"

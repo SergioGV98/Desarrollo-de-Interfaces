@@ -44,6 +44,7 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
     dynamicFeatures += setOf(
         ":features:accountsignin",
         ":features:accountsignup",
@@ -75,6 +76,7 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.4")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.4")
     implementation("androidx.navigation:navigation-dynamic-features-fragment:2.7.4")
+    implementation ("com.github.ivbaranov:materiallettericon:0.2.3")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")

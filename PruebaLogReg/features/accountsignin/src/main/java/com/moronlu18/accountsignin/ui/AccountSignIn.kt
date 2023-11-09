@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.moronlu18.accountsignin.R
 
 
@@ -38,6 +39,14 @@ class AccountSignIn : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_account_sign_in, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        R.id.btSingUp.setOnClickListener {
+            //findNavController().navigate()
+            findNavController().navigate(com.moronlu18.invoice.R.id.action_mainFragment_to_accountSignUpFragment)
+        }
     }
 
     companion object {

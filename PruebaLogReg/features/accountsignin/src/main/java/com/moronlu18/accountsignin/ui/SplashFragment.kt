@@ -11,7 +11,9 @@ import androidx.navigation.fragment.findNavController
 import com.moronlu18.accountsignin.R
 import com.moronlu18.accountsignin.databinding.FragmentSplashBinding
 
+/*
 
+private const val WAIT_TIME: Long = 2000
 
 class SplashFragment : Fragment() {
 
@@ -36,8 +38,8 @@ class SplashFragment : Fragment() {
         var r = Runnable {
             findNavController().navigate(R) //Poner el id de splash al main
         }
-        Handler(Looper.getMainLooper()).postDelayed(r, WAI) // Crear el WAIT TIME
+        Handler(Looper.getMainLooper()).postDelayed(r, WAIT_TIME) // Crear el WAIT TIME
     }
-}
+}*/
 
 

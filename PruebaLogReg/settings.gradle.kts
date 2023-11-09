@@ -3,6 +3,7 @@ pluginManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
+
     }
 }
 dependencyResolutionManagement {
@@ -34,3 +35,4 @@ include(":features:itemlist")
 include(":features:taskcreation")
 include(":features:taskdetail")
 include(":features:tasklist")
+
