@@ -43,10 +43,10 @@ class AccountSignIn : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        R.id.btSingUp.setOnClickListener {
+       /* R.id.btSingUp.setOnClickListener {
             //findNavController().navigate()
             findNavController().navigate(com.moronlu18.invoice.R.id.action_mainFragment_to_accountSignUpFragment)
-        }
+        }*/
     }
 
     companion object {

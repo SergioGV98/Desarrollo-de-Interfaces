@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.moronlu18.invoice.R
 import com.moronlu18.invoice.data.model.User
+import com.moronlu18.invoice.data.repository.UserRepository
 import com.moronlu18.invoice.databinding.FragmentUserListBinding
 import com.moronlu18.invoice.ui.adapter.UserAdapter
 
@@ -40,7 +41,7 @@ class UserListFragment : Fragment() {
 
     private fun setUpUserRecycler() {
         //Crear el Adapter con los valores en el constructor primario
-        var adapter:UserAdapter = UserAdapter (setUpDataSetUser(), requireContext())
+        var adapter:UserAdapter = UserAdapter (UserRepository.dataSet, requireContext())
 
 
         //1. ¿Como quiero que se muestren los elementos de la lista?
@@ -51,14 +52,4 @@ class UserListFragment : Fragment() {
         }
     }
 
-    private fun setUpDataSetUser(): MutableList<User> {
-        var dataSet: MutableList<User> = ArrayList()
-        dataSet.add(User("Sergio", "Garcia", "sergio@iesportada.org"))
-        dataSet.add(User("Paco", "Ruiz", "Paco@iesportada.org"))
-        dataSet.add(User("Antonio", "Paca", "Antonio@iesportada.org"))
-        dataSet.add(User("Juan", "antonio", "Juan@iesportada.org"))
-        dataSet.add(User("Miguel", "jesus", "Miguel@iesportada.org"))
-        dataSet.add(User("Juanfran", "ruiz", "Juanfran@iesportada.org"))
-        return dataSet
-    }
 }
