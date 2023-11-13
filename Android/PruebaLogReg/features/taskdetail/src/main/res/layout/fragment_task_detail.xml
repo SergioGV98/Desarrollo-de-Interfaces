@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.sergiogv98.taskdetail.TaskDetail">
+
+    <LinearLayout
+        android:id="@+id/task_details_clientbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/task_details_clientbox_padding"
+        android:background="@color/md_theme_light_secondary">
+
+        <ImageView
+            android:id="@+id/task_details_client_image_view"
+            android:layout_width="@dimen/task_details_client_image_view_width_height"
+            android:layout_height="@dimen/task_details_client_image_view_width_height"
+            android:layout_gravity="center"
+            android:src="@drawable/client_profile" />
+
+        <TextView
+            style="@style/tv_txt_client_task_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/task_details_txt_client" />
+
+        <TextView
+            style="@style/tv_client_task_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/task_details_txt_client_name" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/task_details_client_dividerView"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/task_details_view_margin_top"/>
+
+    <LinearLayout
+        android:id="@+id/task_details_nametask_statusbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/task_details_nametask_statusbox_padding"
+        android:background="@color/md_theme_light_primaryContainer">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+            <TextView
+                style="@style/tv_task_details_task_name"
+                android:id="@+id/task_details_task_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/task_details_txt_task_name"/>
+        </LinearLayout>
+
+        <Button
+            style="@style/button_task_details_status"
+            android:id="@+id/task_details_status_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/task_details_button_status"
+            android:enabled="false" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/task_details_statusbox_dividerView"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/task_details_view_margin_top"/>
+
+    <LinearLayout
+        android:id="@+id/task_details_task_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/task_details_task_type_padding"
+        android:background="@color/md_theme_light_secondaryContainer">
+
+        <TextView
+            style="@style/tv_task_details_general"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/task_details_type_task" />
+
+        <TextView
+            style="@style/tv_taks_details_general"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/task_details_type_task_name" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/task_details_dates_dividerView"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/task_details_view_margin_top"/>
+
+    <LinearLayout
+        android:id="@+id/task_details_date_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/task_details_date_layout_padding"
+        android:background="@color/md_theme_light_primaryContainer">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+            <TextView
+                style="@style/tv_task_details_general"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/task_details_txt_date_creation" />
+
+            <TextView
+                style="@style/tv_taks_details_general"
+                android:id="@+id/task_details_date_creation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/task_details_date_creation" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+            <TextView
+                style="@style/tv_task_details_general"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/task_details_txt_date_end" />
+
+            <TextView
+                style="@style/tv_taks_details_general"
+                android:id="@+id/task_details_date_end"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/task_details_date_end" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/task_details_description_dividerView"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/task_details_view_margin_top"/>
+
+    <LinearLayout
+        android:id="@+id/task_details_descriptionBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/task_details_descriptionBox_padding"
+        android:background="@color/md_theme_light_secondaryContainer">
+
+        <TextView
+            style="@style/tv_task_details_general"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/task_details_txt_description" />
+
+        <TextView
+            style="@style/tv_taks_details_general"
+            android:id="@+id/task_details_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/task_details_description" />
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/task_details_fab_modify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/task_details_fab_modify_margin"
+        android:layout_gravity="end"
+        android:src="@drawable/ic_add_task" />
+
+</LinearLayout>

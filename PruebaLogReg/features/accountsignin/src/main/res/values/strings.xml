@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="tvTitle">Se implementará Login</string>
-    <string name="tvOther">Inicia sesion a traves de otras plataformas\n</string>
-    <string name="tieEmailSignInHint">Email</string>
-    <string name="tiePasswordSignInHint">Contraseña</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-</resources>

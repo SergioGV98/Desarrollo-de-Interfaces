@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="tvTitle">Implementacion Registro</string>
-    <string name="tvType">Tipo Usuario:</string>
-    <string name="calificacionUsuario">Calificacion del usuario</string>
-    <string name="tvProfile">Perfil:</string>
-</resources>

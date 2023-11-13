@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="@dimen/task_creation_layout_padding"
+    android:paddingEnd="@dimen/task_creation_layout_padding"
+    android:orientation="vertical"
+    tools:context="com.sergiogv98.taskcreation.TaskCreation">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:errorEnabled="true"
+        app:startIconDrawable="@drawable/ic_person">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/task_creation_info_txv_customer"
+            style="@style/tie_task_creation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/task_creation_txv_hint_nombre_cliente"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/task_creation_txv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:errorEnabled="true"
+        app:startIconDrawable="@drawable/ic_description">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/task_creation_txv_taskName"
+            style="@style/tie_task_creation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/task_creation_txv_hint_nombre_tarea" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/task_creation_txv_description"
+            style="@style/tie_task_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/task_creation_txv_hint_descripcion"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_general"
+        android:background="@drawable/border_background">
+
+        <Spinner
+            android:id="@+id/task_creation_type_task_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/spinner_height"
+            android:entries="@array/typetask"/>
+    </FrameLayout>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_general"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/task_creation_rdb_notstarted"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/task_creation_txt_button_no_comenzada" />
+
+        <RadioButton
+            android:id="@+id/task_creation_rdb_inprogress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/task_creation_txt_button_en_proceso" />
+
+        <RadioButton
+            android:id="@+id/task_creation_rdb_completed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/task_creation_txt_button_completada" />
+
+        <RadioButton
+            android:id="@+id/task_creation_rdb_abandoned"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/task_creation_txt_button_abandonada" />
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/task_Creation_button_date_creation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/task_creation_button_date_creation_marginRight"
+            android:layout_weight="1"
+            android:text="@string/task_creation_txt_button_fecha_creacion" />
+
+        <Button
+            android:id="@+id/task_Creation_button_date_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/task_creation_txt_button_fecha_finalizacion" />
+    </LinearLayout>
+
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/task_creation_ftb_add"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/task_creation_ftb_add_layout_margin"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:layout_gravity="bottom|end"
+            app:srcCompat="@drawable/ic_add_task" />
+
+
+</LinearLayout>
