@@ -19,7 +19,15 @@ fun treat() {
 val trickFunction = ::trick //Hace referencia a la funcion
 //Se ejecuta la funcion a traves de la variable
 
-val treatMessageFunction: (message:String) -> Unit = {println("¡Tienes un trato: $it!")}
+val treatFunction: () -> Unit ={
+    println("¡Tienes un trato!")
+}
+
+//Funciones anonimas que cuando se inicializan en una variable es un Literal de funcion
+val literalMessageFunction = fun (message:String, person:String):Unit= println("Tienes un trato $message $person")
+val treatMessageFunction: (message:String, person:String) -> Unit = { m:String, p:String ->
+    println("¡Tienes un trato $m $p!")
+}
 
 /**
  * Esta funcion devuelve como retorno un tipo de funcion. egun el valor booleano
@@ -30,5 +38,5 @@ fun trickOrTreat(isTrick : Boolean): () -> Unit {
     if(isTrick)
         return trickFunction
     else
-        return treatMessageFunction
+        return treatFunction
 }
