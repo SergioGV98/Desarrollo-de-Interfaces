@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import com.moronlu18.accountsignup.databinding.FragmentAccountSignUpBinding
 
 class AccountSignUp : Fragment() {
@@ -43,11 +45,28 @@ class AccountSignUp : Fragment() {
             ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, itemList)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
+        val listener = object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                //val profile = parent?.adapter?.getItem(position) Ambos funcionan
+                val profile = adapter.getItem(position)
+                Toast.makeText(requireActivity(), "Elemento pulsado $profile", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+        }
 
         with(binding.spProfile) {
             this.adapter = adapter
             setSelection(2)
-            onItemSelectedListener = null
+            onItemSelectedListener = listener
         }
     }
 }

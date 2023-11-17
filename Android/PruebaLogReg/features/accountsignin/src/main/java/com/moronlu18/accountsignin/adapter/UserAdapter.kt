@@ -8,8 +8,19 @@ import com.moronlu18.accountsignin.data.model.User
 import com.moronlu18.accountsignin.databinding.FragmentLayoutUserItemBinding
 
 
-class UserAdapter(private val dataset: MutableList<User>, private val context: Context) :
+class UserAdapter(private val dataset: MutableList<User>,
+                  private val context: Context,
+                  private val listener: OnUserClick,
+                  private val onItemClick: (user:User)->Unit) :
     RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
+
+    /**
+     * Esta interfaz es el contrato entre el Adapter y el Fragment que lo contiene.
+     */
+    interface OnUserClick{
+        fun userClick(user: User)
+        fun userOnLongClick(user: User)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
 
@@ -37,13 +48,23 @@ class UserAdapter(private val dataset: MutableList<User>, private val context: C
     /**
      * La clase viewHolde contiene todos los elementos de view o del layout XML que se ha inflado.
      */
-    class UserViewHolder(private val binding: FragmentLayoutUserItemBinding) :
+    inner class UserViewHolder(private val binding: FragmentLayoutUserItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: User, context: Context) {
-            binding.imgUser.text = item.name.substring(0, 1).uppercase()
-            binding.tvName.text = item.name
-            binding.tvEmail.text = item.email
+            with(binding){
+                binding.imgUser.text = item.name.substring(0, 1).uppercase()
+                binding.tvName.text = item.name
+                binding.tvEmail.text = item.email
+                //LLamare a un metodo de la interfaz declarada dentro del adapter
+                root.setOnClickListener{ //_ ->
+                    //listener.userClick(item)
+                   onItemClick(item)}
+                //Manejar la pulsacion larga EventLongClick
+                root.setOnLongClickListener { _ ->
+                    listener.userOnLongClick(item)
+                    true }
+            }
         }
     }
 }
