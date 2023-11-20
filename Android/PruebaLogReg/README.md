@@ -25,7 +25,20 @@ Inovice es la aplicación que se realizará de manera modular para el estudio de
  - Actualización de los tres layout customer y realizadas con guías.
  - Añadido funcionalidad de borrar a customerlist. También está la función añadir pero está anulado.
  - Corregido bucle del navgraph.
-
+------------------------
+ ## V3.1.3 (19/11/2023)
+ *Escrito por SergioGV98*
+ - Actualización completa en todas las interfaces de tareas.
+ - Añadidas animaciones entre pestañas.
+ - Añadida funcionalidad para poder eliminar del listado tareas creadas.
+ - Eliminación de recursos, carpetas, líneas innecesarias.
+------------------------
+ ## V3.1.5 (19/11/2023)
+ *Escrito por mateotamayoo*
+ - Añadidos artículos a los correspondientes RecyclerViews de las interfaces invoice
+ - Añadidos botones de edición y borrado en las interfaces invoice detail y list
+ - Añadida funcionalidad para borrar factura desde la interfaz invoice list
+ - Cambios en el navgraph para que las interfaces invoice creation y detail vuelvan a list con botones
 
 # Icono
 

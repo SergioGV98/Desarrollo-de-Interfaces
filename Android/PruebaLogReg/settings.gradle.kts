@@ -18,7 +18,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "Invoice"
 include(":app")
-include(":features:accountsignin")
+include(":features:account")
 include(":features:accountsignup")
 include(":features:customercreation")
 include(":infrastructure:firebase")

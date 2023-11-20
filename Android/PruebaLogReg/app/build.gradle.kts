@@ -51,7 +51,7 @@ android {
 
 
     dynamicFeatures += setOf(
-        ":features:accountsignin",
+        ":features:account",
         ":features:accountsignup",
         ":features:customercreation",
         ":infrastructure:firebase",
