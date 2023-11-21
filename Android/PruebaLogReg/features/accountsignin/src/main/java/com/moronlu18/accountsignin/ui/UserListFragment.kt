@@ -53,6 +53,6 @@ class UserListFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        viewmodel.getList()
+        //viewmodel.getList()
     }
 }
