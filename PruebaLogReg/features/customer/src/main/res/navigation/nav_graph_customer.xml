@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@id/nav_graph_customer"
+    app:startDestination="@id/customerList">
+
+
+    <fragment
+        android:id="@+id/customerList"
+        android:name="com.moronlu18.customer.ui.CustomerList"
+        android:label="@string/title_customerlist">
+        <action
+            android:id="@+id/action_customerList_to_customerCreation"
+            app:destination="@id/customerCreation"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_customerList_to_customerDetail"
+            app:destination="@id/customerDetail"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/customerCreation"
+        android:name="com.moronlu18.customer.ui.CustomerCreation"
+        android:label="@string/title_customercreation"
+        tools:layout="@layout/fragment_customer_creation"/>
+    <fragment
+        android:id="@+id/customerDetail"
+        android:name="com.moronlu18.customer.ui.CustomerDetail"
+        android:label="@string/title_customerdetail"
+        tools:layout="@layout/fragment_customer_detail">
+        <argument
+            android:name="idcliente"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+
+
+</navigation>

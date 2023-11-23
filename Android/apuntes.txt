@@ -1,5 +1,0 @@
-no entra databinding, guardar estado de una activity
-
-https://github.com/daniel-stoneuk/material-about-library
-
-mirar los padding y fonts

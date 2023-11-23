@@ -1,0 +1,1 @@
+:features:invoicelist::debug;Capability: group='Invoice.features', name='invoicelist'

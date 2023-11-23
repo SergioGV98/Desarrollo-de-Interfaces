@@ -1,0 +1,1 @@
+:domain:invoice::debug;Capability: group='Invoice.domain', name='invoice'

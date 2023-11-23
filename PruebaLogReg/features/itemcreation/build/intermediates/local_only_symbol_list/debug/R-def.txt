@@ -1,0 +1,34 @@
+R_DEF: Internal format may change without notice
+local
+array itemType_array
+dimen itemCreation_heightBtn
+dimen itemCreation_llpaddingBottom
+dimen itemCreation_marginHorizontalTaxable
+dimen itemCreation_paddingLeftRight
+dimen itemCreation_paddingTopBottom
+dimen itemCreation_sizeBtn
+dimen itemCreation_sizeSubtitulo
+dimen itemCreation_textSize
+dimen itemCreation_widthBtn
+drawable ic_action_cart
+id itemCreation_btnSave
+id itemCreation_chbxTaxable
+id itemCreation_etDescription
+id itemCreation_etRate
+id itemCreation_llItem
+id itemCreation_spItemType
+id itemCreation_tieName
+id itemCreation_tiiName
+id itemCreation_tvItemList
+id itemCreation_tvRate
+id itemCreation_tvTaxable
+layout fragment_item_creation
+string itemCreation_btnDoneText
+string itemCreation_chbxTaxableText
+string itemCreation_edDescriptionText
+string itemCreation_edNameText
+string itemCreation_etRateText
+string itemCreation_tvRateText
+string itemCreation_tvTaxable
+string itemCreation_tvTypeItemText
+string item_creation_tvTitle_text

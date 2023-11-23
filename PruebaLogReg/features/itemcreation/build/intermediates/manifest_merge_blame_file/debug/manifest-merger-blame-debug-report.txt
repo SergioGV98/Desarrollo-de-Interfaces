@@ -1,0 +1,35 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    xmlns:dist="http://schemas.android.com/apk/distribution"
+4    featureSplit="itemcreation"
+5    package="com.moronlu18.invoice"
+6    android:versionCode="2"
+7    android:versionName="2.0" >
+8
+9    <uses-sdk
+10        android:minSdkVersion="24"
+11        android:targetSdkVersion="24" />
+12
+13    <dist:module
+13-->C:\Users\Sergio\Desktop\Estudios\proyectoFacturaASMJ\features\itemcreation\src\main\AndroidManifest.xml:5:5-12:19
+14        dist:instant="false"
+14-->C:\Users\Sergio\Desktop\Estudios\proyectoFacturaASMJ\features\itemcreation\src\main\AndroidManifest.xml:6:9-29
+15        dist:title="@string/title_itemcreation" >
+15-->C:\Users\Sergio\Desktop\Estudios\proyectoFacturaASMJ\features\itemcreation\src\main\AndroidManifest.xml:7:9-48
+16        <dist:delivery>
+16-->C:\Users\Sergio\Desktop\Estudios\proyectoFacturaASMJ\features\itemcreation\src\main\AndroidManifest.xml:8:9-10:25
+17            <dist:install-time />
+17-->C:\Users\Sergio\Desktop\Estudios\proyectoFacturaASMJ\features\itemcreation\src\main\AndroidManifest.xml:9:13-34
+18        </dist:delivery>
+19
+20        <dist:fusing dist:include="true" />
+20-->C:\Users\Sergio\Desktop\Estudios\proyectoFacturaASMJ\features\itemcreation\src\main\AndroidManifest.xml:11:9-44
+20-->C:\Users\Sergio\Desktop\Estudios\proyectoFacturaASMJ\features\itemcreation\src\main\AndroidManifest.xml:11:22-41
+21    </dist:module>
+22
+23    <application
+24        android:debuggable="true"
+25        android:extractNativeLibs="false"
+26        android:testOnly="true" />
+27
+28</manifest>

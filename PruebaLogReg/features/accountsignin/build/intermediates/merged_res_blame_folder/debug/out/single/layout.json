@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "com.moronlu18.accountsignin-mergeDebugResources-3:/layout/fragment_layout_user_item.xml",
+        "source": "com.moronlu18.accountsignin-main-6:/layout/fragment_layout_user_item.xml"
+    },
+    {
+        "merged": "com.moronlu18.accountsignin-mergeDebugResources-3:/layout/fragment_user_list.xml",
+        "source": "com.moronlu18.accountsignin-main-6:/layout/fragment_user_list.xml"
+    },
+    {
+        "merged": "com.moronlu18.accountsignin-mergeDebugResources-3:/layout/fragment_account_sign_in.xml",
+        "source": "com.moronlu18.accountsignin-main-6:/layout/fragment_account_sign_in.xml"
+    }
+]

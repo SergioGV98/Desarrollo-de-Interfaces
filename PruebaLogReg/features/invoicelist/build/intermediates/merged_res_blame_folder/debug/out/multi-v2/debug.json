@@ -1,0 +1,62 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.moronlu18.invoicelist-merged_res-4:/values_values.arsc.flat",
+            "map": [
+                {
+                    "source": "C:\\Users\\Sergio\\Desktop\\Estudios\\proyectoFacturaASMJ\\features\\invoicelist\\src\\main\\res\\values\\styles.xml",
+                    "from": {
+                        "startLines": "10,2",
+                        "startColumns": "4,4",
+                        "startOffsets": "323,57",
+                        "endLines": "15,8",
+                        "endColumns": "12,12",
+                        "endOffsets": "608,315"
+                    },
+                    "to": {
+                        "startLines": "16,22",
+                        "startColumns": "4,4",
+                        "startOffsets": "834,1119",
+                        "endLines": "21,28",
+                        "endColumns": "12,12",
+                        "endOffsets": "1114,1371"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Sergio\\Desktop\\Estudios\\proyectoFacturaASMJ\\features\\invoicelist\\src\\main\\res\\values\\colors.xml",
+                    "from": {
+                        "startLines": "5,2,3,4",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "209,57,107,158",
+                        "endColumns": "47,48,49,49",
+                        "endOffsets": "252,101,152,203"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,103,152,202",
+                        "endColumns": "47,48,49,49",
+                        "endOffsets": "98,147,197,247"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Sergio\\Desktop\\Estudios\\proyectoFacturaASMJ\\features\\invoicelist\\src\\main\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "10,9,11,4,8,3,5,6,7,2",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "526,460,595,181,406,126,236,293,355,57",
+                        "endColumns": "67,64,52,53,52,53,55,60,49,67",
+                        "endOffsets": "589,520,643,230,454,175,287,349,400,120"
+                    },
+                    "to": {
+                        "startLines": "6,7,8,9,10,11,12,13,14,15",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "252,320,385,438,492,545,599,655,716,766",
+                        "endColumns": "67,64,52,53,52,53,55,60,49,67",
+                        "endOffsets": "315,380,433,487,540,594,650,711,761,829"
+                    }
+                }
+            ]
+        }
+    ]
+}

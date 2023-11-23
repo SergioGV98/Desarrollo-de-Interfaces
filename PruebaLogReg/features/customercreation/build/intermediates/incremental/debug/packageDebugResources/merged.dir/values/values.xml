@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="cc_black">#000000</color>
+    <color name="cc_color_btnSave">#8721C6</color>
+    <color name="cc_color_seedColor">#EBCAFF</color>
+    <color name="cc_color_tilHelper">#989898</color>
+    <color name="cc_cvBackgroundColor">#E9D3FF</color>
+    <color name="cc_predetermined_color">#505050</color>
+    <dimen name="cc_cardElevation_cvImgCustomer">2dp</dimen>
+    <dimen name="cc_cardView_marginTop">104dp</dimen>
+    <dimen name="cc_general_margin">16dp</dimen>
+    <dimen name="cc_height_ivCustomer">142dp</dimen>
+    <dimen name="cc_marginBottom_btnSave">24dp</dimen>
+    <dimen name="cc_padding_btnSave">17dp</dimen>
+    <dimen name="cc_padding_imgButton">8dp</dimen>
+    <dimen name="cc_radius_cvImgCustomer">100dp</dimen>
+    <dimen name="cc_size_imgbtnCustomer">48dp</dimen>
+    <dimen name="cc_smaller_marginTop">6dp</dimen>
+    <dimen name="cc_width_ivCustomer">164dp</dimen>
+    <string name="cc_btn_text_save">Guardar</string>
+    <string name="cc_descriptiontext_ibCustomer">Pulsa añadir una imagen</string>
+    <string name="cc_til_helperText">Requerido*</string>
+    <string name="cc_til_hint_address">Dirección</string>
+    <string name="cc_til_hint_city">Ciudad</string>
+    <string name="cc_til_hint_email">Email</string>
+    <string name="cc_til_hint_name">Nombre</string>
+    <string name="cc_til_hint_phone">Teléfono</string>
+    <style name="customer_creation_btnStyle">
+        <item name="android:backgroundTint">@color/cc_color_seedColor</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="customer_creation_tietStyle">
+        <item name="android:textColor">@color/cc_black</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="customer_creation_tilStyle">
+        <item name="android:textColorHint">@color/cc_predetermined_color</item>
+        <item name="helperTextTextColor">@color/cc_color_tilHelper</item>
+    </style>
+</resources>

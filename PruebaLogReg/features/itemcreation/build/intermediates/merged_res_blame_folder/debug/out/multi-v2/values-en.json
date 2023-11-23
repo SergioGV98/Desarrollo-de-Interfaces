@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.moronlu18.itemcreation-mergeDebugResources-2:/values-en/values-en.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Sergio\\Desktop\\Estudios\\proyectoFacturaASMJ\\features\\itemcreation\\src\\main\\res\\values-en\\strings.xml",
+                    "from": {
+                        "startLines": "5,8,4,3,9,7,10,6,2",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "252,435,180,122,504,377,569,310,57",
+                        "endColumns": "56,67,70,56,63,56,61,65,63",
+                        "endOffsets": "304,498,246,174,563,429,626,371,116"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,112,180,251,308,372,429,491,557",
+                        "endColumns": "56,67,70,56,63,56,61,65,63",
+                        "endOffsets": "107,175,246,303,367,424,486,552,616"
+                    }
+                }
+            ]
+        }
+    ]
+}
