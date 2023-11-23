@@ -1,6 +1,8 @@
 package com.moronlu18.accountsignin.ui
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,9 +11,9 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.textfield.TextInputLayout
 import com.moronlu18.accountsignin.R
 import com.moronlu18.accountsignin.databinding.FragmentAccountSignInBinding
-
 
 
 class AccountSignIn : Fragment() {
@@ -40,6 +42,8 @@ class AccountSignIn : Fragment() {
         //IMPORTANTE: Hay que establecer el Fragment/Activity vinculado al binding para actualizar
         //los valores del Binding en base al ciclo de vida
         binding.lifecycleOwner = this
+        binding.tietEmailSignIn.addTextChangedListener(GeneralTextWatcher(binding.tieEmailSignIn))
+        binding.tietPassword.addTextChangedListener(GeneralTextWatcher(binding.tilPassword))
         return binding.root
     }
 
@@ -74,9 +78,9 @@ class AccountSignIn : Fragment() {
      * Funcion que muestra el error de Password Empty
      */
     private fun setPasswordEmptyError() {
-        binding.tietPassword.error = getString(R.string.errPasswordEmpty)
+        binding.tilPassword.error = getString(R.string.errPasswordEmpty)
         //El cursor del foco se coloca en el til que tiene el error
-        binding.tietPassword.requestFocus()
+        binding.tilPassword.requestFocus()
     }
 
     private fun onSuccess(){
@@ -86,5 +90,30 @@ class AccountSignIn : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    /**
+     * Creamos una clase interna para acceder a las propiedades y funciones de una clase interna
+     */
+    inner class GeneralTextWatcher(accountSignIn: TextInputLayout) : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+        }
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+        }
+
+        override fun afterTextChanged(s: Editable?) {
+
+            when (view?.id) {
+                R.id.tieEmailSignIn -> {
+                    binding.tieEmailSignIn.error = ""
+                }
+                R.id.tietPassword -> {
+                    binding.tilPassword.error = ""
+                }
+            }
+
+        }
+
     }
 }
