@@ -1,7 +1,7 @@
 package com.moronlu18.account.usecase
 
 import androidx.lifecycle.ViewModel
-import com.moronlu18.accounts.repository.UserRepository
+import com.moronlu18.repository.UserRepository
 
 //import com.murray.invoice.data.repository.UserRepository
 

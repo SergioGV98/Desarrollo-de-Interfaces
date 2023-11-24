@@ -19,6 +19,7 @@ class AccountSignIn : Fragment() {
 
     private var _binding: FragmentAccountSignInBinding? = null
     private val binding get() = _binding!!
+
     //Se inicializara posteriormente
     //private lateinit var viewModel: SignInViewModel
     private val viewModel: SignInViewModel by viewModels()
@@ -41,8 +42,8 @@ class AccountSignIn : Fragment() {
         //IMPORTANTE: Hay que establecer el Fragment/Activity vinculado al binding para actualizar
         //los valores del Binding en base al ciclo de vida
         binding.lifecycleOwner = this
-        binding.tietEmailSignIn.addTextChangedListener(GeneralTextWatcher(binding, binding.tieEmailSignIn))
-        binding.tietPassword.addTextChangedListener(GeneralTextWatcher(binding, binding.tilPassword))
+        binding.tietEmailSignIn.addTextChangedListener(GeneralTextWatcher(binding.tieEmailSignIn))
+        binding.tietPassword.addTextChangedListener(GeneralTextWatcher(binding.tilPassword))
 
         return binding.root
     }
@@ -57,12 +58,20 @@ class AccountSignIn : Fragment() {
             findNavController().navigate(com.moronlu18.invoice.R.id.action_accountSignInFragment_to_as_userListFragment) //Crear esta acción
         }*/
         viewModel.getState().observe(viewLifecycleOwner, Observer {
-            when(it){
+            when (it) {
                 SignInState.EmailEmptyError -> setEmailEmptyError()
                 SignInState.PasswordEmptyError -> setPasswordEmptyError()
+                is SignInState.AuthencationError -> showMessage(it.message)
                 else -> onSuccess()
             }
         })
+    }
+
+    /**
+     * Funcion que muestra al usuario un mensaje
+     */
+    private fun showMessage(message: String) {
+        Toast.makeText(requireContext(), "Mi primer MVVM $message", Toast.LENGTH_SHORT).show()
     }
 
     /**
@@ -83,7 +92,7 @@ class AccountSignIn : Fragment() {
         binding.tilPassword.requestFocus()
     }
 
-    private fun onSuccess(){
+    private fun onSuccess() {
         Toast.makeText(requireActivity(), "Caso de exito en el Login", Toast.LENGTH_SHORT).show()
     }
 
@@ -95,7 +104,7 @@ class AccountSignIn : Fragment() {
     /**
      * Creamos una clase interna para acceder a las propiedades y funciones de una clase interna
      */
-    inner class GeneralTextWatcher(private val binding: FragmentAccountSignInBinding, private val accountSignIn: TextInputLayout) : TextWatcher {
+    inner class GeneralTextWatcher(private val accountSignIn: TextInputLayout) : TextWatcher {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
         }
 
@@ -105,10 +114,11 @@ class AccountSignIn : Fragment() {
         override fun afterTextChanged(s: Editable?) {
             when (accountSignIn.id) {
                 R.id.tieEmailSignIn -> {
-                    binding.tieEmailSignIn.error = ""
+                    binding.tieEmailSignIn.error = null
                 }
+
                 R.id.tilPassword -> {
-                    binding.tilPassword.error = ""
+                    binding.tilPassword.error = null
                 }
             }
         }

@@ -8,7 +8,7 @@ package com.moronlu18.accountsignin.data.network
 
 sealed class Resource {
     //data class Success<T,E>(var data: T, var settings: E): Resource()
-    data class Success<T>(var data: Collection<T>): Resource()
+    //data class Success<T>(var data: Collection<T>): Resource()
+    data class Success<T>(var data: T): Resource()
     data class Error(var exception: Exception): Resource()
-
 }
