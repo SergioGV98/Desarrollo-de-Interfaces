@@ -1,4 +1,4 @@
-package com.moronlu18.account.ui
+package com.moronlu18.account.ui.singin
 
 import android.text.TextUtils
 import android.util.Log
@@ -41,17 +41,24 @@ class SignInViewModel : ViewModel() {
                 //Se crea una corrutina que suspende el hilo principal hasta que el
                 //bloque withContext del repositorio termina de ejecutarse.
                 viewModelScope.launch {
-                  //Vamos a ejecturar el Login del repositorio - > que pregunta a la capa de la infraestructura
-                    //is cuando sea un data class
-                  when(val result = UserRepository.login(email.value!!, password.value!!)){
-                    is Resource.Success<*> -> {
-                      //Aqui tenemos que hacer un Casting Seguro porque el tipo de dato es generico T
+                    //Vamos a ejecturar el Login del repositorio - > que pregunta a la capa de la infraestructura
+                    //La respuesta del Repositorio es Asincrona
+                    state.value = SignInState.Loading(true)
+                    val result = UserRepository.login(email.value!!, password.value!!)
+                    //ES OBLIGATORIO: pausar/quitar el FragmentDialog antes de monstrar el error. Ya qie eñ
+                    //Fragment SignIn esta pausado.
+                    state.value = SignInState.Loading(false)
+                    when (result) {
+                        //is cuando sea un data class
+                        is Resource.Success<*> -> {
+                            //Aqui tenemos que hacer un Casting Seguro porque el tipo de dato es generico T
+                        }
+
+                        is Resource.Error -> {
+                            Log.i(TAG, "Informacion del error ${result.exception.message}")
+                            state.value = SignInState.AuthencationError(result.exception.message!!)
+                        }
                     }
-                    is Resource.Error -> {
-                      Log.i(TAG, "Informacion del error ${result.exception.message}")
-                      state.value = SignInState.AuthencationError(result.exception.message!!)
-                    }
-                  }
                 }
             }
         }

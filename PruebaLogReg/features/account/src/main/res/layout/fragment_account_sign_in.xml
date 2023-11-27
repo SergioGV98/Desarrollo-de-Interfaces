@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.moronlu18.account.ui.SignInViewModel" />
+            type="com.moronlu18.account.ui.singin.SignInViewModel" />
     </data>
 
     <LinearLayout

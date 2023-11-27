@@ -1,4 +1,4 @@
-package com.moronlu18.account.ui
+package com.moronlu18.account.ui.singin
 
 import com.moronlu18.accounts.Account
 
@@ -11,5 +11,5 @@ sealed class SignInState {
     data class Success(var account: Account): SignInState()
 
     //Se debe crear una clase que contiene un valor booleano que indica si se muestra el progress bar
-    data class Loading(var value: Boolean):SignInState()
+    data class Loading(var value: Boolean): SignInState()
 }

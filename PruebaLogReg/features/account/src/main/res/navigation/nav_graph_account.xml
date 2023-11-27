@@ -6,14 +6,35 @@
 
     <fragment
         android:id="@+id/accountSignIn"
-        android:name="com.moronlu18.account.ui.AccountSignIn"
+        android:name="com.moronlu18.account.ui.singin.AccountSignIn"
         android:label="AccountSignIn" >
         <action
             android:id="@+id/action_accountSignIn_to_accountSignUp"
             app:destination="@id/accountSignUp" />
+        <action
+            android:id="@+id/action_accountSignIn_to_baseFragmentDialog"
+            app:destination="@id/baseFragmentDialog" />
+        <action
+            android:id="@+id/action_accountSignIn_to_fragmentProgressDialog"
+            app:destination="@id/fragmentProgressDialog" />
     </fragment>
     <fragment
         android:id="@+id/accountSignUp"
         android:name="com.moronlu18.account.ui.AccountSignUp"
         android:label="AccountSignUp" />
+    <dialog
+        android:id="@+id/baseFragmentDialog"
+        android:name="BaseFragmentDialog"
+        android:label="BaseFragmentDialog" >
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="message"
+            app:argType="string" />
+    </dialog>
+    <dialog
+        android:id="@+id/fragmentProgressDialog"
+        android:name="FragmentProgressDialog"
+        android:label="FragmentProgressDialog" />
 </navigation>

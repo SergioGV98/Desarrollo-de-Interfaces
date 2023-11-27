@@ -1,4 +1,4 @@
-package com.moronlu18.account.ui
+package com.moronlu18.account.ui.singin
 
 import android.os.Bundle
 import android.text.Editable
@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputLayout
 import com.moronlu18.accountsignin.R
 import com.moronlu18.accountsignin.databinding.FragmentAccountSignInBinding
@@ -62,16 +63,31 @@ class AccountSignIn : Fragment() {
                 SignInState.EmailEmptyError -> setEmailEmptyError()
                 SignInState.PasswordEmptyError -> setPasswordEmptyError()
                 is SignInState.AuthencationError -> showMessage(it.message)
+                is SignInState.Loading -> showProgressBar(it.value)
                 else -> onSuccess()
             }
         })
     }
 
     /**
+     * Mostrar un progessbar en el comienzo de una operacion alrga como
+     * es una consulta a la base de datos, FireBase o bien ocultar
+     * la operacion ha terminado.
+     */
+    private fun showProgressBar(value: Boolean) {
+        if(value)
+            findNavController().navigate(R.id.action_accountSignIn_to_fragmentProgressDialog)
+        else
+            findNavController().popBackStack()
+    }
+
+    /**
      * Funcion que muestra al usuario un mensaje
      */
     private fun showMessage(message: String) {
-        Toast.makeText(requireContext(), "Mi primer MVVM $message", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(requireContext(), "Mi primer MVVM $message", Toast.LENGTH_SHORT).show()
+        val action = AccountSignInDirections.actionAccountSignInToBaseFragmentDialog("Error", message)
+        findNavController().navigate(action)
     }
 
     /**

@@ -36,4 +36,6 @@
     <string name="app_btnDetail">Detalles</string>
     <string name="app_btnList">Listado</string>
     <string name="app_btnTest">Prueba</string>
+    <string name="ok">Ok\n</string>
+    <string name="cancel">Cancelar\n</string>
 </resources>
