@@ -9,7 +9,7 @@ import com.moronlu18.accountsignin.databinding.FragmentLayoutUserItemBinding
 
 //Metemos como parametro a private val listener:OnUserClick. Que será mi listener
 class UserAdapter(
-    private val dataset: MutableList<User>,
+    private val dataset: MutableList<com.moronlu18.accounts.entity.User>,
     private val context: Context,
     private val listener: OnUserClick,
     private val onItemClick: (user: User)->Unit //no devuelve nada.
@@ -23,7 +23,7 @@ class UserAdapter(
     //Recuerda el interface es un contrato.
     interface OnUserClick { //Este elemento es público
         fun userClick(user: User) //Pulsación corta
-        fun userOnLongClick(user: User) //Larga
+        fun userOnLongClick(user: com.moronlu18.accounts.entity.User) //Larga
         //fun deleteClick(user:User) //Eliminar usuario.
 //El fragment queremos que se encargue de las funciones.
     }
@@ -67,7 +67,7 @@ class UserAdapter(
 
         //root
 
-        fun bind(item: User, context: Context) {
+        fun bind(item: com.moronlu18.accounts.entity.User, context: Context) {
 
             with(binding) {
                 imgUser.text = item.name.substring(0, 1).uppercase()

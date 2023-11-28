@@ -6,7 +6,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.moronlu18.accounts.entity.account.Account
 import com.moronlu18.repository.UserRepository
 import com.moronlu18.accountsignin.data.network.Resource
 import kotlinx.coroutines.launch
@@ -53,7 +52,6 @@ class SignInViewModel : ViewModel() {
                         //is cuando sea un data class
                         is Resource.Success<*> -> {
                             //Aqui tenemos que hacer un Casting Seguro porque el tipo de dato es generico T
-                            state.value = SignInState.Success(result as Account)
                         }
 
                         is Resource.Error -> {

@@ -1,6 +1,6 @@
 package com.moronlu18.account.ui.singin
 
-import com.moronlu18.accounts.entity.account.Account
+import com.moronlu18.accounts.Account
 
 sealed class SignInState {
     object EmailEmptyError: SignInState()
