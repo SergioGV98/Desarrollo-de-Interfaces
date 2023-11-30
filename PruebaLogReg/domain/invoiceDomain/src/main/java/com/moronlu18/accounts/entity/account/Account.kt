@@ -2,7 +2,7 @@ package com.moronlu18.accounts.entity.account
 
 class Account private constructor(
     val id: Int,
-    val email: String?,
+    val email: Email,
     val password: String?,
     val displayName: String?,
     state: AccountState = AccountState.UNVERIFIED,
@@ -56,13 +56,13 @@ class Account private constructor(
      */
 
     companion object {
-        fun create(id: Int, email: String?, password: String?, displayName: String?, state: AccountState): Account {
+        fun create(id: Int, email: Email, password: String?, displayName: String?): Account {
             return Account(
                 id = id,
                 email = email,
-                password =password,
+                password = password,
                 displayName = displayName,
-                state =state,
+                state = AccountState.UNVERIFIED,
                 businessProfile = BusinessProfile(),
             )
         }

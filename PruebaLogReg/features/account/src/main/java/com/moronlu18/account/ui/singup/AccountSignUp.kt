@@ -1,4 +1,4 @@
-package com.moronlu18.account.ui
+package com.moronlu18.account.ui.singup
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

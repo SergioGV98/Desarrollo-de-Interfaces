@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.moronlu18.accounts.entity.account.Account
 import com.moronlu18.repository.UserRepository
 import com.moronlu18.accountsignin.data.network.Resource
+import com.moronlu18.repository.AuthFirebase
 import kotlinx.coroutines.launch
 
 const val TAG = "ViewModel"
@@ -18,6 +19,7 @@ class SignInViewModel : ViewModel() {
     //LiveData que controlan los datos introducidos en la IU
     var email = MutableLiveData<String>()
     var password = MutableLiveData<String>()
+    val authFirebase = AuthFirebase()
 
     //LiveData que tendra su Observador en el Fragment y controla las excepciones/casos de uso
     //de la operacion Login
@@ -44,16 +46,16 @@ class SignInViewModel : ViewModel() {
                 viewModelScope.launch {
                     //Vamos a ejecturar el Login del repositorio - > que pregunta a la capa de la infraestructura
                     //La respuesta del Repositorio es Asincrona
-                    state.value = SignInState.Loading(true)
-                    val result = UserRepository.login(email.value!!, password.value!!)
+                    //state.value = SignInState.Loading(true)
+
                     //ES OBLIGATORIO: pausar/quitar el FragmentDialog antes de monstrar el error. Ya qie eñ
                     //Fragment SignIn esta pausado.
-                    state.value = SignInState.Loading(false)
-                    when (result) {
+                    //state.value = SignInState.Loading(false)
+                    when (val result = authFirebase.login(email.value!!, password.value!!)) {
                         //is cuando sea un data class
                         is Resource.Success<*> -> {
                             //Aqui tenemos que hacer un Casting Seguro porque el tipo de dato es generico T
-                            state.value = SignInState.Success(result as Account)
+                            state.value = SignInState.Success(result.data as Account)
                         }
 
                         is Resource.Error -> {

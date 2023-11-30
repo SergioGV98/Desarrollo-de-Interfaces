@@ -1,12 +1,9 @@
 package com.moronlu18.repository
 
 import com.moronlu18.accounts.entity.User
-import com.moronlu18.accounts.entity.account.Account
 import com.moronlu18.accountsignin.data.network.Resource
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
-import java.lang.Exception
 
 /**
 Esta clase es accesible en tod0 el proyecto. No se puede crear objetos de esta clase
@@ -37,13 +34,12 @@ class UserRepository private constructor() {
 
         suspend fun login(email: String, password: String): Resource {
             //Este codigo se ejecuta en un hilo especifico para operaciones entrada/salida (IO)
-            withContext(Dispatchers.IO){
+            return withContext(Dispatchers.IO){
                 //delay(3000)
                 //Se ejecutara el codigo de consulta a FireBase que puede tardar mas de 5sg y en ese
                 //caso se obtiene el error ANR (Android Not Responding) porque puede bloquear la vista.
-                AuthFirebaseRepository().login(email, password)
+                AuthFirebase().login(email, password)
             }
-            return AuthFirebaseRepository().login(email, password)
         }
     }
 

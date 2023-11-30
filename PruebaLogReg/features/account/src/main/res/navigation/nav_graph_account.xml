@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/accountSignUp"
-        android:name="com.moronlu18.account.ui.AccountSignUp"
+        android:name="com.moronlu18.account.ui.singup.AccountSignUp"
         android:label="AccountSignUp" />
     <dialog
         android:id="@+id/baseFragmentDialog"
