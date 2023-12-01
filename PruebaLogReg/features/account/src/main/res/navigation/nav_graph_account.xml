@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_accountSignIn_to_fragmentProgressDialog"
             app:destination="@id/fragmentProgressDialog" />
+        <action
+            android:id="@+id/action_accountSignIn_to_userListFragment"
+            app:destination="@id/userListFragment" />
     </fragment>
     <fragment
         android:id="@+id/accountSignUp"
@@ -37,4 +40,8 @@
         android:id="@+id/fragmentProgressDialog"
         android:name="FragmentProgressDialog"
         android:label="FragmentProgressDialog" />
+    <fragment
+        android:id="@+id/userListFragment"
+        android:name="com.moronlu18.account.ui.singup.UserListFragment"
+        android:label="UserListFragment" />
 </navigation>

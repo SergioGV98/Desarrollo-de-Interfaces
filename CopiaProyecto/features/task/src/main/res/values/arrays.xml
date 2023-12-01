@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="typetask">
+        <item>Privada</item>
+        <item>Llamar</item>
+        <item>Visita</item>
+    </array>
+</resources>

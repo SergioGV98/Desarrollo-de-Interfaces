@@ -45,7 +45,7 @@ class AccountSignIn : Fragment() {
         binding.lifecycleOwner = this
         binding.tietEmailSignIn.addTextChangedListener(GeneralTextWatcher(binding.tieEmailSignIn))
         binding.tietPassword.addTextChangedListener(GeneralTextWatcher(binding.tilPassword))
-
+        binding.llSignIn
         return binding.root
     }
 
@@ -55,9 +55,9 @@ class AccountSignIn : Fragment() {
         /*binding.btSigIn.setOnClickListener{
           //findNavController().navigate(R.id.action_signInFragment_to_signUpFragment)
         }*/
-        /*binding.btListUser.setOnClickListener{
-            findNavController().navigate(com.moronlu18.invoice.R.id.action_accountSignInFragment_to_as_userListFragment) //Crear esta acción
-        }*/
+        binding.btListUser.setOnClickListener{
+            findNavController().navigate(R.id.action_accountSignIn_to_userListFragment) //Crear esta acción
+        }
         viewModel.getState().observe(viewLifecycleOwner, Observer {
             when (it) {
                 SignInState.EmailEmptyError -> setEmailEmptyError()
