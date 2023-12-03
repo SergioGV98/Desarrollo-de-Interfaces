@@ -2,8 +2,9 @@ package com.mto.invoice.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.moronlu18.accounts.entity.Item
 import com.moronlu18.invoicelist.databinding.ItemItemdetailBinding
-import com.mto.invoice.data.model.Item
+
 
 
 class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -14,7 +15,7 @@ class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         binding.invoicedItemItemTvName.text = itemModel.name
         binding.invoicedItemItemTvDescription.text = itemModel.description
-        binding.invoicedItemItemTvTypeContent.text = itemModel.type
+        binding.invoicedItemItemTvTypeContent.text = itemModel.type.name
         binding.invoicedItemItemTvRateContent.text = itemModel.rate.toString()
 
         itemView.setOnClickListener { onClickListener(itemModel) }

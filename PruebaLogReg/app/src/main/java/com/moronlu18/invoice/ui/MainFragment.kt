@@ -1,21 +1,23 @@
-package com.moronlu18.invoice
-
+package com.moronlu18.invoice.ui
+import com.moronlu18.invoice.R
 import android.animation.AnimatorInflater
 import android.animation.AnimatorSet
 import android.annotation.SuppressLint
-import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.fragment.findNavController
+import com.moronlu18.invoice.base.BaseFragmentDialog
+
 import com.moronlu18.invoice.databinding.FragmentMainBinding
 
 
 class MainFragment : Fragment() {
-
     private var _binding: FragmentMainBinding? = null
 
     // This property is only valid between onCreateView and
@@ -35,22 +37,20 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.imvAlert.setOnTouchListener { v, event ->
+        /*binding.imvAlert.setOnTouchListener { v, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
                     binding.imvAlert.setImageResource(R.drawable.btnalertpressed)
+
                 }
 
                 MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
                     binding.imvAlert.setImageResource(R.drawable.btnalert)
+
                 }
             }
-            false
-        }
-        //Customer
-        binding.imvAlert.setOnClickListener {
-
-        }
+           true
+        }*/
 
         binding.cvCustomer.btnAnimationNav(R.id.action_mainFragment_to_nav_graph_customer)
         binding.cvTask.btnAnimationNav(R.id.action_mainFragment_to_nav_graph_task)
@@ -59,20 +59,24 @@ class MainFragment : Fragment() {
         binding.cvSigIn.btnAnimationNav(R.id.action_mainFragment_to_nav_graph_account)
         //binding.cvSignUp.btnAnimationNav(R.id.action_mainFragment_to_featureAccountSignUp)
         binding.cvSignOut.setOnClickListener {
-            showConfirmationDialog()
+
+            findNavController().navigate(
+                MainFragmentDirections.actionMainFragmentToBaseFragmentDialog(
+                    getString(R.string.title_fragmentDialogExit),
+                    getString(R.string.Content_fragmentDialogExit)
+                )
+            )
         }
-    }
 
-    private fun showConfirmationDialog() {
-
-        val show = AlertDialog.Builder(requireContext())
-            .setTitle("Confimación")
-            .setMessage("¿Estás seguro de que quieres cerrar la aplicación?")
-            .setPositiveButton("Sí") { _, _ ->
+        parentFragmentManager.setFragmentResultListener(
+            BaseFragmentDialog.request,
+            viewLifecycleOwner
+        ) { _, result ->
+            val success = result.getBoolean(BaseFragmentDialog.result, false)
+            if (success) {
                 requireActivity().finish()
             }
-            .setNegativeButton("No", null)
-            .show()
+        }
     }
 
 
@@ -83,7 +87,10 @@ class MainFragment : Fragment() {
                 MotionEvent.ACTION_DOWN -> {
                     //v.animate().scaleX(0.90f).scaleY(0.90f).setDuration(30).start()
 
-                    val pushDown = AnimatorInflater.loadAnimator(requireContext(), R.animator.anim_btn_push) as AnimatorSet
+                    val pushDown = AnimatorInflater.loadAnimator(
+                        requireContext(),
+                        R.animator.anim_btn_push
+                    ) as AnimatorSet
                     pushDown.setTarget(v)
                     pushDown.start();
                 }
@@ -91,7 +98,10 @@ class MainFragment : Fragment() {
                 MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
                     //v.animate().scaleX(1.0f).scaleY(1.0f).setDuration(80).start()
 
-                    val pushUp = AnimatorInflater.loadAnimator(requireContext(), R.animator.anim_btn_up) as AnimatorSet
+                    val pushUp = AnimatorInflater.loadAnimator(
+                        requireContext(),
+                        R.animator.anim_btn_up
+                    ) as AnimatorSet
                     pushUp.setTarget(v)
                     pushUp.start();
                 }

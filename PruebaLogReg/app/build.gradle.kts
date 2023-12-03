@@ -2,11 +2,13 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("androidx.navigation.safeargs.kotlin")
+    // Add the Google services Gradle plugin
     id("com.google.gms.google-services")
 
 }
 
 android {
+    //el namespace el id del proyecto
     namespace = "com.moronlu18.invoice"
     compileSdk = 34
 
@@ -73,7 +75,15 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    implementation ("com.google.firebase:firebase-auth-ktx")
-    implementation (platform("com.google.firebase:firebase-bom:32.3.1"))
     implementation ("com.mikhaellopez:circularimageview:4.3.1")
+
+
+    implementation (platform("com.google.firebase:firebase-bom:32.3.1"))
+
+    //Libería de animaciones lottie
+    val lottieVersion = "3.4.0"
+    implementation ("com.airbnb.android:lottie:$lottieVersion")
+
+    implementation("com.github.daniel-stoneuk:material-about-library:3.1.2")
+
 }

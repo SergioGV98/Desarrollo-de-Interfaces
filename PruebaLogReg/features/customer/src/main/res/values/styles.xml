@@ -14,7 +14,7 @@
 
 
     <style name="customer_creation_btnStyle">
-        <item name="android:backgroundTint">@color/cc_color_seedColor</item>
+        <item name="android:backgroundTint">@color/customer_color_seed</item>
         <item name="android:textSize">18sp</item>
     </style>
 
@@ -39,4 +39,50 @@
         <item name="android:textStyle">bold</item>
         <item name="android:fontFamily">@font/helvetica</item>
     </style>
+
+    <style name="cvCustomerCreationCorner_style" parent="Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/cvCustomerCreationCorner</item>
+    </style>
+
+    <style name="cvCustomerCreationCorner">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">48dp</item>
+        <item name="cornerSizeTopLeft">48dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+
+    <style name="cd_style_ItemtvId">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/helvetica</item>
+        <item name="android:background">@color/customer_color_cl_id</item>
+    </style>
+
+
+    <style name="cvCustomerDetailCornerName_style" parent="Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/cvCustomerDetailCornerName</item>
+    </style>
+
+
+    <style name="cvCustomerDetailCornerName">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">8dp</item>
+        <item name="cornerSizeTopLeft">8dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+
+
+    <style name="cvCustomerDetailCornerId_style" parent="Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/cvCustomerDetailCornerId</item>
+    </style>
+
+    <style name="cvCustomerDetailCornerId">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeBottomLeft">48dp</item>
+        <item name="cornerSizeBottomRight">48dp</item>
+    </style>
+
 </resources>

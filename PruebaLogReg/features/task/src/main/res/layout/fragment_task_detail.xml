@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.sergiogv98.taskdetail.TaskDetail">
+    tools:context="com.sergiogv98.tasklist.ui.TaskDetail">
 
     <View
         android:id="@+id/task_details_profile_view"
@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/task_details_client_name_txt_margin_top"
         android:gravity="center"
-        android:text="@string/task_details_txt_client_name"
+        android:text=""
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/task_details_client_txt"
@@ -45,17 +45,15 @@
         tools:layout_conversion_absoluteWidth="147dp" />
 
 
-    <ImageView
+    <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/task_details_client_image_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/task_details_img_width_height"
+        android:layout_height="@dimen/task_details_img_width_height"
         android:src="@drawable/client_profile"
         app:layout_constraintBottom_toBottomOf="@+id/task_details_profile_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_conversion_absoluteHeight="110dp"
-        tools:layout_conversion_absoluteWidth="110dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -105,7 +103,7 @@
         android:layout_height="@dimen/task_details_task_name_height"
         android:layout_marginEnd="@dimen/task_details_task_name_margin_end"
         android:gravity="center"
-        android:text="@string/task_details_txt_task_name"
+        android:text=""
         app:layout_constraintBottom_toBottomOf="@+id/task_details_task_view"
         app:layout_constraintEnd_toStartOf="@+id/task_details_status_button"
         app:layout_constraintStart_toStartOf="parent"
@@ -117,7 +115,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:enabled="false"
-        android:text="@string/task_details_button_status"
+        android:text=""
         app:layout_constraintBottom_toBottomOf="@+id/task_details_task_view"
         app:layout_constraintEnd_toEndOf="@+id/task_details_task_view"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
@@ -135,7 +133,7 @@
         app:layout_constraintTop_toBottomOf="@+id/task_details_task_view" />
 
     <TextView
-        android:id="@+id/task_details_task_type_name"
+        android:id="@+id/task_details_task_type"
         style="@style/tv_task_details_general"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -147,14 +145,15 @@
         app:layout_constraintTop_toTopOf="@+id/task_details_task_type_view" />
 
     <TextView
+        android:id="@+id/task_details_task_type_name"
         style="@style/tv_taks_details_general"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/task_details_type_task_name"
+        android:text=""
         app:layout_constraintBottom_toBottomOf="@+id/task_details_task_type_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/task_details_task_type_name" />
+        app:layout_constraintTop_toBottomOf="@+id/task_details_task_type" />
 
     <View
         android:id="@+id/task_details_task_creation_view"
@@ -184,7 +183,7 @@
         style="@style/tv_taks_details_general"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/task_details_date_creation"
+        android:text=""
         app:layout_constraintBottom_toBottomOf="@+id/task_details_task_creation_view"
         app:layout_constraintEnd_toEndOf="@+id/task_details_date_creation_name"
         app:layout_constraintStart_toStartOf="@+id/task_details_date_creation_name"
@@ -208,7 +207,7 @@
         style="@style/tv_taks_details_general"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/task_details_date_end"
+        android:text=""
         app:layout_constraintBottom_toBottomOf="@+id/task_details_task_creation_view"
         app:layout_constraintEnd_toEndOf="@+id/task_details_date_end_name"
         app:layout_constraintStart_toStartOf="@+id/task_details_date_end_name"
@@ -251,7 +250,7 @@
             style="@style/tv_taks_details_general"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/task_details_description" />
+            android:text="" />
     </ScrollView>
 
     <Button

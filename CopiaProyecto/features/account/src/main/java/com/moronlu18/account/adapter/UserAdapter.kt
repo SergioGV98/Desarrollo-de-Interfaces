@@ -66,7 +66,7 @@ class UserAdapter(
     fun update(newDataSet: ArrayList<User>) {
         //Actualizar mi dataset y notificar a la vista el cambio
         notifyDataSetChanged()
-        //dataset = newDataSet
+        dataset = newDataSet
     }
 
     /**

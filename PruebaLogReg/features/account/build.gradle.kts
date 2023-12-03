@@ -38,7 +38,7 @@ dependencies {
     implementation(project(":app"))
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.fragment:fragment-ktx:1.6.1")
-    implementation("com.google.firebase:firebase-auth-ktx:22.3.0")
+    implementation(project(mapOf("path" to ":infrastructure:firebase")))
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -47,7 +47,10 @@ dependencies {
     //Implementar la navegación por módulos
     implementation ("androidx.navigation:navigation-fragment-ktx:2.3.5")
     implementation ("androidx.navigation:navigation-ui-ktx:2.3.5")
-    implementation(project(":domain:invoiceDomain"))
+    implementation(project(mapOf("path" to ":domain:invoiceDomain")))
+
+
+    //Libería de animaciones lottie
     val lottieVersion = "3.4.0"
     implementation ("com.airbnb.android:lottie:$lottieVersion")
 }

@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.moronlu18.invoice.base.BaseFragmentDialog
 import com.moronlu18.tasklist.R
 import com.sergiogv98.tasklist.adapter.TaskAdapter
 import com.moronlu18.tasklist.databinding.FragmentTaskListBinding
@@ -19,9 +20,8 @@ class TaskList : Fragment() {
 
     private var _binding:FragmentTaskListBinding? = null
     private val binding get() = _binding!!
-    private var taskMutableList: MutableList<Task> = TaskProvider.taskList.toMutableList()
+    private var taskMutableList: MutableList<Task> = TaskProvider.taskDataSet
     private lateinit var adapter: TaskAdapter
-    private var isDeleting = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,34 +52,46 @@ class TaskList : Fragment() {
             onClickDeleted = { position -> onDeletedItem(position)}
         )
 
-        val recyclerView = binding.taskListRecyclerTasks
-        val emptyImg = binding.taskListImgEmpty
-
-        if (TaskProvider.taskList.isEmpty()){
-            emptyImg.visibility = View.VISIBLE
-            recyclerView.visibility = View.GONE
-        } else {
-            emptyImg.visibility = View.GONE
-            recyclerView.visibility = View.VISIBLE
-        }
+        updateEmptyView()
 
         binding.taskListRecyclerTasks.layoutManager = LinearLayoutManager(requireContext())
         binding.taskListRecyclerTasks.adapter = adapter
     }
+
+    /**
+     * Envía un objeto (Task) al layout taskDetail utilizando SafeArgs
+     */
     fun onItemSelected(task: Task) {
-        findNavController().navigate(R.id.action_taskList_to_taskDetail)
+        findNavController().navigate(TaskListDirections.actionTaskListToTaskDetail(task))
     }
     private fun onDeletedItem(position: Int) {
 
-        if (!isDeleting) {
-            isDeleting = true
-            taskMutableList.removeAt(position)
-            adapter.notifyItemRemoved(position)
-        }
+        findNavController().navigate(
+            TaskListDirections.actionTaskListToBaseFragmentDialog2(
+                getString(com.moronlu18.invoice.R.string.title_fragmentDialogExit),
+                getString(R.string.delete_task_info)
+            )
+        )
 
-        binding.taskListRecyclerTasks.postDelayed({
-            isDeleting = false
-        }, 300)
+        parentFragmentManager.setFragmentResultListener(
+            BaseFragmentDialog.request,
+            viewLifecycleOwner
+        ) { _, result ->
+            val success = result.getBoolean(BaseFragmentDialog.result, false)
+            if (success) {
+                taskMutableList.removeAt(position)
+                adapter.notifyItemRemoved(position)
+                updateEmptyView()
+            }
+        }
+    }
+
+    private fun updateEmptyView(){
+        if(taskMutableList.isEmpty()){
+            binding.taskListLlEmpty.visibility = View.VISIBLE
+        } else {
+            binding.taskListLlEmpty.visibility = View.GONE
+        }
     }
 
     override fun onDestroyView() {

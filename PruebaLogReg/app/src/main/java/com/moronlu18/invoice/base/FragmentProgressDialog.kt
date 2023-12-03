@@ -1,9 +1,14 @@
+package com.moronlu18.invoice.base
+
 import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.fragment.app.DialogFragment
 import com.moronlu18.invoice.R
+
+
+//import com.moronlu18.loginapplication.R
 
 class FragmentProgressDialog : DialogFragment() {
 
@@ -17,6 +22,8 @@ class FragmentProgressDialog : DialogFragment() {
         val builder = AlertDialog.Builder(requireContext())
         builder.setView(view)
         builder.setTitle("Esperando...")
+
+        builder.setCancelable(false)
 
         // Devuelve el cuadro de diálogo creado
         return builder.create()
