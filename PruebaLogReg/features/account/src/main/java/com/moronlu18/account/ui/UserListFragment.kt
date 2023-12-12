@@ -3,30 +3,35 @@ package com.moronlu18.account.ui
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.moronlu18.account.adapter.UserAdapter
 import com.moronlu18.account.usecase.UserListState
 import com.moronlu18.account.usecase.UserListViewModel
 import com.moronlu18.accounts.entity.User
+import com.moronlu18.accountsignin.R
 import com.moronlu18.accountsignin.databinding.FragmentUserListBinding
+import com.moronlu18.invoice.ui.MainActivity
 
 
-class UserListFragment : Fragment(), UserAdapter.OnUserClick {
+class UserListFragment : Fragment(), UserAdapter.OnUserClick, MenuProvider {
 
     private var _binding: FragmentUserListBinding? = null
     private val binding get() = _binding!!
 
     private val viewmodel:UserListViewModel by viewModels()
     private lateinit var userAdapter:UserAdapter
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,6 +46,10 @@ class UserListFragment : Fragment(), UserAdapter.OnUserClick {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //Funcion que personaliza el boton flotante
+        setUpFab()
+        //Funcion que personaliza el menu de la Toolbar
+        setUpToolbar()
         setUpUserRecycler()
 
 
@@ -52,6 +61,65 @@ class UserListFragment : Fragment(), UserAdapter.OnUserClick {
                 is UserListState.Success -> onSuccess(it.dataset)
             }
         })
+    }
+
+    /**
+     * Esta funcion personaliza el comportamiento de la Toolbar de la
+     * Activity
+     */
+    private fun setUpToolbar() {
+        //Lo mismo que el setUpFab()
+        (requireActivity() as MainActivity).toolbar.apply {
+            visibility = View.VISIBLE
+
+        }
+        val menuHost: MenuHost = requireActivity()
+        menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
+    }
+
+    /**
+     * Se añade las opciones del menu definidas en R.menu.menu_list_user al
+     * menu principal.
+     */
+    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+        menuInflater.inflate(R.menu.menu_list_user, menu)
+    }
+
+    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        return when(menuItem.itemId){
+            R.id.action_refresh -> {
+                viewmodel.getUserList()
+                return true
+            }
+            R.id.action_sort -> {
+                userAdapter.sort()
+                return true
+            }
+            else -> false
+        }
+    }
+
+    /**
+     * Esta funcion personaliza el comportamiento del boton flotante de la
+     * Activity
+     */
+    private fun setUpFab() {
+        //Modismo Apply de Kotlin
+        //RequireActivity me da la informacion de la actividad de la cual parte el
+        //Fragment ya que cada fragment tiene una actividad
+
+        /*val fab = (requireActivity() as MainActivity).fab
+        fab.visibility = View.VISIBLE
+        fab.setOnClickListener{view -> Snackbar.make(view, "Soy el Fragment", Snackbar.LENGTH_LONG).show()}*/
+
+        //Apply simplifica la inicializacion del objeto fab
+        (requireActivity() as MainActivity).fab.apply {
+            visibility = View.VISIBLE
+            setOnClickListener {view ->
+                Snackbar.make(view, "Soy el Fragment", Snackbar.LENGTH_LONG).show()
+            }
+        }
     }
 
     /**

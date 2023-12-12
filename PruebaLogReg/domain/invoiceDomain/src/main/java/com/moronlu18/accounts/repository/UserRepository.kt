@@ -26,14 +26,8 @@ class UserRepository private constructor() {
         }
 
         private fun initDataSetUser() {
-            /*dataSet.add(User("Alejandro", "López", "cb2@hotmail.es"))
-            dataSet.add(User("Paella", "1234", "vfrv2@hotmail.es"))
-            dataSet.add(User("Cebolla", "Veeee", "cbb@hotmail.es"))
-            dataSet.add(User("Rabano", "Ra", "rf@hotmail.es"))
-            dataSet.add(User("Alejandro", "López", "cb2@hotmail.es"))
-            dataSet.add(User("Paella", "1234", "vfrv2@hotmail.es"))
-            dataSet.add(User("Cebolla", "Veeee", "cbb@hotmail.es"))
-            dataSet.add(User("Rabano", "Ra", "rf@hotmail.es"))*/
+            dataSet.add(User("Sergio", "Garcia Vico", "sergio@gmail.es"))
+            dataSet.add(User("Antonio", "Paco", "Antonio@gmail.es"))
         }
 
 

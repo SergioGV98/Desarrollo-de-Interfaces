@@ -55,6 +55,15 @@ class UserAdapter(
     }
 
     /**
+     * Funcion que ordena el dataset en base a una propiedad personalizado
+     */
+    fun sort() {
+        //Orden personalizado se establece mediante una propiedad
+        dataset.sortBy { it.email }
+        notifyDataSetChanged()
+    }
+
+    /**
      * La clase viewHolde contiene todos los elementos de view o del layout XML que se ha inflado.
      */
     inner class UserViewHolder(private val binding: FragmentLayoutUserItemBinding) :
