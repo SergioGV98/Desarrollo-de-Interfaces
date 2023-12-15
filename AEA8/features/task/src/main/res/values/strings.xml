@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="task_details_txt_client">Cliente</string>
+    <string name="task_details_type_task">Tipo de Tarea</string>
+    <string name="task_details_txt_date_creation">Fecha de Creación</string>
+    <string name="task_details_txt_date_end">Fecha de Finalización</string>
+    <string name="task_details_txt_description">Descripción de la Tarea</string>
+    <string name="task_details_button">Aceptar</string>
+    <string name="task_creation_txv_hint_nombre_cliente">Nombre del cliente</string>
+    <string name="task_creation_txv_hint_nombre_tarea">Nombre de la tarea</string>
+    <string name="task_creation_txv_descripcion">Descripción</string>
+    <string name="task_creation_txt_button_pendiente">Pendiente</string>
+    <string name="task_creation_txt_button_modificada">Modificada</string>
+    <string name="task_creation_txt_button_vencida">Vencida</string>
+    <string name="task_creation_txt_button_finalizada">Finalizada</string>
+    <string name="task_creation_button_add">Crear tarea</string>
+    <string name="task_creation_txt_button_fecha_creacion">Fecha de Creación</string>
+    <string name="task_creation_txt_button_fecha_finalizacion">Fecha de Finalización</string>
+    <string name="task_list_empty_list">No tienes tareas...</string>
+    <string name="task_list_customer_help_text">Campo obligatorio</string>
+    <string name="task_list_task_help_text">Campo obligatorio</string>
+    <string name="title_list_task">Lista de tareas</string>
+    <string name="title_task_creation">Creacción de la Tarea</string>
+    <string name="title_task_detail">Detalle de la Tarea</string>
+    <string name="delete_task_info">¿Estás seguro de que quieres borrar la tarea?</string>
+    <string name="task_creation_date_creation_txt">Fecha de creación</string>
+    <string name="task_creation_date_fin_txt">Fecha de finalización</string>
+
+    <string name="dropdown">Dropdown Menu</string>
+    <string name="select">Cliente seleccionado</string>
+</resources>

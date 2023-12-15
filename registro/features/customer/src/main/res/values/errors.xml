@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="errPasswordEmpty">Password vacío</string>
+    <string name="errEmailEmpty">Email vacío</string>
+    <string name="errInvalidId">Id Inválido</string>
+    <string name="errReferencedCustomer">No puedes borrar/editar un cliente referenciado a una factura o tarea</string>
+    <string name="title_ad_warning">Aviso</string>
+</resources>

@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">PruebasConClientes</string>
+    <string name="tilEmailSignInHit">Contraseña</string>
+    <string name="tvCalification">Calificacion</string>
+    <string name="tvProfile">Perfil:</string>
+    <string name="tvType">Tipo:</string>
+    <string name="tietEmailSignUp">Email</string>
+    <string name="tietPasswordSignUp">Password</string>
+    <string name="tietConfirmPasswordSignUp">Confirmar Password</string>
+    <string name="imgLogo_decscription">Mi caja</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ic_action_refresh">Refrescar</string>
+    <string name="ic_action_order">Ordenar</string>
+    <string name="register">Registrarse</string>
+    <string name="name_error">El campo de nombre, no puede estar vacio.</string>
+    <string name="email_error">El campo de email, no puede estar vacio.</string>
+</resources>

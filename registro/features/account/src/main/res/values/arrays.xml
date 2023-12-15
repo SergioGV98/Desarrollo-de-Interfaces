@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="typeuser">
+        <item>User</item>
+        <item>Admin</item>
+        <item>Guess</item>
+        <item>Client</item>
+    </string-array>
+
+    <string-array name="typeprofile">
+        <item>Private</item>
+        <item>Public</item>
+        <item>Empty</item>
+    </string-array>
+
+</resources>

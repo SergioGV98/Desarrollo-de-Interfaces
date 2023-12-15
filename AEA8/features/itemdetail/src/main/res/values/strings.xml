@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="itemDetail_tvNameText">Nombre</string>
+    <string name="itemDetail_tvContentNameText">Manzana</string>
+    <string name="itemDetail_tvDescriptionText">Descripción</string>
+    <string name="itemDetail_tvContentDescriptionText">Producto sección fruta</string>
+    <string name="itemDetail_tvContenTaxableText">Si</string>
+    <string name="itemDetail_tvTaxableText">Impuesto</string>
+    <string name="itemDetail_tvContenRateText">1.4</string>
+    <string name="itemDetail_tvRateText">Tasa</string>
+    <string name="itemDetail_tvContenTypeText">Artículo</string>
+    <string name="itemDetail_tvTypeText">Tipo</string>
+</resources>

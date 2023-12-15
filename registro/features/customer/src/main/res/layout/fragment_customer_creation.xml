@@ -1,0 +1,274 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodelcustomercreation"
+            type="com.cbo.customer.usecase.CustomerViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/customer_creation_clayoutCustomer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context="com.cbo.customer.ui.CustomerCreation">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/cc_glhalf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="502dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/customer_creation_glTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="24dp" />
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/customer_creation_imgcAvatar"
+            android:layout_width="@dimen/cc_width_ivCustomer"
+            android:layout_height="@dimen/cc_height_ivCustomer"
+            android:src="@drawable/kiwidiner_background"
+            app:civ_border_color="@color/seed"
+            app:civ_border_width="@dimen/customer_border_ivCustomer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/customer_creation_glTop" />
+
+
+        <LinearLayout
+            android:id="@+id/customer_creation_llid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/customer_creation_tilIdCustomer"
+                style="@style/customer_creation_tilStyle"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+
+                android:layout_marginEnd="@dimen/cc_margin_til"
+                android:hint="@string/cc_hint_id"
+                android:padding="2dp"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                app:startIconTint="@color/customer_color_seed">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/customer_creation_tietIdCustomer"
+                    style="customer_creation_tietStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#548A72E3"
+                    android:inputType="number"
+                    android:maxLength="3"
+                    android:text="@={viewmodelcustomercreation.idCustomer}" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/customer_creation_cvImgCustomer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/cc_color_seedColor"
+            app:cardCornerRadius="@dimen/cc_radius_cvImgCustomer"
+            app:cardElevation="@dimen/cc_cardElevation_cvImgCustomer"
+            app:layout_constraintBottom_toBottomOf="@+id/customer_creation_imgcAvatar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.645"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageButton
+                android:id="@+id/customer_creation_imgbtnCustomer"
+                android:layout_width="@dimen/cc_size_imgbtnCustomer"
+                android:layout_height="@dimen/cc_size_imgbtnCustomer"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:contentDescription="@string/cc_descriptiontext_ibCustomer"
+                android:focusable="true"
+                android:padding="@dimen/cc_padding_imgButton"
+                android:src="@drawable/ic_action_altimage" />
+        </androidx.cardview.widget.CardView>
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/customer_creation_mcvFields"
+            style="@style/cvCustomerCreationCorner_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/cc_glhalf">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/customer_creation_clFields"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/cc_marginTop_clFields"
+                android:orientation="vertical"
+                android:padding="@dimen/cc_padding_clFields">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/customer_creation_tilNameCustomer"
+                    style="@style/customer_creation_tilStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/cc_margin_til"
+                    android:layout_marginEnd="@dimen/cc_margin_til"
+                    android:hint="@string/cc_til_hint_name"
+                    app:errorEnabled="true"
+                    app:helperText="@string/cc_til_helperText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:startIconDrawable="@drawable/ic_action_person"
+                    app:startIconTint="@color/customer_color_seed">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/customer_creation_tietNameCustomer"
+                        style="customer_creation_tietStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:maxLength="40"
+                        android:text="@={viewmodelcustomercreation.nameCustomer}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/customer_creation_tilCustomerEmail"
+                    style="@style/customer_creation_tilStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/cc_margin_til"
+                    android:layout_marginEnd="@dimen/cc_margin_til"
+                    android:hint="@string/cc_til_hint_email"
+                    app:errorEnabled="true"
+                    app:helperText="@string/cc_til_helperText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/customer_creation_tilNameCustomer"
+                    app:startIconDrawable="@drawable/ic_action_email"
+                    app:startIconTint="@color/customer_color_seed">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/customer_creation_tietEmailCustomer"
+                        style="customer_creation_tietStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:maxLength="100"
+                        android:text="@={viewmodelcustomercreation.emailCustomer}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/customer_creation_tilPhone"
+                    style="@style/customer_creation_tilStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/cc_margin_til"
+                    android:layout_marginEnd="@dimen/cc_margin_til"
+                    android:hint="@string/cc_til_hint_phone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/customer_creation_tilCustomerEmail"
+                    app:startIconDrawable="@drawable/ic_action_phone"
+                    app:startIconTint="@color/customer_color_seed">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/customer_creation_tietPhone"
+                        style="customer_creation_tietStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="phone"
+                        android:maxLength="20" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/customer_creation_tilAddress"
+                    style="@style/customer_creation_tilStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/cc_margin_til"
+                    android:layout_marginTop="@dimen/cc_marginTop_til"
+                    android:layout_marginEnd="@dimen/cc_margin_til"
+                    android:hint="@string/cc_til_hint_address"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/customer_creation_tilPhone"
+                    app:startIconDrawable="@drawable/ic_action_house"
+                    app:startIconTint="@color/customer_color_seed">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/customer_creation_tietAddress"
+                        style="customer_creation_tietStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:maxLength="100" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/customer_creation_tilCity"
+                    style="@style/customer_creation_tilStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/cc_margin_til"
+                    android:layout_marginTop="@dimen/cc_marginTop_til"
+                    android:layout_marginEnd="@dimen/cc_margin_til"
+                    android:hint="@string/cc_til_hint_city"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/customer_creation_tilAddress"
+                    app:startIconDrawable="@drawable/ic_action_city"
+                    app:startIconTint="@color/customer_color_seed">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/customer_creation_tietCity"
+                        style="customer_creation_tietStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:maxLength="50" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/customer_creation_btnSave"
+                    style="@style/customer_creation_btnStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/cc_margin_button"
+                    android:layout_marginTop="@dimen/cc_margin_button"
+                    android:layout_marginEnd="@dimen/cc_margin_button"
+                    android:drawableEnd="@drawable/ic_action_save"
+                    android:onClick="@{()->viewmodelcustomercreation.validateCredentials()}"
+                    android:padding="@dimen/cc_padding_btnSave"
+                    android:text="@string/cc_btn_text_save"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/customer_creation_tilCity" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

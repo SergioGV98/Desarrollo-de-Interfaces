@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewmodelitemcreation"
+            type="com.jcasrui.item.usecase.ItemViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/itemCreation_llItem"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/itemCreation_paddingLayout"
+        android:paddingTop="@dimen/itemCreation_paddingLayout"
+        android:paddingRight="@dimen/itemCreation_paddingLayout">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/itemCreation_glButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="@dimen/itemCreation_guideHorizontal" />
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/itemCreation_civImagenItem"
+            android:layout_width="@dimen/itemCreation_civWidth"
+            android:layout_height="@dimen/itemCreation_civHeight"
+            android:src="@drawable/cart"
+            app:civ_border_color="@color/purple_500"
+            app:civ_border_width="@dimen/itemCreation_civBorderWidth"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/itemCreation_cvImgAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/itemCreation_cvCornerRadius"
+            app:cardElevation="@dimen/itemCreation_cvElevation"
+            app:layout_constraintBottom_toBottomOf="@+id/itemCreation_civImagenItem"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.70"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageButton
+                android:id="@+id/itemCreation_imgBtnAdd"
+                android:layout_width="@dimen/itemCretion_imgBtnWidthHeight"
+                android:layout_height="@dimen/itemCretion_imgBtnWidthHeight"
+                android:background="@color/md_theme_light_secondaryContainer"
+                android:clickable="true"
+                android:contentDescription="@string/itemCreation_imgBtnAdd"
+                android:focusable="true"
+                android:padding="@dimen/itemCreation_imgBtnPadding"
+                android:src="@drawable/ic_action_addimgen" />
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/itemCreation_cvMarginTop"
+            android:layout_marginBottom="@dimen/itemCreation_cvMarginButton"
+            android:elevation="@dimen/itemCreation_cvElevation"
+            app:cardCornerRadius="@dimen/itemCreation_cvCRadius"
+            app:layout_constraintBottom_toTopOf="@+id/itemCreation_btnSave"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itemCreation_civImagenItem">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/itemCreation_glStart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="@dimen/itemCreation_guideVertical" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/itemCreation_glEnd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_end="@dimen/itemCreation_guideVertical" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/itemCreation_tilName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:hint="@string/item_name"
+                    android:paddingTop="@dimen/itemCreation_paddingSpinner"
+                    app:errorEnabled="true"
+                    app:helperText="@string/itemCreation_tilHelperText"
+                    app:layout_constraintEnd_toStartOf="@+id/itemCreation_glEnd"
+                    app:layout_constraintStart_toStartOf="@+id/itemCreation_glStart"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:startIconDrawable="@drawable/ic_action_cart"
+                    app:startIconTint="@color/purple_200">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/itemCreation_tieName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text|textCapSentences|textAutoCorrect"
+                        android:lines="1"
+                        android:maxLength="30"
+                        android:maxLines="2"
+                        android:overScrollMode="always"
+                        android:scrollbarStyle="outsideOverlay"
+                        android:scrollbars="vertical"
+                        android:text="@={viewmodelitemcreation.nameItem}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/itemCreation_tilDescription"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingTop="@dimen/itemCreation_paddingGeneral"
+                    app:layout_constraintEnd_toStartOf="@+id/itemCreation_glEnd"
+                    app:layout_constraintStart_toStartOf="@+id/itemCreation_glStart"
+                    app:layout_constraintTop_toBottomOf="@+id/itemCreation_tilName"
+                    app:startIconDrawable="@drawable/ic_action_description"
+                    app:startIconTint="@color/purple_200">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/itemCreation_tieDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/item_description"
+                        android:inputType="textMultiLine|textCapSentences|textAutoCorrect"
+                        android:lines="1"
+                        android:maxLength="100"
+                        android:maxLines="3"
+                        android:overScrollMode="always"
+                        android:scrollbarStyle="outsideOverlay"
+                        android:scrollbars="vertical" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/itemCreation_tilRate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:hint="@string/itemCreation_tilRate"
+                    android:paddingTop="@dimen/itemCreation_paddingGeneral"
+                    app:errorEnabled="true"
+                    app:helperText="@string/itemCreation_tilHelperText"
+                    app:layout_constraintEnd_toStartOf="@+id/itemCreation_glEnd"
+                    app:layout_constraintStart_toStartOf="@+id/itemCreation_glStart"
+                    app:layout_constraintTop_toBottomOf="@+id/itemCreation_tilDescription"
+                    app:startIconDrawable="@drawable/ic_action_euro"
+                    app:startIconTint="@color/purple_200">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/itemCreation_tieRate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:lines="1"
+                        android:maxLength="9"
+                        android:maxLines="1"
+                        android:text="@={viewmodelitemcreation.rateItem}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/itemCreation_spItemType"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/itemType_array"
+                    android:paddingTop="@dimen/itemCreation_paddingSpinner"
+                    android:paddingBottom="@dimen/itemCreation_paddingGeneral"
+                    app:layout_constraintEnd_toStartOf="@+id/itemCreation_glEnd"
+                    app:layout_constraintStart_toStartOf="@+id/itemCreation_glStart"
+                    app:layout_constraintTop_toBottomOf="@+id/itemCreation_tilRate" />
+
+                <TextView
+                    android:id="@+id/itemCreation_tvTaxable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/itemCreation_tvMarginStart"
+                    android:paddingTop="@dimen/itemCreation_paddingGeneral"
+                    android:text="@string/item_tvTaxable"
+                    android:textSize="@dimen/item_sizeTitles"
+                    app:layout_constraintStart_toStartOf="@+id/itemCreation_glStart"
+                    app:layout_constraintTop_toBottomOf="@+id/itemCreation_spItemType" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/itemCreation_SwitchTaxable"
+                    android:layout_width="@dimen/itemCreation_sizeSwitch"
+                    android:layout_height="@dimen/itemCreation_sizeSwitch"
+                    android:layout_marginStart="@dimen/itemCreation_switchMarginStart"
+                    android:checked="false"
+                    android:paddingTop="@dimen/itemCreation_switchPaddingTop"
+                    app:layout_constraintBottom_toBottomOf="@+id/itemCreation_tvTaxable"
+                    app:layout_constraintStart_toEndOf="@+id/itemCreation_tvTaxable"
+                    app:layout_constraintTop_toTopOf="@+id/itemCreation_tvTaxable" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <Button
+            android:id="@+id/itemCreation_btnSave"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/itemCreation_heightBtn"
+            android:layout_gravity="center"
+            android:onClick="@{()->viewmodelitemcreation.validateItem()}"
+            android:text="@string/itemCreation_btnDone"
+            android:textSize="@dimen/item_sizeTitles"
+            app:layout_constraintBottom_toTopOf="@+id/itemCreation_glButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

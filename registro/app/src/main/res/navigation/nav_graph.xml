@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <!-- Se nombra directamente al Fragment. La propiedad android:name da error
+    porque el Fragmento no está en app y es en tiempo de ejecución cuando el módulo se une al
+    fichero apk-->
+
+
+    <!--Se incluye el grafo de navegación con un id="@+id" que se ha establecido
+     en el fichero /res/navigation/
+     SOLO SE AÑADE EL + EN ESTE CÓDIGO -->
+
+   <!-- <include-dynamic android:id="@+id/nav_graph_account"
+        app:graphPackage="$(applicationId).account"
+        app:graphResName="nav_graph_account"
+        app:moduleName="account"
+        > </include-dynamic> -->
+
+    <include-dynamic android:id="@+id/nav_graph_customer"
+        app:graphPackage="${applicationId}.customer"
+        app:graphResName="nav_graph_customer"
+        app:moduleName="customer"
+        />
+
+    <include-dynamic android:id="@+id/nav_graph_task"
+        app:graphPackage="${applicationId}.task"
+        app:graphResName="nav_graph_task"
+        app:moduleName="task"
+        />
+    <include-dynamic android:id="@+id/nav_graph_invoice"
+        app:graphPackage="${applicationId}.invoice"
+        app:graphResName="nav_graph_invoice"
+        app:moduleName="invoice"
+        />
+    <include-dynamic android:id="@+id/nav_graph_item"
+        app:graphPackage="${applicationId}.item"
+        app:graphResName="nav_graph_item"
+        app:moduleName="item"
+        />
+
+    <include-dynamic android:id="@+id/nav_graph_account"
+        app:graphPackage="${applicationId}.account"
+        app:graphResName="nav_graph_account"
+        app:moduleName="account"
+        />
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.moronlu18.invoice.ui.SplashFragment"
+        android:label="@string/title_splash"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.moronlu18.invoice.ui.MainFragment"
+        android:label="@string/mainFragment"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_nav_graph_customer"
+            app:destination="@id/nav_graph_customer" />
+        <action
+            android:id="@+id/action_mainFragment_to_nav_graph_task"
+            app:destination="@id/nav_graph_task"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_mainFragment_to_nav_graph_invoice"
+            app:destination="@id/nav_graph_invoice" />
+        <action
+            android:id="@+id/action_mainFragment_to_nav_graph_item"
+            app:destination="@id/nav_graph_item" />
+        <action
+            android:id="@+id/action_mainFragment_to_nav_graph_account"
+            app:destination="@id/nav_graph_account" />
+        <action
+            android:id="@+id/action_mainFragment_to_baseFragmentDialog"
+            app:destination="@id/baseFragmentDialog" />
+        <action
+            android:id="@+id/action_mainFragment_to_about"
+            app:destination="@id/aboutMaterialFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/baseFragmentDialog"
+        android:name="com.moronlu18.invoice.base.BaseFragmentDialog"
+        android:label="BaseFragmentDialog" >
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="message"
+            app:argType="string" />
+    </dialog>
+    <fragment
+        android:id="@+id/aboutMaterialFragment"
+        android:name="com.moronlu18.invoice.ui.AboutMaterialFragment"
+        android:label="@string/title_about" />
+
+</navigation>

@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewmodeltaskcreation"
+            type="com.sergiogv98.usecase.TaskViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/task_creation_background"
+        android:orientation="vertical"
+        android:id="@+id/task_creation_layout"
+        tools:context="com.sergiogv98.tasklist.ui.TaskCreation">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/task_creation_task_dropdown"
+            style="@style/exposedDropDownMenu_Customer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:hint="@string/select"
+            app:helperText="@string/task_list_customer_help_text"
+            app:startIconDrawable="@drawable/ic_person"
+            app:errorEnabled="true"
+            app:layout_constraintBottom_toTopOf="@+id/task_creation_task_til_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/task_creation_task_til_name"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <AutoCompleteTextView
+                android:id="@+id/auto_complete_txt"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@={viewmodeltaskcreation.customerName}"
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/task_creation_task_til_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/task_creation_name_task_txv_margin_start"
+            android:layout_marginEnd="@dimen/task_creation_name_task_txv_margin_end"
+            android:textColorHint="@color/white"
+            app:boxStrokeColor="@color/white"
+            app:errorEnabled="true"
+            app:hintTextColor="@color/white"
+            app:helperText="@string/task_list_task_help_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/task_creation_task_dropdown"
+            app:startIconDrawable="@drawable/ic_description">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/task_creation_txv_task_name"
+                style="@style/tie_task_creation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/task_creation_txv_hint_nombre_tarea"
+                android:inputType="text"
+                android:text="@={viewmodeltaskcreation.taskName}"
+                android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/task_creation_img_top"
+            android:layout_width="@dimen/task_creation_img_top_width"
+            android:layout_height="@dimen/task_creation_img_top_height"
+            android:layout_marginTop="@dimen/task_creation_img_top_margin_top"
+            android:scaleType="fitEnd"
+            android:src="@drawable/arc_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/task_creation_task_til_name" />
+
+        <View
+            android:id="@+id/task_creation_view"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:background="@color/task_creation_view"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/task_creation_img_top" />
+
+        <Button
+            android:id="@+id/task_creation_button_date_creation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:clickable="false"
+            android:text="@={viewmodeltaskcreation.dateCreation}"
+            app:layout_constraintEnd_toStartOf="@+id/guideline5"
+            app:layout_constraintHorizontal_bias="0.41"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/task_creation_img_top" />
+
+        <Button
+            android:id="@+id/task_creation_button_date_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:layout_weight="1"
+            android:clickable="false"
+            android:text="@={viewmodeltaskcreation.dateEnd}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline5"
+            app:layout_constraintTop_toBottomOf="@+id/task_creation_img_top" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="356dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="205dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/task_creation_til_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/task_creation_til_description_margin_start"
+            android:layout_marginTop="@dimen/task_creation_til_description_margin_top"
+            android:layout_marginEnd="@dimen/task_creation_til_description_margin_end"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/task_creation_img_top">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/task_creation_txv_description"
+                style="@style/tie_task_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:background="@color/md_theme_dark_onPrimaryContainer" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/task_creation_text_description"
+            style="@style/txt_task_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/task_creation_text_description_margin_start"
+            android:layout_marginTop="8dp"
+            android:text="@string/task_creation_txv_descripcion"
+            android:textColor="@color/md_theme_dark_outlineVariant"
+            app:layout_constraintBottom_toTopOf="@+id/task_creation_til_description"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/task_creation_button_date_creation"
+            app:layout_constraintVertical_bias="0.51" />
+
+        <Spinner
+            android:id="@+id/task_creation_type_task_list"
+            style="@style/spinnerStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spinner_margin_start"
+            android:layout_marginTop="@dimen/spinner_margin_top"
+            android:layout_marginEnd="@dimen/spinner_margin_end"
+            android:entries="@array/typetask"
+            android:minHeight="@dimen/spinner_height"
+            android:pointerIcon="zoom_in"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/task_creation_til_description" />
+
+        <RadioGroup
+            android:id="@+id/task_creation_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/radio_group_margin_start"
+            app:layout_constraintBottom_toBottomOf="@+id/task_creation_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/task_creation_type_task_list"
+            app:layout_constraintVertical_bias="0.20999998">
+
+            <RadioButton
+                android:id="@+id/task_creation_rdb_pendiente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/task_creation_txt_button_pendiente" />
+
+            <RadioButton
+                android:id="@+id/task_creation_rdb_modificada"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/task_creation_txt_button_modificada" />
+
+            <RadioButton
+                android:id="@+id/task_creation_rdb_vencida"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/task_creation_txt_button_vencida" />
+
+            <RadioButton
+                android:id="@+id/task_creation_rdb_finalizada"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/task_creation_txt_button_finalizada" />
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/task_creation_button_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/task_creation_button_add_margin_top"
+            android:layout_marginBottom="@dimen/task_creation_button_add_margin_bottom"
+            android:onClick="@{()->viewmodeltaskcreation.validateTask()}"
+            android:text="@string/task_creation_button_add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/task_creation_status" />
+
+        <TextView
+            android:id="@+id/task_date_error_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/red"
+            app:layout_constraintBottom_toTopOf="@+id/task_creation_text_description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/task_creation_button_date_creation" />
+
+        <ImageView
+            android:id="@+id/task_creation_img_calendar_creation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:clickable="true"
+            app:layout_constraintBottom_toBottomOf="@+id/task_creation_button_date_creation"
+            app:layout_constraintEnd_toStartOf="@+id/task_creation_button_date_creation"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/task_creation_img_top"
+            app:srcCompat="@drawable/ic_calendar" />
+
+        <ImageView
+            android:id="@+id/task_creation_img_calendar_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            android:clickable="true"
+            app:layout_constraintBottom_toBottomOf="@+id/task_creation_button_date_end"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/task_creation_button_date_end"
+            app:layout_constraintTop_toTopOf="@+id/task_creation_button_date_end"
+            app:srcCompat="@drawable/ic_calendar" />
+
+        <TextView
+            android:id="@+id/task_creation_date_creation_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/task_creation_date_creation_txt"
+            app:layout_constraintBottom_toTopOf="@+id/task_creation_button_date_creation"
+            app:layout_constraintEnd_toEndOf="@+id/task_creation_button_date_creation"
+            app:layout_constraintStart_toStartOf="@+id/task_creation_button_date_creation" />
+
+        <TextView
+            android:id="@+id/task_creation_date_end_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/task_creation_date_fin_txt"
+            app:layout_constraintBottom_toTopOf="@+id/task_creation_button_date_end"
+            app:layout_constraintEnd_toEndOf="@+id/task_creation_button_date_end"
+            app:layout_constraintStart_toStartOf="@+id/task_creation_button_date_end" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
