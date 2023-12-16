@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="sp_type_user">
+        <item>Usuario</item>
+        <item>Administrador</item>
+        <item>Invitado</item>
+    </array>
+</resources>

@@ -11,13 +11,7 @@ package com.moronlu18.accounts.entity
 Si quitamos la palabras no sabremos si los objetos son iguales
 
  */
-data class User(val name: String, val surname: String, val email: String) : Comparable<User> {
-    //Siempre se compara el propio objeto con otro.
-    //Si ordenador A B C (A siempre será menor)
-    //Objeto < other <0
-    //Si son iguales = 0
-    //Objeto > other  >0
-    //Establecemos orden natura
+open class User(open val name: String, open val surname: String, open val email: String) : Comparable<User> {
     override fun compareTo(other: User): Int {
         return name.compareTo(other.name)
     }

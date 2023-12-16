@@ -4,7 +4,9 @@ import android.text.TextUtils
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.moronlu18.accounts.repository.UserRepository
+import kotlinx.coroutines.launch
 
 class SignUpViewModel : ViewModel() {
 
@@ -16,8 +18,10 @@ class SignUpViewModel : ViewModel() {
         when {
             TextUtils.isEmpty(name.value) -> state.value = SignUpState.NameIsEmpty
             else -> {
-                //UserRepository.dataSet.add() //Al repositorio
-                state.value = SignUpState.Success
+                viewModelScope.launch {
+                    state.value = SignUpState.Success
+                    //UserRepository.dataSet.add() //Al repositorio
+                }
             }
         }
     }
