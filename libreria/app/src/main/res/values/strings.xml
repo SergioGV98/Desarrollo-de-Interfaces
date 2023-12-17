@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">libreria</string>
+    <string name="action_settings">Settings</string>
+    <string name="txt_title">Creacion de libros</string>
+    <string name="hint_author">Nombre del autor</string>
+    <string name="hint_book">Nombre del libro</string>
+    <string name="txt_category">Categoria principal</string>
+    <string name="txt_category_secondary">Categoria secundaria</string>
+    <string name="hint_price">Precio</string>
+    <string name="button_creation">Crear</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="name_error">El libro debe tener un nombre</string>
+    <string name="price_error">EL precio no puede estar vacio</string>
+    <string name="price2_error">El precio no puede ser 0 o menor que 0</string>
+    <string name="book_creation_success">El libro se ha creado con exito.</string>
+    <string name="txt_name_book">Nombre del libro:</string>
+    <string name="txt_name_book_a">Libro prueba</string>
+</resources>

@@ -23,6 +23,7 @@ class RegisterViewModel : ViewModel() {
         when {
             TextUtils.isEmpty(nameUser.value) -> state.value = RegisterState.NameIsMandatory
             TextUtils.isEmpty(emailUser.value) -> state.value = RegisterState.EmailIsMandatory
+            emailNotUnique() -> state.value = RegisterState.EmailIsNotUnique
             TextUtils.isEmpty(passwordUser.value) -> state.value = RegisterState.PasswordIsMandatory
             TextUtils.isEmpty(passwordRepeatUser.value) -> state.value =  RegisterState.PasswordRepeatIsMandatory
             samePasswords() -> state.value = RegisterState.PasswordMustMatch
@@ -45,6 +46,15 @@ class RegisterViewModel : ViewModel() {
             2 -> TypeUser.INVITADO
             else -> {TypeUser.USUARIO}
         }
+    }
+
+    private fun emailNotUnique(): Boolean {
+        for (user in UserRepository.dataSet){
+            if(user.email == emailUser.value){
+                return true
+            }
+        }
+        return false
     }
 
 

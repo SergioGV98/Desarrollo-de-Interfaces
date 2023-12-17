@@ -12,6 +12,12 @@
         <action
             android:id="@+id/action_menuFragment_to_registrarseFragment"
             app:destination="@id/registrarseFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/registrarseFragment"
@@ -22,4 +28,13 @@
             android:id="@+id/action_registrarseFragment_to_menuFragment"
             app:destination="@id/menuFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="com.sergiogv98.loginSimple.ui.listuser.ListFragment"
+        android:label="fragment_list_user"
+        tools:layout="@layout/fragment_list_user" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.sergiogv98.loginSimple.ui.login.LoginFragment"
+        android:label="LoginFragment" />
 </navigation>

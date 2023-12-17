@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="category_book">
+        <item>Ficción</item>
+        <item>No ficción</item>
+        <item>Ciencia ficción</item>
+        <item>Misterio</item>
+        <item>Aventura</item>
+        <item>Romance</item>
+        <item>Fantasía</item>
+        <item>Biografía</item>
+    </array>
+</resources>

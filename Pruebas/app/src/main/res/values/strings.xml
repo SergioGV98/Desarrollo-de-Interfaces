@@ -68,4 +68,8 @@
     <string name="error_password_match">Las contraseñas deben coincidir</string>
     <string name="register_success">Registro realizado con exito</string>
     <string name="btn_list_user">Lista usuarios</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="error_email_duplicated">El email esta duplicado en la base de datos</string>
+    <string name="login_txt">Logearse</string>
 </resources>

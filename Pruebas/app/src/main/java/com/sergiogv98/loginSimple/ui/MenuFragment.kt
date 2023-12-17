@@ -30,10 +30,12 @@ class MenuFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonLogin.setOnClickListener {
-
+            findNavController().navigate(R.id.action_menuFragment_to_loginFragment)
         }
 
-        binding.buttonListUser.setOnClickListener {  }
+        binding.buttonListUser.setOnClickListener {
+            findNavController().navigate(R.id.action_menuFragment_to_listFragment)
+        }
 
         binding.buttonRegister.setOnClickListener {
             findNavController().navigate(R.id.action_menuFragment_to_registrarseFragment)

@@ -7,13 +7,13 @@ class UserRepository {
 
     companion object {
         var dataSet: MutableList<Usuario> = mutableListOf()
-    }
 
-    init {
-        initDataSetUser()
-    }
+        init {
+            initDataSetUser()
+        }
 
-    private fun initDataSetUser() {
-
+        private fun initDataSetUser() {
+            dataSet.add(Usuario(1, "Sergio", "Sergio@gmail.com", "1234", TypeUser.ADMINISTRADOR))
+        }
     }
 }

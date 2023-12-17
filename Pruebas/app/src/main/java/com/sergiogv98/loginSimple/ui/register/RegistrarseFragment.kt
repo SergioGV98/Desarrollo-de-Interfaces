@@ -44,6 +44,7 @@ class RegistrarseFragment : Fragment() {
             when(it){
                 RegisterState.NameIsMandatory -> setNameEmptyError()
                 RegisterState.EmailIsMandatory -> setEmailEmptyError()
+                RegisterState.EmailIsNotUnique -> setEmailDuplicatedError()
                 RegisterState.PasswordIsMandatory -> setPasswordEmptyError(binding.tilPassword)
                 RegisterState.PasswordRepeatIsMandatory -> setPasswordEmptyError(binding.tilPasswordRepeat)
                 RegisterState.PasswordMustMatch -> passwordMustMatch()
@@ -59,6 +60,11 @@ class RegistrarseFragment : Fragment() {
 
     private fun setEmailEmptyError(){
         binding.tilEmail.error = getString(R.string.error_email)
+        binding.tilEmail.requestFocus()
+    }
+
+    private fun setEmailDuplicatedError(){
+        binding.tilEmail.error = getString(R.string.error_email_duplicated)
         binding.tilEmail.requestFocus()
     }
 
