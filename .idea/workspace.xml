@@ -9,14 +9,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c3d0cde9-242d-4cfa-a742-013c99e86a73" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Kotlin/FundamentosKotlin/src/main/kotlin/utils/Extensions.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Kotlin/FundamentosKotlin/src/main/kotlin/Cat.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Kotlin/FundamentosKotlin/src/main/kotlin/Cat.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Kotlin/FundamentosKotlin/src/main/kotlin/DataClass.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Kotlin/FundamentosKotlin/src/main/kotlin/DataClass.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Kotlin/FundamentosKotlin/src/main/kotlin/Extensions.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Kotlin/FundamentosKotlin/src/main/kotlin/SafeNullExample.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Kotlin/FundamentosKotlin/src/main/kotlin/SafeNullExample.kt" afterDir="false" />
-    </list>
+    <list default="true" id="c3d0cde9-242d-4cfa-a742-013c99e86a73" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,7 +41,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "cidr.known.project.marker": "true",
-    "last_opened_file_path": "C:/Users/Alumno/Desktop/Estudios/PruebaLogReg",
+    "last_opened_file_path": "C:/Users/Alumno/Desktop/Estudios/Desarrollo-de-Interfaces/code_sergio_garcia_Vico",
     "settings.editor.selected.configurable": "AndroidSdkUpdater"
   }
 }]]></component>
