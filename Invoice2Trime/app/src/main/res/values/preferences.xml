@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Preferencias Settings FragmentPreferences -->
+    <string name="key_account">account</string>
+    <string name="summary_account">Informacion de la cuenta del usuario</string>
+    <string name="title_account">Cuenta del usuario</string>
+    <string name="key_active_notification">active_notification</string>
+    <string name="title_active_notification">Activar notificaciones</string>
+    <string name="category_notification">Configuracion Notificaciones</string>
+    <string name="key_ringtone">ringtone</string>
+    <string name="summary_active_notification">Activacion de las notificaciones</string>
+    <string name="title_ringtone">Tono notificaciones</string>
+</resources>
