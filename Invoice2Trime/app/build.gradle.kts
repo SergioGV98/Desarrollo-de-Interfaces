@@ -89,4 +89,8 @@ dependencies {
     implementation("com.github.daniel-stoneuk:material-about-library:3.1.2")
 
     implementation("com.google.android.gms:play-services-maps:18.2.0")
+
+    //Libreria para trabajar con DataStore
+    implementation ("androidx.datastore:datastore-preferences:1.0.0")
+
 }

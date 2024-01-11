@@ -10,4 +10,9 @@
     <string name="key_ringtone">ringtone</string>
     <string name="summary_active_notification">Activacion de las notificaciones</string>
     <string name="title_ringtone">Tono notificaciones</string>
+    <string name="key_email">email</string>
+    <string name="key_password">password</string>
+    <string name="title_email">Email</string>
+    <string name="password">Contraseña</string>
+    <string name="account_header">Informacion del usuario</string>
 </resources>

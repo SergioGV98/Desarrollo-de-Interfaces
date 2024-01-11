@@ -1,5 +1,6 @@
 package com.moronlu18.account.usecase
 
+import android.accounts.Account
 import android.text.TextUtils
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -8,6 +9,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.moronlu18.accounts.network.Resource
 import com.moronlu18.firebase.AuthFirebase
+import com.moronlu18.invoice.Locator
 import kotlinx.coroutines.launch
 
 const val TAG = "ViewModel"
@@ -48,8 +50,8 @@ class SignInViewModel : ViewModel() {
                     when (result) {
                              //esto es una clase sellada (Resource)
                         is Resource.Success<*> -> {
-
                             state.value = SignInState.Success(result)
+                            Locator.userPreferencesRepository.saveUser(email.value, password.value)
                         }
 
                         is Resource.Error -> {
@@ -74,8 +76,4 @@ class SignInViewModel : ViewModel() {
     fun getState(): LiveData<SignInState> {
         return state
     }
-
-
-
-
 }
