@@ -48,10 +48,10 @@ class SignInViewModel : ViewModel() {
                     state.value = SignInState.Loading(false)
 
                     when (result) {
-                             //esto es una clase sellada (Resource)
                         is Resource.Success<*> -> {
                             state.value = SignInState.Success(result)
-                            Locator.userPreferencesRepository.saveUser(email.value, password.value)
+                            Locator.userPreferencesRepository.saveUser(email.value!!, password.value!!
+                            )
                         }
 
                         is Resource.Error -> {
