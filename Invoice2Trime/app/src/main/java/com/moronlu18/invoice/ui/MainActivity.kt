@@ -20,7 +20,9 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
-    private lateinit var navController:NavController
+
+    //Mi controlador
+    private lateinit var navController: NavController
 
     //Todas las propiedades son publicas
     //Popriedades de acceso al botón flotante de la Activity principal
@@ -36,15 +38,30 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)
-        val navHostFragment =supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main) as NavHostFragment
+
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main) as NavHostFragment
         navController = navHostFragment.navController
+
+        //Yo le digo que se configure la barra de navegación con este grafo
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
+        //Si utilizo estas tres últimos líneas de código puedo resetear la barra de navegación.
+
+
+        /*val navController = findNavController(R.id.nav_host_fragment_content_main) as NavHostController
+        navController = navHostFragment.navController*/
+
+
         binding.fab.setOnClickListener { view ->
-             Snackbar.make(view, "No me dejes así, pon una función o hazla no visible <_<", Snackbar.LENGTH_LONG)
-                 .setAction("Action", null).show()
-         }
+            Snackbar.make(
+                view,
+                "No me dejes así, pon una función o hazla no visible <_<",
+                Snackbar.LENGTH_LONG
+            )
+                .setAction("Action", null).show()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -63,9 +80,11 @@ class MainActivity : AppCompatActivity() {
 
         return when (item.itemId) {
             R.id.action_settings -> {
+                //La navegación se realiza directamente utilizando el id del fragment.
                 navController.navigate(R.id.settingsFragment)
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }

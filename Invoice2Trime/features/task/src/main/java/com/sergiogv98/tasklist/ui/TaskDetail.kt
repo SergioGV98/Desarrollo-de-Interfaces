@@ -8,9 +8,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.moronlu18.accounts.entity.Task
+import com.moronlu18.invoice.ui.MainActivity
+import com.moronlu18.tasklist.R
 import com.moronlu18.tasklist.databinding.FragmentTaskDetailBinding
 import com.sergiogv98.tasklist.adapter.TaskAdapter
 import com.sergiogv98.usecase.TaskDetailViewModel
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 
 class TaskDetail : Fragment() {
@@ -29,7 +34,7 @@ class TaskDetail : Fragment() {
         _binding = FragmentTaskDetailBinding.inflate(inflater, container, false)
         binding.viewmodel = this.viewModel
         binding.lifecycleOwner = this
-
+        setUpFab()
         var taskMutableList: MutableList<Task> = viewModel.getTaskDataSet()
 
         adapter = TaskAdapter(
@@ -40,22 +45,30 @@ class TaskDetail : Fragment() {
 
 
         //TODO Cambiado por mi por el tema de la foto
-        val customer = viewModel.getCustomerPhoto(task.clientID.id)
+        val customer = viewModel.getCustomerPhoto(task.customerID.id)
 
         if (customer.phototrial != null) {
             binding.taskDetailsClientImageView.setImageResource(customer.phototrial!!)
         } else {
             binding.taskDetailsClientImageView.setImageBitmap(customer.photo)
         }
-        //binding.taskDetailsClientImageView.setImageResource(viewModel.getCustomerPhoto(task.clientID))
 
-
-        binding.taskDetailsClientNameTxt.text = viewModel.getCustomerName(task.clientID.id)
+        binding.taskDetailsClientNameTxt.text = viewModel.getCustomerName(task.customerID.id)
         binding.taskDetailsTaskName.text = task.nomTask
-        binding.taskDetailsStatusButton.text = task.taskStatus.toString().replaceRange(1, task.taskStatus.toString().length, task.taskStatus.toString().substring(1).lowercase())
+        val currentDate = Date()
+        val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
+
+        val taskEndDate = sdf.parse(task.dateFinalization.toString())
+
+        if (currentDate.after(taskEndDate)) {
+            binding.taskDetailsStatusButton.text = getString(R.string.task_vencida)
+        } else {
+            binding.taskDetailsStatusButton.text = task.taskStatus.toString().replaceRange(1, task.taskStatus.toString().length, task.taskStatus.toString().substring(1).lowercase())
+        }
+
         binding.taskDetailsTaskTypeName.text = task.typeTask.toString().replaceRange(1, task.typeTask.toString().length, task.typeTask.toString().substring(1).lowercase())
-        binding.taskDetailsDateCreation.text = task.fechCreation.toString().substring(0, task.fechCreation.toString().lastIndexOf("T"))
-        binding.taskDetailsDateEnd.text = task.fechFinalization.toString().substring(0, task.fechFinalization.toString().lastIndexOf("T"))
+        binding.taskDetailsDateCreation.text = task.dateCreation.toString().substring(0, task.dateCreation.toString().lastIndexOf("T"))
+        binding.taskDetailsDateEnd.text = task.dateFinalization.toString().substring(0, task.dateFinalization.toString().lastIndexOf("T"))
         binding.taskDetailsDescription.text = task.descTask
 
         return binding.root
@@ -67,6 +80,12 @@ class TaskDetail : Fragment() {
         binding.taskDetailsButtonBack.setOnClickListener {
             val fragmentManager = requireActivity().supportFragmentManager
             fragmentManager.popBackStack()
+        }
+    }
+
+    private fun setUpFab() {
+        (requireActivity() as? MainActivity)?.fab?.apply {
+            visibility = View.GONE
         }
     }
 

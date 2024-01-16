@@ -16,8 +16,9 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 import com.moronlu18.accounts.entity.Task
-import com.moronlu18.accounts.enum.TaskStatus
-import com.moronlu18.accounts.enum.TypeTask
+import com.moronlu18.accounts.enum_entity.TaskStatus
+import com.moronlu18.accounts.enum_entity.TypeTask
+import com.moronlu18.invoice.ui.MainActivity
 import com.moronlu18.tasklist.databinding.FragmentTaskCreationBinding
 import com.sergiogv98.usecase.TaskCreationViewModel
 import java.text.SimpleDateFormat
@@ -44,6 +45,7 @@ class TaskCreation : Fragment() {
         _binding = FragmentTaskCreationBinding.inflate(inflater, container, false)
         binding.viewmodeltaskcreation = this.viewModel
         binding.lifecycleOwner = this
+        setUpFab()
         viewModel.setEditorMode(false)
 
         parentFragmentManager.setFragmentResultListener(
@@ -55,10 +57,10 @@ class TaskCreation : Fragment() {
 
 
 
-            binding.autoCompleteTxt.setText(viewModel.giveClientName(taskEdit.clientID.id))
+            binding.autoCompleteTxt.setText(viewModel.giveClientName(taskEdit.customerID.id))
             binding.taskCreationTxvTaskName.setText(taskEdit.nomTask)
-            binding.taskCreationButtonDateCreation.text = processDateString(taskEdit.fechCreation)
-            binding.taskCreationButtonDateEnd.text = processDateString(taskEdit.fechFinalization)
+            binding.taskCreationButtonDateCreation.text = processDateString(taskEdit.dateCreation)
+            binding.taskCreationButtonDateEnd.text = processDateString(taskEdit.dateFinalization)
             binding.taskCreationTxvDescription.setText(taskEdit.descTask)
             binding.taskCreationTypeTaskList.setSelection(returnTaskType(taskEdit))
             setTaskStatusInRadioGroup(taskEdit)
@@ -141,31 +143,31 @@ class TaskCreation : Fragment() {
         val selectedClient = viewModel.taskGiveCustomerId(selectedClientName)
         val nameTask = binding.taskCreationTxvTaskName.text.toString()
         val description = binding.taskCreationTxvDescription.text.toString()
-        val fechaCreation = processDate(binding.taskCreationButtonDateCreation.text.toString())
-        val fechaEnd = processDate(binding.taskCreationButtonDateEnd.text.toString())
+        val dateCreation = processDate(binding.taskCreationButtonDateCreation.text.toString())
+        val dateEnd = processDate(binding.taskCreationButtonDateEnd.text.toString())
 
         if (viewModel.getEditorMode()) {
             val updateTask = Task(
                 id = editTaskPos,
-                clientID = selectedClient!!,
+                customerID = selectedClient!!,
                 nomTask = nameTask,
                 typeTask = taskTypeChoose(),
                 taskStatus = taskStatusChoose(),
                 descTask = description,
-                fechCreation = fechaCreation,
-                fechFinalization = fechaEnd
+                dateCreation = dateCreation,
+                dateFinalization = dateEnd
             )
             viewModel.updateTask(updateTask, editTaskPos)
         } else {
             val task = Task(
                 id = viewModel.taskGiveId(),
-                clientID = selectedClient!!,
+                customerID = selectedClient!!,
                 nomTask = nameTask,
                 typeTask = taskTypeChoose(),
                 taskStatus = taskStatusChoose(),
                 descTask = description,
-                fechCreation = fechaCreation,
-                fechFinalization = fechaEnd
+                dateCreation = dateCreation,
+                dateFinalization = dateEnd
             )
             viewModel.addTaskRepository(task)
         }
@@ -251,6 +253,12 @@ class TaskCreation : Fragment() {
             getString(com.moronlu18.tasklist.R.string.date_error),
             Snackbar.ANIMATION_MODE_SLIDE
         ).show()
+    }
+
+    private fun setUpFab() {
+        (requireActivity() as? MainActivity)?.fab?.apply {
+            visibility = View.INVISIBLE
+        }
     }
 
     inner class GeneralTextWatcher(private val til: TextInputLayout) : TextWatcher {

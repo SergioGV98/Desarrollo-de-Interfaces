@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "650609041716",
-    "project_id": "invoice-676f2",
-    "storage_bucket": "invoice-676f2.appspot.com"
+    "project_number": "977288903548",
+    "project_id": "invoice-ea8c4",
+    "storage_bucket": "invoice-ea8c4.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:650609041716:android:622cc59f4e463645a5c561",
+        "mobilesdk_app_id": "1:977288903548:android:adbd1311cc42322c5e82f9",
         "android_client_info": {
           "package_name": "com.moronlu18.invoice"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBKXyL2Uc3Rz8vJm_DZZRnChEYJob70quI"
+          "current_key": "AIzaSyC0ttgIV8ccmFZ_mzYusND7TO5F-XtwLDI"
         }
       ],
       "services": {

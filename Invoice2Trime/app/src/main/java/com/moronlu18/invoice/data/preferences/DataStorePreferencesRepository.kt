@@ -1,4 +1,4 @@
-package com.moronlu18.invoice.data.userpreferences
+package com.moronlu18.invoice.ui.preferences
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
@@ -86,5 +86,63 @@ class DataStorePreferencesRepository(private val dataStore: DataStore<Preference
 
     private fun String?.stringToMultiSelect(): Set<String> {
         return this?.split(",")?.toSet() ?: setOf()
+    }
+
+
+    fun getSortCustomer(): String {
+        return runBlocking {
+            dataStore.data.map { preferences ->
+                preferences[CUSTOMERSORT] ?: "id"
+            }.first()
+        }
+    }
+
+    fun saveSortCustomer(sort: String) {
+        runBlocking {
+            dataStore.edit { preferences ->
+                preferences[CUSTOMERSORT] = sort
+            }
+        }
+    }
+
+    fun getSortInvoice(): String {
+        return runBlocking {
+            dataStore.data.map { preferences ->
+                preferences[INVOICESORT] ?: "status"
+            }.first()
+        }
+    }
+
+    fun saveSortInvoice(sort: String) {
+        runBlocking {
+            dataStore.edit { preferences ->
+                preferences[INVOICESORT] = sort
+            }
+        }
+    }
+
+    fun getSortTask():String{
+        return runBlocking {
+            dataStore.data.map { preferences ->
+                preferences[TASKSORT] ?: "id"
+            }.first()
+        }
+    }
+
+    fun saveSortTask(sort: String) {
+        runBlocking {
+            dataStore.edit { preferences ->
+                preferences[TASKSORT] = sort
+            }
+        }
+    }
+
+
+
+    companion object {
+        private val CUSTOMERSORT = stringPreferencesKey("customersort")
+        private val ITEMSORT = stringPreferencesKey("itemsort")
+        private val TASKSORT = stringPreferencesKey("tasksort")
+        private val INVOICESORT = stringPreferencesKey("invoicesort")
     }
 }

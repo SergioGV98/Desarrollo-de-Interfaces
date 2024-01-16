@@ -1,15 +1,17 @@
 package com.moronlu18.account.usecase
 
-import android.accounts.Account
+//import android.accounts.Account
 import android.text.TextUtils
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.moronlu18.accounts.entity.Account
 import com.moronlu18.accounts.network.Resource
 import com.moronlu18.firebase.AuthFirebase
 import com.moronlu18.invoice.Locator
+//import com.moronlu18.accounts.entity.Account
 import kotlinx.coroutines.launch
 
 const val TAG = "ViewModel"
@@ -33,7 +35,6 @@ class SignInViewModel : ViewModel() {
             TextUtils.isEmpty(email.value) -> state.value = SignInState.EmailEmptyError
             TextUtils.isEmpty(password.value) -> state.value = SignInState.PasswordEmptyError
 
-
             else -> {
                 /*Se crea una corrutina que suspende el hilo principal hasta que el
                 bloque with Context el repositorio termina de ejecutarse.
@@ -48,10 +49,26 @@ class SignInViewModel : ViewModel() {
                     state.value = SignInState.Loading(false)
 
                     when (result) {
+                        //esto es una clase sellada (Resource)
                         is Resource.Success<*> -> {
-                            state.value = SignInState.Success(result)
-                            Locator.userPreferencesRepository.saveUser(email.value!!, password.value!!
+
+                            //state.value = SignInState.Success(result)
+
+                            //Este es el que utiliza
+                            //state.value = SignInState.Success(result.data as? Account)
+
+                            val account = result.data as Account
+
+
+                            state.value = SignInState.Success(account)
+
+                            //guardar la información del usuario en el almacén de datos user_preferences
+                            Locator.userPreferencesRepository.saveUser(
+                                account.email.value,
+                                account.password.toString(),
+                                account.id
                             )
+
                         }
 
                         is Resource.Error -> {
@@ -60,8 +77,6 @@ class SignInViewModel : ViewModel() {
                             //De mientras está esto pausado.
                             state.value = SignInState.AuthencationError(result.exception.message!!)
                         }
-
-                        else -> {}
                     }
                 }
             }
@@ -76,4 +91,6 @@ class SignInViewModel : ViewModel() {
     fun getState(): LiveData<SignInState> {
         return state
     }
+
+
 }

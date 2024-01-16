@@ -1,7 +1,7 @@
 package com.moronlu18.accounts.repository
 
 import com.moronlu18.accounts.entity.Item
-import com.moronlu18.accounts.enum.ItemType
+import com.moronlu18.accounts.enum_entity.ItemType
 import com.moronlu18.inovice.R
 
 
@@ -90,7 +90,7 @@ class ItemProvider {
         }
 
         fun referencedItem(idItem: Int): Boolean {
-            return FacturaProvider.itemReferenceInvoice(idItem)
+            return InvoiceProvider.itemReferenceInvoice(idItem)
         }
 
         fun getTotal(lista: MutableList<Item>): String {
