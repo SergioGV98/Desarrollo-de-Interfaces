@@ -1,6 +1,7 @@
 package com.example.android.roomwordssample.data
 
 import android.content.Context
+import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
@@ -12,6 +13,7 @@ import kotlinx.coroutines.launch
 abstract class WordRoomDatabase : RoomDatabase() {
 
     abstract fun wordDao(): WordDao
+    @Database(entities = [Word::class], version = 1, exportSchema = false)
 
     private class WordDatabaseCallback(
         private val scope: CoroutineScope

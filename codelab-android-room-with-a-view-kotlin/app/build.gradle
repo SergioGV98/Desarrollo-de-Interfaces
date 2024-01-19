@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    compileSdkVersion 31
+    compileSdk = 34
     defaultConfig {
         applicationId "com.example.android.roomwordssample"
         minSdkVersion 20
-        targetSdkVersion 31
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -29,6 +29,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    namespace 'com.example.android.roomwordssample'
 }
 
 repositories {
