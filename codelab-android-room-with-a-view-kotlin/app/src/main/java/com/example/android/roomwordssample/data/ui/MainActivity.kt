@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
 
         if (requestCode == newWordActivityRequestCode && resultCode == Activity.RESULT_OK) {
             intentData?.getStringExtra(NewWordActivity.EXTRA_REPLY)?.let { reply ->
-                val word = Word(id = 1, word = reply, description = "Palabra añadida por el usuario")
+                val word = Word(id = 1, word = reply)
 
             }
         } else {

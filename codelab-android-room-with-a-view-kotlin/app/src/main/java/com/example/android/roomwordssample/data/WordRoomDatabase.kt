@@ -10,11 +10,10 @@ import com.example.android.roomwordssample.data.model.Word
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
+@Database(entities = [Word::class], version = 1, exportSchema = false)
 abstract class WordRoomDatabase : RoomDatabase() {
 
     abstract fun wordDao(): WordDao
-    @Database(entities = [Word::class], version = 1, exportSchema = false)
-
     private class WordDatabaseCallback(
         private val scope: CoroutineScope
     ) : RoomDatabase.Callback() {
@@ -25,9 +24,9 @@ abstract class WordRoomDatabase : RoomDatabase() {
                 scope.launch {
                     var wordDao = database.wordDao()
 
-                    var word = Word(1,"Mundo","Es la descripcioń de la palabra")
+                    var word = Word(1,"Mundo")
                     wordDao.insert(word)
-                    word = Word(2,"Cruel","Es la descripcioń de la palabra")
+                    word = Word(2,"Cruel")
                     wordDao.insert(word)
                 }
             }
