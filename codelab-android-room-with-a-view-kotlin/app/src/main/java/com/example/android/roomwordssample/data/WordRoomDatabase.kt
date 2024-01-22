@@ -24,9 +24,9 @@ abstract class WordRoomDatabase : RoomDatabase() {
                 scope.launch {
                     var wordDao = database.wordDao()
 
-                    var word = Word(1,"Mundo")
+                    var word = Word(1,"Mundo", "Es la descripcion")
                     wordDao.insert(word)
-                    word = Word(2,"Cruel")
+                    word = Word(2,"Cruel", "Mundo cruel")
                     wordDao.insert(word)
                 }
             }
@@ -46,8 +46,9 @@ abstract class WordRoomDatabase : RoomDatabase() {
                     context.applicationContext,
                     WordRoomDatabase::class.java,
                     "word_database"
-                )
+                ).fallbackToDestructiveMigration()
                     .addCallback(WordDatabaseCallback(scope))
+                    .allowMainThreadQueries()
                     .build()
                 INSTANCE = instance
                 instance

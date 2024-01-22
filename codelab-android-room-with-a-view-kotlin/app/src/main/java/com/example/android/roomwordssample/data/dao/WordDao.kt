@@ -21,10 +21,10 @@ interface WordDao {
     @Delete
     fun delete(word: Word)
 
-    @Query ("DELETE FROM wordtable")
+    @Query ("DELETE FROM word")
     fun deleteAll ()
 
-    @Query ("SELECT * FROM wordtable ORDER BY word ASC")
+    @Query ("SELECT * FROM word ORDER BY word ASC")
     fun orderBy(): Flow<List<Word>>
 
 }

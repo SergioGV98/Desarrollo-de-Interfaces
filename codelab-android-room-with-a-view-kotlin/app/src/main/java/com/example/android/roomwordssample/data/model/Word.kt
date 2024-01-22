@@ -6,9 +6,9 @@ import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "wordtable")
+@Entity(tableName = "word")
 data class Word(
-    @PrimaryKey(autoGenerate = true) val id: Int,
+    @PrimaryKey(autoGenerate = true) val id: Int=0,
     @NonNull val word: String,
-    //@Ignore val description: String
+    var description: String
 )

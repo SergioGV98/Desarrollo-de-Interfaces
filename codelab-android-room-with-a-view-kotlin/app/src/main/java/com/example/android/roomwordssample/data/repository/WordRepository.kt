@@ -1,5 +1,6 @@
 package com.example.android.roomwordssample.data.repository
 
+import androidx.annotation.WorkerThread
 import com.example.android.roomwordssample.data.dao.WordDao
 import com.example.android.roomwordssample.data.model.Word
 import kotlinx.coroutines.flow.Flow
@@ -13,7 +14,9 @@ class WordRepository(val wordDao: WordDao) {
     /* Por defecto Room suspende las consultas fuera del hilo principal, por lo tanto
     no es necesario implementar una funcion suspend.
      */
-    fun insert(word: Word){
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun insert(word: Word){
         wordDao.insert(word)
     }
 
