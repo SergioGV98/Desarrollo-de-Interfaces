@@ -14,6 +14,7 @@
     <string name="invoice_item_btnEdi">Edit button</string>
     <string name="invoice_item_btnDelete">Delete button</string>
     <string name="invoice_item_ivKiwi">Kiwi</string>
+    <string name="invoiceStatusPendiente">Pending</string>
     <string name="tieCliente">Customer:</string>
     <string name="tieFechaEm">D.broadcast:</string>
     <string name="tieFechaFin">D.end</string>
@@ -48,4 +49,7 @@
     <string name="Content_deleteInvoice">Are you sure you want to delete the invoice?</string>
     <string name="cl_menu_edit">Edit</string>
     <string name="cl_menu_delete">Delete</string>
+    <string name="tvNumber">Number</string>
+    <string name="invoiceStatusPagada">Paid</string>
+    <string name="invoiceStatusVencida">Overdue</string>
 </resources>

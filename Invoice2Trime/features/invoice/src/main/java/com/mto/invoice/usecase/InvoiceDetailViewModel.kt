@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.moronlu18.accounts.entity.Invoice
 import com.moronlu18.accounts.entity.Item
+import com.moronlu18.accounts.entity.Line_Item
 import com.moronlu18.accounts.repository.InvoiceProvider
 import com.moronlu18.accounts.repository.ItemProvider
 import com.mto.invoice.adapter.detail.ItemAdapter
@@ -16,12 +17,23 @@ class InvoiceDetailViewModel: ViewModel() {
     var status = MutableLiveData<String>()
     var startDate = MutableLiveData<String>()
     var endDate = MutableLiveData<String>()
+    var number = MutableLiveData<String>()
     var adapter = MutableLiveData<ItemAdapter>()
     var total = MutableLiveData<String>()
+
     private var state = MutableLiveData<InvoiceDetailState>()
 
-    fun giveTotal(lista: MutableList<Item>): String {
+    fun giveTotal(lista: MutableList<Line_Item>): String {
         return ItemProvider.getTotal(lista)
+    }
+
+    fun giveNumber():String {
+        return InvoiceProvider.giveNumberInvoice()
+    }
+
+    fun giveItemById(id:Int): Item {
+        return ItemProvider.getItemById(id)!!
+
     }
 
     fun getPosByInvoice(invoice: Invoice): Int {

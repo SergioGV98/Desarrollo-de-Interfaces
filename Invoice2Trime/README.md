@@ -1,8 +1,25 @@
 Invoice versión 3, es la aplicación que se está realizando de manera modular para el estudio de todo el temario de la asignatura ✨DEINT.✨
 
  ## Historial de versiones
-
-
+- ------------------------
+### V3.7.6 (20/01/2024)
+ *Escrito por mateotamayoo*
+ - Entidad Invoice cambia y hace uso de nueva entidad denominada Line_Item
+ - Cambios en las vistas, viewmodels y repositorios para implementar la nueva entidad invoice
+ - Cambio en la forma de coger status en invoice
+ - Añadida internalización para el status de las facturas
+ 
+- ------------------------
+### V3.7.5 (18/01/2024)
+ *Escrito por CBO121311*
+ - Insertado correctamente el tema noche.(sip, estaba mal)
+ - Añadido las preferencias de idioma y modo Noche.
+ - Actualizado el SplashFragment y SignInFragment.
+ - Añadido más palabras en inglés.
+ - Se quitó varios errores relacionados con las preferencias
+ - Ahora si pulsas fuera del DialogFragment cuando estás esperando un pantalla de carga no se quita ese cuadro.
+   
+- ------------------------
  ### V3.7.2 (14/01/2024)
  *Escrito por SergioGV98*
  - Se han incorporado ajustes en la configuración de tareas, permitiendo a los usuarios ordenar la información según la ID, el nombre del cliente (tanto de manera ascendente como descendente) y por nombre de la tarea.

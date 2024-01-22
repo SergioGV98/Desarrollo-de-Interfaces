@@ -1,5 +1,8 @@
 package com.moronlu18.accounts.entity
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
 
 //Para hacer comparaciones hay que poner el Comparable./*
 //Si quitamos lo de data, no sabremos si los objetos son iguales
@@ -8,8 +11,9 @@ package com.moronlu18.accounts.entity
  * Teniendo en cuanta las propiedades declaradas en el constructor primerario/principal.
  *
  */
+@Entity
 
-data class User(val name: String, val email: Email) : Comparable<User> {
+data class User(@PrimaryKey val name: String, val email: Email) : Comparable<User> {
     override fun compareTo(other: User): Int {
         return name.lowercase().compareTo(other.name.lowercase())
     }

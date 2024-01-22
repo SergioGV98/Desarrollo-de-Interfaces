@@ -7,7 +7,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.moronlu18.accounts.database.repository.UserRepository
 import com.moronlu18.accounts.entity.Account
+import com.moronlu18.accounts.entity.User
 import com.moronlu18.accounts.network.Resource
 import com.moronlu18.firebase.AuthFirebase
 import com.moronlu18.invoice.Locator
@@ -19,6 +21,9 @@ const val TAG = "ViewModel"
 class SignInViewModel : ViewModel() {
     var email = MutableLiveData<String>()
     var password = MutableLiveData<String>()
+    val authFirebase = AuthFirebase()
+    val userRepository = UserRepository()
+
 
     private var state = MutableLiveData<SignInState>()
 
@@ -68,7 +73,7 @@ class SignInViewModel : ViewModel() {
                                 account.password.toString(),
                                 account.id
                             )
-
+                            userRepository.insert(User("Sergio", account.email))
                         }
 
                         is Resource.Error -> {

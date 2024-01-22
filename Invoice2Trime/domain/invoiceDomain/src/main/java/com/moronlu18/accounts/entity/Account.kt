@@ -1,55 +1,33 @@
 package com.moronlu18.accounts.entity
 
+import androidx.room.Entity
+import androidx.room.ForeignKey
+import androidx.room.ForeignKey.Companion.CASCADE
+import androidx.room.ForeignKey.Companion.RESTRICT
+import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
+import com.moronlu18.accounts.converter.AccountIdTypeConverter
+import com.moronlu18.accounts.converter.EmailTypeConverter
 import com.moronlu18.accounts.enum_entity.AccountState
 
-
-//Patrón factory.
-//Crea objeto de si mismo.
-class Account private constructor(
+@Entity(tableName = "account", foreignKeys = [ForeignKey(
+    entity = BusinessProfile::class,
+    parentColumns = arrayOf("id"),
+    childColumns = arrayOf("businessProfile"),
+    onDelete = RESTRICT,
+    onUpdate = CASCADE
+)])
+class Account (
+    @PrimaryKey
+    @TypeConverters(AccountIdTypeConverter::class)
     val id: Int,
+    @TypeConverters(EmailTypeConverter::class)
     val email: Email,
     val password: String?,
     val displayName: String?,
-    state: AccountState = AccountState.UNVERIFIED,
-    private var businessProfile: BusinessProfile,
+    var state: AccountState = AccountState.UNVERIFIED,
+    var businessProfile: Int?,
 ) {
-
-    private var hasActiveSession = false
-    private var state = state
-
-    fun isVerified(): Boolean {
-        return state == AccountState.VERIFIED
-    }
-
-    fun businessName(): String {
-        return businessProfile.name
-    }
-
-    fun renameBusiness(aName: String) {
-        businessProfile = businessProfile.copy(name = aName)
-    }
-
-    fun businessAddress(): String {
-        return businessProfile.address
-    }
-
-    fun changeBusinessAddress(aAddress: String) {
-        businessProfile = businessProfile.copy(address = aAddress)
-    }
-
-    fun businessPhone(): String {
-        return businessProfile.phoneNumber
-    }
-
-    fun changeBusinessPhone(aPhoneNumber: String) {
-        businessProfile = businessProfile.copy(phoneNumber = aPhoneNumber)
-    }
-    fun signIn() {
-        hasActiveSession = true
-    }
-    fun signOut() {
-        hasActiveSession = false
-    }
 
     /**
      * Al utilizar un objeto acompañante con una función y el constructor privado de la clase
@@ -58,14 +36,14 @@ class Account private constructor(
     //Se hace para tener control de la propiedad sobre ellos.
     //Y así garantizo que todas las cuenta sean no verificados.
     companion object {
-        fun create(id: Int, email: Email, password: String?, displayName: String?, state: AccountState): Account {
+        fun create(id: Int, email: Email, password: String?, displayName: String?, state: AccountState, businessProfile: Int?): Account {
             return Account(
                 id = id,
                 email = email,
                 password=password,
                 displayName = displayName,
                 state= AccountState.UNVERIFIED, //state=state,
-                businessProfile = BusinessProfile(),
+                businessProfile = businessProfile,
             )
         }
 

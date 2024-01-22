@@ -12,10 +12,10 @@ import com.moronlu18.invoice.ui.preferences.DataStorePreferencesRepository
 //El que lo hace el repositorio.
 
 object Locator {
-    private var application: Application? = null
+    var application: Application? = null
 
     //inline hace una variable inmovil en el mismo momento. Y hace las dos operaciones a la vez.
-    private inline val requireApplication
+    inline val requireApplication
         get() = application ?: error("Missing call: initWith(application)")
 
     //Esto debe iniciar para poder crear el contexto de los datos (?)
