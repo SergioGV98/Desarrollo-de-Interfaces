@@ -94,7 +94,6 @@ class DataStorePreferencesRepository(private val dataStore: DataStore<Preference
     }
 
 
-
     fun getSortInvoice(): String {
         return runBlocking {
             dataStore.data.map { preferences ->
@@ -113,7 +112,6 @@ class DataStorePreferencesRepository(private val dataStore: DataStore<Preference
 
 
     companion object {
-        private val ITEMSORT = stringPreferencesKey("itemsort")
         private val INVOICESORT = stringPreferencesKey("invoicesort")
     }
 }

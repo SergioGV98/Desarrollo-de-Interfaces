@@ -15,9 +15,9 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
-import com.moronlu18.accounts.entity.Task
-import com.moronlu18.accounts.enum_entity.TaskStatus
-import com.moronlu18.accounts.enum_entity.TypeTask
+import com.moronlu18.data.task.Task
+import com.moronlu18.data.task.TaskStatus
+import com.moronlu18.data.task.TypeTask
 import com.moronlu18.invoice.ui.MainActivity
 import com.moronlu18.tasklist.databinding.FragmentTaskCreationBinding
 import com.sergiogv98.usecase.TaskCreationViewModel
@@ -48,26 +48,12 @@ class TaskCreation : Fragment() {
         setUpFab()
         viewModel.setEditorMode(false)
 
-        parentFragmentManager.setFragmentResultListener(
-            "taskkey", this
-        ) { _, result ->
-            var posTask: Int = result.getInt("taskPosition")
-            val taskEdit = viewModel.taskGive(posTask)
-            viewModel.setEditorMode(true)
+        setFragmentResultListener("taskkey", "taskPosition") { posTask ->
+            handleFragmentResult(posTask)
+        }
 
-
-
-            binding.autoCompleteTxt.setText(viewModel.giveClientName(taskEdit.customerID.id))
-            binding.taskCreationTxvTaskName.setText(taskEdit.nomTask)
-            binding.taskCreationButtonDateCreation.text = processDateString(taskEdit.dateCreation)
-            binding.taskCreationButtonDateEnd.text = processDateString(taskEdit.dateFinalization)
-            binding.taskCreationTxvDescription.setText(taskEdit.descTask)
-            binding.taskCreationTypeTaskList.setSelection(returnTaskType(taskEdit))
-            setTaskStatusInRadioGroup(taskEdit)
-
-            clientDropDownInit()
-            editTaskPos = posTask
-            viewModel.prevTask = taskEdit
+        setFragmentResultListener("taskKeyEdit", "taskPositionEdit") { posTaskEdit ->
+            handleFragmentResult(posTaskEdit)
         }
 
 
@@ -103,6 +89,32 @@ class TaskCreation : Fragment() {
             }
         }
 
+    }
+
+    private fun setFragmentResultListener(key: String, positionKey: String, callback: (Int) -> Unit) {
+        parentFragmentManager.setFragmentResultListener(key, this) { _, result ->
+            val posTask: Int = result.getInt(positionKey)
+            callback(posTask)
+        }
+    }
+
+    private fun handleFragmentResult(posTask: Int) {
+        val taskEdit = viewModel.taskGive(posTask)
+        viewModel.setEditorMode(true)
+        setTaskContent(taskEdit)
+        clientDropDownInit()
+        editTaskPos = posTask
+        viewModel.prevTask = taskEdit
+    }
+
+    private fun setTaskContent(task: Task) {
+        binding.autoCompleteTxt.setText(viewModel.giveClientName(task.customerId.id))
+        binding.taskCreationTxvTaskName.setText(task.nomTask)
+        binding.taskCreationButtonDateCreation.text = processDateString(task.dateCreation)
+        binding.taskCreationButtonDateEnd.text = processDateString(task.dateFinalization)
+        binding.taskCreationTxvDescription.setText(task.descTask)
+        binding.taskCreationTypeTaskList.setSelection(returnTaskType(task))
+        setTaskStatusInRadioGroup(task)
     }
 
     override fun onDestroyView() {
@@ -149,7 +161,7 @@ class TaskCreation : Fragment() {
         if (viewModel.getEditorMode()) {
             val updateTask = Task(
                 id = editTaskPos,
-                customerID = selectedClient!!,
+                customerId = selectedClient!!,
                 nomTask = nameTask,
                 typeTask = taskTypeChoose(),
                 taskStatus = taskStatusChoose(),
@@ -161,7 +173,7 @@ class TaskCreation : Fragment() {
         } else {
             val task = Task(
                 id = viewModel.taskGiveId(),
-                customerID = selectedClient!!,
+                customerId = selectedClient!!,
                 nomTask = nameTask,
                 typeTask = taskTypeChoose(),
                 taskStatus = taskStatusChoose(),

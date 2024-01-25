@@ -16,10 +16,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import com.moronlu18.accounts.entity.Invoice
-import com.moronlu18.accounts.enum_entity.InvoiceStatus
 import com.moronlu18.accounts.entity.Item
-import com.moronlu18.accounts.entity.Line_Item
+import com.moronlu18.data.invoice.Line_Item
+import com.moronlu18.data.invoice.Invoice
+import com.moronlu18.data.invoice.InvoiceStatus
 import com.moronlu18.invoice.ui.MainActivity
 import com.moronlu18.invoicelist.R
 import com.moronlu18.invoicelist.databinding.FragmentInvoiceCreationBinding
@@ -186,7 +186,7 @@ class InvoiceCreation : Fragment() {
                     invoice_id = id,
                     item_id = item.id,
                     quantity = 1,
-                    price = item.rate,
+                    price = item.price,
                     iva = 1
                 )
                 lista.add(creacion);
@@ -199,14 +199,14 @@ class InvoiceCreation : Fragment() {
                     invoice_id = id,
                     item_id = item.id,
                     quantity = 1,
-                    price = item.rate,
+                    price = item.price,
                     iva = 1
                 )
                 for (itemMutable in itemMutableList.sortedBy { it.id }) {
                     if (item.id == itemMutable.id) {
                         if(!primerObjeto) {
                             creacion.quantity++;
-                            creacion.price = creacion.price + item.rate;
+                            creacion.price = creacion.price + item.price;
                         }
                         primerObjeto = false
 

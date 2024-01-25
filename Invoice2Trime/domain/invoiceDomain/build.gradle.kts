@@ -46,7 +46,7 @@ dependencies {
     // Declare the dependency for the Firebase Authentication library
     implementation("com.google.firebase:firebase-auth-ktx")
 
-    //Las librerias necesarias para Room en Kotlin
+    //Las librerías necesarias para Room en Kotlin
 
     val room_version = "2.6.1"
 
@@ -56,5 +56,7 @@ dependencies {
 
     // To use Kotlin annotation processing tool (kapt)
     kapt("androidx.room:room-compiler:$room_version")
+
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.2.0")
 
 }

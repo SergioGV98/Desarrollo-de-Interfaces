@@ -47,16 +47,19 @@ class ItemList : Fragment(), MenuProvider {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setUpFab()
         setUpToolbar()
-
         initRecyclerViewItem()
+        viewModel.getItemList()
 
+        /*
         binding.fab.setOnClickListener {
             findNavController().navigate(R.id.action_itemList_to_itemCreation)
-        }
+        }*/
 
         viewModel.getState().observe(viewLifecycleOwner, Observer {
             when (it) {
+                is ItemListState.Loading -> showProgressBar(it.value)
                 ItemListState.NoData -> showNoData()
                 is ItemListState.Success -> onSuccess(it.dataset)
                 ItemListState.ReferencedItem -> showReferencedItem()
@@ -69,15 +72,15 @@ class ItemList : Fragment(), MenuProvider {
         val manager = LinearLayoutManager(requireContext())
 
         adapter = ItemAdapter(
-            itemList = viewModel.getItem(),
             onClickListener = { item -> onItemSelected(item) },
-            onClickEdit = { position -> onEditItem(position) },
+            //onClickEdit = { position -> onEditItem(position) },
             onClickDelete = { position -> onDeleteItem(position) }
         )
         binding.itemListRvItems.layoutManager = manager
         binding.itemListRvItems.adapter = adapter
     }
 
+    /*
     private fun onEditItem(position: Int) {
         val item = viewModel.getPositionItem(position)
 
@@ -88,7 +91,7 @@ class ItemList : Fragment(), MenuProvider {
             parentFragmentManager.setFragmentResult("itemKey", bundle)
             findNavController().navigate(R.id.action_itemList_to_itemCreation)
         }
-    }
+    }*/
 
     private fun showReferencedItem() {
         findNavController().navigate(
@@ -161,13 +164,13 @@ class ItemList : Fragment(), MenuProvider {
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
         return when (menuItem.itemId) {
-            R.id.menuItemDetail_actionRefresh -> {
-                viewModel.getItem()     // orden natural
+            R.id.menuItemList_actionRefresh -> {
+                viewModel.getItemList()
                 return true
             }
 
-            R.id.menuItemDetail_actionSort -> {
-                adapter.sort()          // orden personalizado
+            R.id.menuItemList_actionSort -> {
+                adapter.sort()
                 return true
             }
 
@@ -175,9 +178,26 @@ class ItemList : Fragment(), MenuProvider {
         }
     }
 
+    private fun setUpFab() {
+        (requireActivity() as? MainActivity)?.fab?.apply {
+            visibility = View.VISIBLE
+
+            setOnClickListener {
+                findNavController().navigate(R.id.action_itemList_to_itemCreation)
+            }
+        }
+    }
+
+    private fun showProgressBar(value: Boolean) {
+        if (value) {
+            findNavController().navigate(R.id.action_itemList_to_fragmentProgressDialogKiwi)
+        } else {
+            findNavController().popBackStack()
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
-        viewModel.onSuccess()
         _binding = null
     }
 }

@@ -12,6 +12,13 @@
         <item>Email</item>
     </string-array>
 
+    <string-array name="sort_item_entries">
+        <item>ID</item>
+        <item>Name</item>
+        <item>Rising price</item>
+        <item>Descending price</item>
+    </string-array>
+
     <string-array name="sort_invoice_entries">
         <item>ID</item>
         <item>Customer name A-Z</item>

@@ -7,13 +7,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.moronlu18.accounts.database.repository.UserRepository
-import com.moronlu18.accounts.entity.Account
-import com.moronlu18.accounts.entity.User
-import com.moronlu18.accounts.network.Resource
+import com.moronlu18.data.account.Account
+import com.moronlu18.data.account.AccountId
+import com.moronlu18.data.account.AccountState
+import com.moronlu18.data.account.Email
+import com.moronlu18.data.account.User
+import com.moronlu18.database.InvoiceDatabase
+import com.moronlu18.network.Resource
 import com.moronlu18.firebase.AuthFirebase
-import com.moronlu18.invoice.Locator
-//import com.moronlu18.accounts.entity.Account
+
+import com.moronlu18.repository.UserRepositoryv2
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 const val TAG = "ViewModel"
@@ -21,11 +25,9 @@ const val TAG = "ViewModel"
 class SignInViewModel : ViewModel() {
     var email = MutableLiveData<String>()
     var password = MutableLiveData<String>()
-    val authFirebase = AuthFirebase()
-    val userRepository = UserRepository()
-
 
     private var state = MutableLiveData<SignInState>()
+
 
 
     /**
@@ -49,6 +51,8 @@ class SignInViewModel : ViewModel() {
 
                     state.value = SignInState.Loading(true)
 
+                    //UserRepositoryv2.insert(User("CBO","cbo@hotmail.es"))
+
                     val result = AuthFirebase().login(email.value!!, password.value!!)
 
                     state.value = SignInState.Loading(false)
@@ -68,12 +72,21 @@ class SignInViewModel : ViewModel() {
                             state.value = SignInState.Success(account)
 
                             //guardar la información del usuario en el almacén de datos user_preferences
-                            Locator.userPreferencesRepository.saveUser(
+                            /*Locator.userPreferencesRepository.saveUser(
                                 account.email.value,
-                                account.password.toString(),
-                                account.id
+                                account.password
                             )
-                            userRepository.insert(User("Sergio", account.email))
+                            Locator.userPreferencesRepository.insert(User("Lourdes","", email.value))*/
+                            viewModelScope.launch (Dispatchers.IO) {UserRepositoryv2.insert(User("A", "a"))}
+
+                           /* Account.create(
+                                1,
+                                Email("cbo@hotmail.es"),
+                                "123","22",
+                                AccountState.VERIFIED,
+                                2
+                            )*/
+
                         }
 
                         is Resource.Error -> {

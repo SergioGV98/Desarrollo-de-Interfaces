@@ -4,6 +4,8 @@ plugins {
     id("androidx.navigation.safeargs.kotlin")
     // Add the Google services Gradle plugin
     id("com.google.gms.google-services")
+
+
 }
 
 android {
@@ -92,4 +94,7 @@ dependencies {
     //Librería para trabajar con DataStore
     implementation("androidx.datastore:datastore-preferences:1.0.0")
 
+
+    //Soporte de fechas en Kotlin
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
 }

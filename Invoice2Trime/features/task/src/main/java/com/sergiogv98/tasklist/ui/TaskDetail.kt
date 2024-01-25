@@ -6,8 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.moronlu18.accounts.entity.Task
+import com.moronlu18.data.task.Task
 import com.moronlu18.invoice.ui.MainActivity
 import com.moronlu18.tasklist.R
 import com.moronlu18.tasklist.databinding.FragmentTaskDetailBinding
@@ -24,6 +25,7 @@ class TaskDetail : Fragment() {
     private val binding get() = _binding!!
     private val viewModel: TaskDetailViewModel by viewModels()
     private val args: TaskDetailArgs by navArgs()
+    private lateinit var taskMoment: Task
     private lateinit var adapter: TaskAdapter
 
     override fun onCreateView(
@@ -41,11 +43,11 @@ class TaskDetail : Fragment() {
             taskList = taskMutableList,
         )
 
-        val task: Task = args.task
+        var task: Task = args.task
 
 
         //TODO Cambiado por mi por el tema de la foto
-        val customer = viewModel.getCustomerPhoto(task.customerID.id)
+        val customer = viewModel.getCustomerPhoto(task.customerId.id)
 
         if (customer.phototrial != null) {
             binding.taskDetailsClientImageView.setImageResource(customer.phototrial!!)
@@ -53,7 +55,7 @@ class TaskDetail : Fragment() {
             binding.taskDetailsClientImageView.setImageBitmap(customer.photo)
         }
 
-        binding.taskDetailsClientNameTxt.text = viewModel.getCustomerName(task.customerID.id)
+        binding.taskDetailsClientNameTxt.text = viewModel.getCustomerName(task.customerId.id)
         binding.taskDetailsTaskName.text = task.nomTask
         val currentDate = Date()
         val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
@@ -71,6 +73,10 @@ class TaskDetail : Fragment() {
         binding.taskDetailsDateEnd.text = task.dateFinalization.toString().substring(0, task.dateFinalization.toString().lastIndexOf("T"))
         binding.taskDetailsDescription.text = task.descTask
 
+        binding.taskDetailsButtonEdit.setOnClickListener {
+            onEditItem(task)
+        }
+
         return binding.root
     }
 
@@ -87,6 +93,15 @@ class TaskDetail : Fragment() {
         (requireActivity() as? MainActivity)?.fab?.apply {
             visibility = View.GONE
         }
+    }
+
+    private fun onEditItem(task: Task) {
+        val posTask = viewModel.getPositionByTask(task)
+        val bundle = Bundle();
+        bundle.putInt("taskPositionEdit", posTask)
+
+        parentFragmentManager.setFragmentResult("taskKeyEdit", bundle)
+        findNavController().navigate(R.id.action_taskDetail_to_taskCreation)
     }
 
     override fun onDestroyView() {

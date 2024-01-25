@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.moronlu18.account.adapter.UserAdapter
 import com.moronlu18.account.usecase.UserListState
 import com.moronlu18.account.usecase.UserListViewModel
-import com.moronlu18.accounts.entity.User
+import com.moronlu18.data.account.User
 import com.moronlu18.accountsignin.R
 import com.moronlu18.accountsignin.databinding.FragmentUserListBinding
 import com.moronlu18.invoice.ui.MainActivity
@@ -47,6 +47,8 @@ class UserListFragment : Fragment(), UserAdapter.OnUserClick, MenuProvider {
         return binding.root
     }
 
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //Funcion que personaliza el botón flotante
@@ -63,10 +65,19 @@ class UserListFragment : Fragment(), UserAdapter.OnUserClick, MenuProvider {
             when (it) {
                 is UserListState.Loading -> showProgressBar(it.value)
                 UserListState.NoDataError -> showNoDataError()
-                is UserListState.Success -> onSuccess(it.dataset)
+                is UserListState.Success -> onSuccess()
                 else -> {}
             }
         })
+
+        //Este observadorse ejectura SIEMPRE que haya cambios en la tabla
+        //user de la base de datos. El Adapter se actualiza a traves del
+        //comparator del adapter
+        viewModel.getState().observe(viewLifecycleOwner) {
+            it.let { userAdapter.submitList(userAdapter.currentList) }
+        }
+
+
     }
 
 
@@ -84,12 +95,12 @@ class UserListFragment : Fragment(), UserAdapter.OnUserClick, MenuProvider {
      */
 
     //El adapter tiene los usuarios.
-    private fun onSuccess(dataset: ArrayList<User>) {
+    private fun onSuccess() {
         //Desactivar la animación y visualizar el recyclerView
         hideNoDataError()
 
         //Si es éxito
-        userAdapter.update(dataset)
+        userAdapter.currentList
     }
 
     private fun hideNoDataError() {
@@ -173,7 +184,7 @@ class UserListFragment : Fragment(), UserAdapter.OnUserClick, MenuProvider {
      * AlertDialog para borrar
      */
 
-    private fun showConfirmationDialog(user:User) {
+    private fun showConfirmationDialog(user: User) {
 
         AlertDialog.Builder(requireContext())
             .setTitle("Confirmación")
@@ -198,18 +209,17 @@ class UserListFragment : Fragment(), UserAdapter.OnUserClick, MenuProvider {
         return when(menuItem.itemId){
             R.id.action_sort-> {
                 //Ordenado por nombre
-                viewModel.sortNatural()
+                //viewModel.sortNatural()
                 viewModel.getUserList()
                 return  true
             }
 
             R.id.action_refresh ->{
                 //Ordenador por email
-                viewModel.sortPreestablecido()
+                //viewModel.sortPreestablecido()
                 viewModel.getUserList()
                 return true
             }
-
             else -> false
         }
     }

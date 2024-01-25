@@ -5,11 +5,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.moronlu18.accounts.entity.Email
-import com.moronlu18.accounts.entity.User
-import com.moronlu18.accounts.entity.UserSignUp
-import com.moronlu18.accounts.network.Resource
-import com.moronlu18.accounts.repository.UserRepository
+import com.moronlu18.data.account.User
+import com.moronlu18.data.account.UserSignUp
+import com.moronlu18.network.Resource
+import com.moronlu18.repository.UserRepository
+import com.moronlu18.repository.UserRepositoryv2
 import kotlinx.coroutines.launch
 import java.util.regex.Pattern
 
@@ -27,7 +27,9 @@ class SignUpViewModel : ViewModel() {
         viewModelScope.launch {
 
 
+            UserRepositoryv2.selectAll()
             when {
+
                 name.value.isNullOrBlank() -> state.value = SignUpState.NameEmptyError
                 email.value.isNullOrBlank() -> state.value = SignUpState.EmailEmptyError
                 !pattern.matcher(email.value!!).matches() -> state.value =
@@ -43,10 +45,7 @@ class SignUpViewModel : ViewModel() {
                     state.value = SignUpState.Loading(true)
                     Log.i("viewModel", "He pasado por aquí")
 
-
-                    val result = UserRepository.existEmailUser(User(name.value!!,
-                        Email(email.value!!))
-                    )
+                    val result = UserRepositoryv2.insert(User(name.value!!, email.value!!))
 
                     state.value = SignUpState.Loading(false)
 
@@ -82,11 +81,18 @@ class SignUpViewModel : ViewModel() {
     }
 
 
+
+    /*
+
     fun addUserSignUp(user: UserSignUp) {
         UserRepository.addUser(user.toUser())
     }
 
     fun addUserDirect(user: User) {
         UserRepository.addUser(user)
+    }*/
+
+    fun addUserDataBase(user: User){
+        UserRepositoryv2.insert(user)
     }
 }
