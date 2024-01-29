@@ -25,16 +25,19 @@ class MainActivity : AppCompatActivity() {
     //Todas las propiedades son publicas
     //Propiedades de acceso al botón flotante de la Activity principal y b. herramientas
 
-    val fab: FloatingActionButton get() = binding.fab
-    val toolbar: Toolbar get() = binding.toolbar
+    val fab: FloatingActionButton get() = binding.content.fab
+    val toolbar: Toolbar get() = binding.content.toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        setSupportActionBar(binding.toolbar)
+        //Sustituir la appbar por defecto por el widget toolbar de nuetro layout
+        setSupportActionBar(binding.content.toolbar)
+        //Habilitar el icono home
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(android.R.drawable.ic_media_play)
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main) as NavHostFragment
@@ -51,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController*/
 
 
-        binding.fab.setOnClickListener { view ->
+        binding.content.fab.setOnClickListener { view ->
             Snackbar.make(
                 view,
                 "No me dejes así, pon una función o hazla no visible <_<",

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="@string/title_account"
+    android:id="@+id/draw_invoice" />
+    <item android:title="@string/about_authors"
+        android:id="@+id/draw_task" />
+</menu>
