@@ -1,5 +1,6 @@
 package com.moronlu18.account.ui
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -24,6 +25,8 @@ import com.moronlu18.data.account.User
 import com.moronlu18.accountsignin.R
 import com.moronlu18.accountsignin.databinding.FragmentUserListBinding
 import com.moronlu18.invoice.ui.MainActivity
+import com.moronlu18.invoice.utils.Utils
+import com.moronlu18.invoice.utils.showToast
 
 
 //Aquí te doy permiso para el menu
@@ -70,14 +73,15 @@ class UserListFragment : Fragment(), UserAdapter.OnUserClick, MenuProvider {
             }
         })
 
-        //Este observadorse ejectura SIEMPRE que haya cambios en la tabla
-        //user de la base de datos. El Adapter se actualiza a traves del
-        //comparator del adapter
-        viewModel.getState().observe(viewLifecycleOwner) {
-            it.let { userAdapter.submitList(userAdapter.currentList) }
+        //Este OBSERVADOR de un Livedata se ejecutará SIEMPRE que haya cambios en la tabla
+        //user de la base datos. El adapter se actualiza a través del
+        // COMPARATOR del adaptar
+
+
+        //Mira la diferencia. El submit es algo del propio de ListAdapter
+        viewModel.allUser.observe(viewLifecycleOwner) {
+            it.let { userAdapter.submitList(it) }
         }
-
-
     }
 
 
@@ -99,8 +103,10 @@ class UserListFragment : Fragment(), UserAdapter.OnUserClick, MenuProvider {
         //Desactivar la animación y visualizar el recyclerView
         hideNoDataError()
 
+
+
         //Si es éxito
-        userAdapter.currentList
+        //userAdapter.update(dataset)
     }
 
     private fun hideNoDataError() {
@@ -149,18 +155,16 @@ class UserListFragment : Fragment(), UserAdapter.OnUserClick, MenuProvider {
         //Crear el constructor primario
         userAdapter = UserAdapter(this) {
             //when(event){}
+            userClick(it)
 
-            Toast.makeText(
-                requireContext(),
-                "Usuario Seleccionado mediante lambda $it",
-                Toast.LENGTH_LONG
-            ).show()
         }
 
         //1. ¿Cómo quiero que se muestren los elementos de la lista?
         with(binding.rvUser) {
             layoutManager = LinearLayoutManager(requireContext())
-            setHasFixedSize(true)
+            // El recyclerview es dinamico ya que utilizamos ListAdapter y se modifica el numero
+            // de elementos. Se debe quitar setHasFixedSize
+            //setHasFixedSize(true)
             this.adapter = userAdapter
         }
     }
@@ -170,13 +174,13 @@ class UserListFragment : Fragment(), UserAdapter.OnUserClick, MenuProvider {
      */
 
     override fun userClick(user: User) {
-        Toast.makeText(requireActivity(), "Pulsación corta en el usuario $user", Toast.LENGTH_LONG)
-            .show()
+        requireActivity().showToast("Pulsación corta en el usuario $user")
     }
 
     override fun userOnLongClick(user: User) {
         //Toast.makeText(requireActivity(), "Pulsación larga en el usuario $user", Toast.LENGTH_LONG).show()
-        showConfirmationDialog(user)
+        //showConfirmationDialog(user)
+        viewModel.delete(user)
     }
 
 
@@ -209,15 +213,14 @@ class UserListFragment : Fragment(), UserAdapter.OnUserClick, MenuProvider {
         return when(menuItem.itemId){
             R.id.action_sort-> {
                 //Ordenado por nombre
-                //viewModel.sortNatural()
-                viewModel.getUserList()
+                userAdapter.sort()
                 return  true
             }
 
             R.id.action_refresh ->{
                 //Ordenador por email
-                //viewModel.sortPreestablecido()
-                viewModel.getUserList()
+                userAdapter.submitList(viewModel.allUser.value)
+
                 return true
             }
             else -> false

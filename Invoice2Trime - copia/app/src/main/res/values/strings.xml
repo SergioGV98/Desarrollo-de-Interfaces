@@ -1,0 +1,76 @@
+<resources>
+    <string name="app_name">Invoice</string>
+
+    <string name="title_accountsigin">Iniciar sesión</string>
+    <string name="title_accountsignup">Registrarse</string>
+    <string name="title_customercreation">Creación de Cliente</string>
+    <string name="title_firebase" translatable="false">Firebase</string>
+    <string name="title_printer" translatable="false">Printer</string>
+    <string name="title_customerdetail">Detalle Cliente</string>
+    <string name="title_customerlist">Lista Clientes</string>
+    <string name="title_invoicecreation">Creación Factura</string>
+    <string name="title_ui">Interfaz Gráfica</string>
+    <string name="title_utils">Uitlidades</string>
+    <string name="title_accounts">Cuentas</string>
+    <string name="title_invoicedetail">Detalle de Factura</string>
+    <string name="title_invoicelist">Lista de Facturas</string>
+    <string name="title_itemcreation">Creación de producto</string>
+    <string name="title_itemdetail">Detalle de Producto</string>
+    <string name="title_itemlist">Lista de productos</string>
+    <string name="title_taskcreation">Creación de tarea</string>
+    <string name="title_taskdetail">Detalle de tarea</string>
+    <string name="title_tasklist">Lista de tareas</string>
+
+    <string name="imgLogo_decscription">Logo</string>
+
+    <string name="action_settings">Configuración</string>
+
+    <string name="btSignIn">Login</string>
+    <string name="btSignUp">Registro</string>
+    <string name="mainFragment">Pantalla Inicial</string>
+
+
+    <string name="title_fragmentDialogExit">Desconectarte</string>
+    <string name="Content_fragmentDialogExit">¿Estás seguro de que quieres cerrar la aplicación?</string>
+    <string name="Content_taskDialogExit">¿Estás seguro de que quieres borrar la tarea?</string>
+
+
+    <string name="tvTitleMessage">Escribe el mensaje</string>
+    <string name="tvUserInfoText">Muestra información del usuario</string>
+    <string name="tvMessageText">Información del mensaje</string>
+    <string name="mal_title_about">Acerca de</string>
+    <string name="menu_aboutas">Sobre mi</string>
+
+    <string name="about_alejandro_l_pez" translatable="false">Alejandro López</string>
+    <string name="about_alumno_2_dam">Alumno 2ºDAM</string>
+    <string name="about_mi_linkedin">Mi LinkedIn</string>
+    <string name="about_version">Versión</string>
+    <string name="title_about">Acerca de</string>
+    <string name="title_splash">¡Bienvenido!</string>
+    <string name="about_authors">Autores</string>
+    <string name="about_authors_alex" translatable="false">Alejandro López Calderón</string>
+    <string name="about_authors_alexdesc">Jefe y encargado del módulo Customer</string>
+    <string name="about_authors_jess" translatable="false">Jessica Castro Ruiz</string>
+    <string name="about_authors_jessdesc">Encargada del módulo Item</string>
+    <string name="about_authors_mateo" translatable="false">Christian Mateo Tamayo Rivera</string>
+    <string name="about_authors_mateodesc">Encargado del módulo Invoice</string>
+    <string name="about_authors_sergdesc">Encargado del módulo Task</string>
+    <string name="about_authors_serg" translatable="false">Sergio García Vico</string>
+    <string name="about_versionapp" translatable="false">3.7.7</string>
+    <string name="progress_dialog_title">Esperando...</string>
+    <string name="dialog_warning_title">Entendido</string>
+    <string name="contentDescriptionfab" translatable="false">Botón que será heredado entre los fragment</string>
+
+    <string name="dashboard_txvCustomer">Clientes</string>
+    <string name="dashboard_txvTask">Tareas</string>
+    <string name="dashboard_txvInvoice">Facturas</string>
+    <string name="dashboard_txvSignOut">Desconectar</string>
+    <string name="dashboard_txvAbout">Acerca de</string>
+    <string name="dashboard_txvItem">Artículos</string>
+    <string name="dashboard_txvSignUp">Registro</string>
+    <string name="dashboard_txvSignIn">Login</string>
+
+
+    <string name="iv_descr_ivAnimation">Animacion de Inicio</string>
+
+</resources>

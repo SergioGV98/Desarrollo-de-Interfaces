@@ -12,7 +12,10 @@ class UserAdapter(
     private val listener: OnUserClick,
     private val onItemClick: (user: User) -> Unit,
     //private val onItemDelete: (user:User) -> Unit
-) : ListAdapter<User, UserAdapter.UserViewHolder>(USER_COMPARATOR) {
+) : ListAdapter<User, UserAdapter.UserViewHolder>(USER_COMPARATOR) { //del tipo que hemos establecido.
+   // RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
+
+    //private var dataset = arrayListOf<User>() ya que tiene una lista interna
 
     /**
      * Esta interfaz es el contrato entre el Adapter y el fragmento que lo contiene.
@@ -32,17 +35,31 @@ class UserAdapter(
 
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
-        //Se accede a un elemento de la lista interna de ListAdapter mediante el metodo getItem(position)
+        //Ya no tengo un dataset, sino lista interna
+        //Se accede a un elemento de la lista interna de ListAdapter mediante el método
+        //getItem(position)
         val item = getItem(position)
         holder.bind(item)
     }
 
+    /*
+    //ListAdapter hereda de recyclerView
+    override fun getItemCount(): Int {
+        return dataset.size
+    }
+    fun update(newDataSet: ArrayList<User>) {
+
+        dataset = newDataSet
+        notifyDataSetChanged()
+    }*/
+
     /**
      * Función que ordena el data en base a una propiedad personalizada
      */
-    fun sortEmail() {
-        //Se accede a la lista interna mediante CurrentList
-        currentList.sortBy { it.email }
+    fun sort() {
+        //Orden personalizada se establece utilizando currentList.
+        submitList(currentList.sortedBy { it.email })
+
         notifyDataSetChanged()
     }
 
@@ -78,8 +95,12 @@ class UserAdapter(
         }
     }
 
+
+    //Hacer comparator.
+    //Esto se ejecuta cuando se hace submit y le paso los nuevos datos del flujo.
     companion object{
-        private val USER_COMPARATOR = object:DiffUtil.ItemCallback<User>(){
+        //es una clase anonima (??) objeto anonimo (??)
+        private val USER_COMPARATOR = object:DiffUtil.ItemCallback<User>() {
             override fun areItemsTheSame(oldItem: User, newItem: User): Boolean {
                 return oldItem === newItem
             }
@@ -87,6 +108,7 @@ class UserAdapter(
             override fun areContentsTheSame(oldItem: User, newItem: User): Boolean {
                 return oldItem.name == newItem.name
             }
+
 
         }
     }

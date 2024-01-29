@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@id/nav_graph_account"
+    app:startDestination="@id/AccountSignInFragment">
+
+    <fragment
+        android:id="@+id/accountSignUp"
+        android:name="com.moronlu18.account.ui.SignUpFragment"
+        android:label="@string/title_accountsignup" />
+    <fragment
+        android:id="@+id/AccountSignInFragment"
+        android:name="com.moronlu18.account.ui.SignInFragment"
+        android:label="@string/title_label_SignIn" >
+        <action
+            android:id="@+id/action_SignInFragmentV2_to_baseFragmentDialog"
+            app:destination="@id/baseFragmentDialog" />
+        <action
+            android:id="@+id/action_SignInFragmentV2_to_userListFragment"
+            app:destination="@id/userListFragment" />
+        <action
+            android:id="@+id/action_SignInFragmentV2_to_accountSignUp"
+            app:destination="@id/accountSignUp" />
+        <action
+            android:id="@+id/action_SignInFragmentV2_to_fragmentProgressDialog"
+            app:destination="@id/fragmentProgressDialog" />
+    </fragment>
+    <fragment
+        android:id="@+id/userListFragment"
+        android:name="com.moronlu18.account.ui.UserListFragment"
+        android:label="@string/title_accounts" >
+        <action
+            android:id="@+id/action_userListFragment_to_fragmentProgressDialog"
+            app:destination="@id/fragmentProgressDialog" />
+    </fragment>
+
+    <!--Asegurar que el IDE añade el cuadro de diálogo -->
+
+    <dialog
+        android:id="@+id/baseFragmentDialog"
+        android:name="com.moronlu18.invoice.base.BaseFragmentDialog"
+        android:label="BaseFragmentDialog" >
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="message"
+            app:argType="string" />
+    </dialog>
+    <dialog
+        android:id="@+id/fragmentProgressDialog"
+        android:name="com.moronlu18.invoice.base.FragmentProgressDialog"
+        android:label="FragmentProgressDialog" />
+
+
+</navigation>

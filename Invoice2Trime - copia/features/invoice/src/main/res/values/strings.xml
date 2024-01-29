@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="invoiceCreation" >Creación de Factura</string>
+    <string name="invoiceList">Lista Facturas</string>
+    <string name="invoiceDetail">Detalle Factura</string>
+
+    <string name="tvVacio">La lista de facturas está vacia</string>
+    <string name="item_fa_Factura">Factura: </string>
+    <string name="item_fa_EstadoText">Estado: </string>
+    <string name="item_fa_Cliente">Cliente: </string>
+    <string name="item_fa_FechaEm">F.emisión: </string>
+    <string name="item_fa_FechaFi">F.finalización: </string>
+    <string name="item_fa_Total">Total: </string>
+    <string name="item_fa_Estado">Pendiente</string>
+    <string name="invoice_item_btnEdi">Botón de edición</string>
+    <string name="invoice_item_btnDelete">Botón de borrado</string>
+    <string name="invoice_item_ivKiwi">Kiwi</string>
+
+    <string name="invoiceStatusPendiente">Pendiente</string>
+    <string name="invoiceStatusPagada">Pagada</string>
+    <string name="invoiceStatusVencida">Vencidad</string>
+
+    <string name="tieCliente">Cliente:</string>
+    <string name="tieFechaEm">Fecha de emisión: </string>
+    <string name="tieFechaFin">Fecha de finalización: </string>
+    <string name="tieArticulosFactura">Articulos en la factura</string>
+    <string name="tvTotal">Total: </string>
+    <string name="tvNumber">Numero </string>
+    <string name="invoice_detail_descCalendar">Imagen de calendario</string>
+    <string name="invoice_detail_descUser">Imagen de usuario</string>
+    <string name="tvPendiente">Pendiente</string>
+    <string name="tvDatos">Datos de la factura</string>
+
+
+    <string name="itemList_fab_text">Añadir artículo</string>
+    <string name="itemItem_tvType_text">"Tipo: "</string>
+    <string name="itemItem_tvRate_text">"Tasa: "</string>
+    <string name="itemItem_tvTaxable_text">"Impuestos"</string>
+
+    <string name="itemItem_tvNamePrueba">Reloj de pulsera</string>
+    <string name="itemItem_tvTypePrueba">" articulo"</string>
+    <string name="itemItem_tvDescriptionPrueba">Instrumento para indicar la hora, que se lleva en la muñeca</string>
+    <string name="itemItem_tvRatePrueba" translatable="false">" 5.52"</string>
+    <string name="itemItem_tvTaxablePrueba" translatable="false">" True"</string>
+    <string name="itemItem_tvDescriptionImg">Imagen ilustrativa</string>
+
+    <string name="ie_tbFacturas">Facturas</string>
+    <string name="ie_tieCliente">Cliente</string>
+    <string name="ie_tieFechaEm">Fecha de emisión</string>
+    <string name="ie_tieFechaFin">Fecha de finalización</string>
+    <string name="btnAñadir">Añadir artículo</string>
+    <string name="tieCliente_description">Imagen de usuario</string>
+    <string name="tieArticulos">Articulos</string>
+    <string name="tvObligatorio">*Obligatorio</string>
+    <string name="tvFecha" translatable="false">DD/MM/AAAA</string>
+
+    <string name="tvDisponibles">Disponibles</string>
+    <string name="tvAñadidos">Añadidos</string>
+    <string name="ie_tvTotal">Total: </string>
+    <string name="ie_itemItem_tvNamePrueba">Reloj de pulsera</string>
+    <string name="ie_borrarArticulo">Borrar artículo </string>
+
+
+    <string name="title_deleteInvoice">Confirmacion</string>
+    <string name="Content_deleteInvoice">¿Estás seguro de que quieres borrar la factura?</string>
+    <string name="cl_menu_edit">Editar</string>
+    <string name="cl_menu_delete">Borrar</string>
+
+</resources>

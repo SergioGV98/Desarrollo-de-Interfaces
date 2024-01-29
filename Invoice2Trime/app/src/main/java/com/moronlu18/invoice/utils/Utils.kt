@@ -1,0 +1,18 @@
+package com.moronlu18.invoice.utils
+
+import android.content.Context
+import android.view.View
+import android.widget.Toast
+import com.google.android.material.snackbar.Snackbar
+
+
+// Esta funcion de extension se podra llamar desde cualquier Activity a traves de su Activity
+fun Context.showToast(message: String) {
+    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+}
+
+object Utils {
+    fun showSnackBar(view: View, message: String) {
+        Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show()
+    }
+}

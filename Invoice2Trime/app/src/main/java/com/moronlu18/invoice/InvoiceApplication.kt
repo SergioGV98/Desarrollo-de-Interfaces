@@ -7,5 +7,6 @@ class InvoiceApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         Locator.initWith(this)
+
     }
 }
