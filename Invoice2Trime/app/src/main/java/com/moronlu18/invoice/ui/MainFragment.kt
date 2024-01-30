@@ -32,7 +32,7 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-
+ /*
         (requireActivity() as? MainActivity)?.toolbar?.setNavigationOnClickListener {
             if (findNavController().currentDestination?.id == R.id.mainFragment) {
                 //activity?.finish()
@@ -40,7 +40,7 @@ class MainFragment : Fragment() {
             } else {
                 findNavController().popBackStack()
             }
-        }
+        }*/
 
         setUpFab()
 

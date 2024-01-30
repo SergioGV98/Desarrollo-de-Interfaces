@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:title="@string/title_account"
-    android:id="@+id/draw_invoice" />
-    <item android:title="@string/about_authors"
-        android:id="@+id/draw_task" />
+    <item android:title="@string/draw_clientes_txt"
+    android:id="@+id/draw_clientes" />
+    <item android:title="@string/draw_articulos_txt"
+        android:id="@+id/draw_articulos" />
+    <item android:title="@string/draw_tareas_txt"
+        android:id="@+id/draw_tareas" />
+    <item android:title="@string/draw_facturas_txt"
+        android:id="@+id/draw_facturas" />
 </menu>

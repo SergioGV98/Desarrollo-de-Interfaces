@@ -72,5 +72,11 @@
 
 
     <string name="iv_descr_ivAnimation">Animacion de Inicio</string>
+    <string name="draw_clientes_txt">Clientes</string>
+    <string name="draw_articulos_txt">Articulos</string>
+    <string name="draw_tareas_txt">Tareas</string>
+    <string name="draw_facturas_txt">Facturas</string>
+    <string name="tx_email">prueba@gmail.com</string>
+    <string name="tx_name">Sergio Garcia Vico</string>
 
 </resources>
