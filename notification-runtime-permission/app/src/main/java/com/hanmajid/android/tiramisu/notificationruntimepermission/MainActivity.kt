@@ -10,6 +10,7 @@ import android.content.pm.PackageManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -19,14 +20,34 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.snackbar.Snackbar
+import com.hanmajid.android.tiramisu.notificationruntimepermission.databinding.ActivityMainBinding
 
 @RequiresApi(Build.VERSION_CODES.O)
 class MainActivity : AppCompatActivity() {
     private lateinit var requestPermissionLauncher: ActivityResultLauncher<String>
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var navController: NavController
     private val notificationManager: NotificationManager by lazy {
         getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
     }
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_graph) as NavHostFragment
+        navController = navHostFragment.navController
+
+
+    }
+
+
+    /*
 
     @RequiresApi(33)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -112,5 +133,5 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         const val CHANNEL_ID = "dummy_channel"
-    }
+    }*/
 }

@@ -1,26 +1,29 @@
 plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
 }
 
 android {
-    namespace 'com.hanmajid.android.tiramisu.notificationruntimepermission'
-    compileSdk 33
+    namespace = "com.example.prueba"
+    compileSdk = 34
 
     defaultConfig {
-        applicationId "com.hanmajid.android.tiramisu.notificationruntimepermission"
-        minSdk 33
-        targetSdk 33
-        versionCode 1
-        versionName "1.0"
+        applicationId = "com.example.prueba"
+        minSdk = 33
+        targetSdk = 33
+        versionCode = 1
+        versionName = "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
@@ -32,11 +35,11 @@ android {
     }
     buildFeatures {
         viewBinding = true
-        dataBinding = true
     }
 }
 
 dependencies {
+
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
