@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/fragment">
+    app:startDestination="@id/fragment1">
 
     <fragment
-        android:id="@+id/fragment"
-        android:name="com.hanmajid.android.tiramisu.notificationruntimepermission.Fragment"
-        android:label="fragment_"
-        tools:layout="@layout/fragment_" >
+        android:id="@+id/fragment1"
+        android:name="com.hanmajid.android.tiramisu.notificationruntimepermission.Fragment1"
+        android:label="fragment_1"
+        tools:layout="@layout/fragment_1" >
         <action
-            android:id="@+id/action_fragment_to_fragment2"
+            android:id="@+id/action_fragment1_to_fragment2"
             app:destination="@id/fragment2" />
     </fragment>
     <fragment

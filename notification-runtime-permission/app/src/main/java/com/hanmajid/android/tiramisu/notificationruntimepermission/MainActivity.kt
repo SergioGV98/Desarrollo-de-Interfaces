@@ -10,7 +10,6 @@ import android.content.pm.PackageManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -23,31 +22,14 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.snackbar.Snackbar
-import com.hanmajid.android.tiramisu.notificationruntimepermission.databinding.ActivityMainBinding
 
 @RequiresApi(Build.VERSION_CODES.O)
 class MainActivity : AppCompatActivity() {
     private lateinit var requestPermissionLauncher: ActivityResultLauncher<String>
-    private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
     private val notificationManager: NotificationManager by lazy {
         getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
     }
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_graph) as NavHostFragment
-        navController = navHostFragment.navController
-
-
-    }
-
-
-    /*
 
     @RequiresApi(33)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // Sets up permissions request launcher.
-        requestPermissionLauncher = registerForActivityResult(RequestPermission()) {
+       /* requestPermissionLauncher = registerForActivityResult(RequestPermission()) {
             refreshUI()
             if (it) {
                 showDummyNotification()
@@ -66,13 +48,13 @@ class MainActivity : AppCompatActivity() {
                     Snackbar.LENGTH_LONG
                 ).show()
             }
-        }
+        }*/
 
         // Sets up notification channel.
         createNotificationChannel()
 
         // Sets up button.
-        findViewById<Button>(R.id.button_show_notification).setOnClickListener {
+        /*findViewById<Button>(R.id.button_show_notification).setOnClickListener {
             if (ContextCompat.checkSelfPermission(
                     this,
                     Manifest.permission.POST_NOTIFICATIONS,
@@ -82,19 +64,22 @@ class MainActivity : AppCompatActivity() {
             } else {
                 requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
             }
-        }
+        }*/
+
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_graph) as NavHostFragment
+        navController = navHostFragment.navController
 
         // Refresh UI.
-        refreshUI()
+        //refreshUI()
     }
 
     /**
      * Refresh UI elements.
      */
-    private fun refreshUI() {
+    /*private fun refreshUI() {
         findViewById<TextView>(R.id.text_notification_enabled).text =
             if (notificationManager.areNotificationsEnabled()) "TRUE" else "FALSE"
-    }
+    }*/
 
     /**
      * Creates Notification Channel (required for API level >= 26) before sending any notification.
@@ -131,7 +116,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp() || super.onSupportNavigateUp()
+    }
+
     companion object {
         const val CHANNEL_ID = "dummy_channel"
-    }*/
+    }
 }
