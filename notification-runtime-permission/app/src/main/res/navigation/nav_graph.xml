@@ -27,5 +27,14 @@
         android:id="@+id/fragment3"
         android:name="com.hanmajid.android.tiramisu.notificationruntimepermission.Fragment3"
         android:label="fragment_3"
-        tools:layout="@layout/fragment_3" />
+        tools:layout="@layout/fragment_3" >
+        <action
+            android:id="@+id/action_fragment3_to_fragment4"
+            app:destination="@id/fragment4" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment4"
+        android:name="com.hanmajid.android.tiramisu.notificationruntimepermission.Fragment4"
+        android:label="fragment_4"
+        tools:layout="@layout/fragment_4" />
 </navigation>

@@ -17,26 +17,4 @@
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph" />
 
-    <!--
-
-    <Button
-        android:id="@+id/button_show_notification"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Show Notification" />
-
-    <TextView
-        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Is Notification Enabled?" />
-
-    <TextView
-        android:id="@+id/text_notification_enabled"
-        style="@style/TextAppearance.MaterialComponents.Body1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="YES"
-        android:textColor="@color/teal_700" /> -->
-
 </androidx.appcompat.widget.LinearLayoutCompat>
