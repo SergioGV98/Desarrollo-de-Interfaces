@@ -15,6 +15,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavDeepLinkBuilder
+import com.hanmajid.android.tiramisu.notificationruntimepermission.MainActivity.Companion.notificationPermissionRequest
 import com.hanmajid.android.tiramisu.notificationruntimepermission.databinding.Fragment4Binding
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -38,9 +39,9 @@ class Fragment4 : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
-
+        binding.floatingActionButton.setOnClickListener {
+            showNotification()
+        }
     }
 
     /**
@@ -54,11 +55,11 @@ class Fragment4 : Fragment() {
         //1.1 True -> Se muestra la notificacion
         //1.2 False -> Se debe solicitar de nuevo el permiso
 
-        when {
+        when (PackageManager.PERMISSION_GRANTED) {
             ContextCompat.checkSelfPermission(
                 requireActivity(),
                 Manifest.permission.POST_NOTIFICATIONS
-            ) == PackageManager.PERMISSION_GRANTED -> {
+            ) -> {
                 refreshUI()
                 val pendingIntent = NavDeepLinkBuilder(requireContext())
                     .setComponentName(MainActivity::class.java)
@@ -72,8 +73,7 @@ class Fragment4 : Fragment() {
                     "Contenido de la solucion"
                 )
             }
-
-            //else -> notificationPermissionRequest.tryRquest()
+            else -> notificationPermissionRequest!!.tryRequest()
         }
     }
 

@@ -59,7 +59,7 @@ class Fragment1 : Fragment() {
                 showDummyNotification()
             } else {
                 Snackbar.make(
-                    requireView().rootView,
+                    binding.root,
                     "Please grant Notification permission from App Settings",
                     Snackbar.LENGTH_LONG
                 ).show()
