@@ -8,17 +8,13 @@ class TraficoMalaga : CiudadCentro() {
     }
 
     override fun puedeCircular(placa: String, fechaHora: LocalDateTime): Boolean {
-        if (esFinDeSemana(fechaHora) && esHorarioRegulado(fechaHora)) {
-            return true
-        }
-
         return when (fechaHora.dayOfWeek) {
-            DayOfWeek.MONDAY -> placaNumero(placa).endsWith("1") || placaNumero(placa).endsWith("2")
-            DayOfWeek.TUESDAY -> placaNumero(placa).endsWith("3") || placaNumero(placa).endsWith("4")
-            DayOfWeek.WEDNESDAY -> placaNumero(placa).endsWith("5") || placaNumero(placa).endsWith("6")
-            DayOfWeek.THURSDAY -> placaNumero(placa).endsWith("7") || placaNumero(placa).endsWith("8")
-            DayOfWeek.FRIDAY -> placaNumero(placa).endsWith("9") || placaNumero(placa).endsWith("0")
-            else -> false
+            DayOfWeek.MONDAY -> placa.endsWith("1") || placa.endsWith("2") && esHorarioRegulado(fechaHora)
+            DayOfWeek.TUESDAY -> placa.endsWith("3") || placa.endsWith("4") && esHorarioRegulado(fechaHora)
+            DayOfWeek.WEDNESDAY -> placa.endsWith("5") || placa.endsWith("6") && esHorarioRegulado(fechaHora)
+            DayOfWeek.THURSDAY -> placa.endsWith("7") || placa.endsWith("8") && esHorarioRegulado(fechaHora)
+            DayOfWeek.FRIDAY -> placa.endsWith("9") || placa.endsWith("0") && esHorarioRegulado(fechaHora)
+            DayOfWeek.SATURDAY, DayOfWeek.SUNDAY -> esFinDeSemana(fechaHora)
         }
     }
 

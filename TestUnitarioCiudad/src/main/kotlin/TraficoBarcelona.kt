@@ -7,7 +7,12 @@ class TraficoBarcelona : CiudadCentro() {
     }
 
     override fun puedeCircular(placa: String, fechaHora: LocalDateTime): Boolean {
-        return esPlacaPar(placa) && (esHorarioRegulado(fechaHora) && esDiaPar(fechaHora))
+        if(!esPlacaPar(placa) && esHorarioRegulado(fechaHora) && !esDiaPar(fechaHora)){
+            return true
+        } else if (esPlacaPar(placa) && esHorarioRegulado(fechaHora) && esDiaPar(fechaHora)){
+            return true
+        }
+        return false
     }
 
     override fun esHorarioRegulado(fechaHora: LocalDateTime): Boolean {

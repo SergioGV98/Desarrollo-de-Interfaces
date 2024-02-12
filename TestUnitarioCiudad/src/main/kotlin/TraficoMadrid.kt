@@ -7,7 +7,7 @@ class TraficoMadrid: CiudadCentro() {
     }
 
     override fun puedeCircular(placa: String, fechaHora: LocalDateTime): Boolean {
-        return true
+        return esHorarioRegulado(fechaHora)
     }
 
     override fun esHorarioRegulado(fechaHora: LocalDateTime): Boolean {

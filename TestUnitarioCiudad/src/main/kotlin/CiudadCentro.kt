@@ -23,11 +23,6 @@ abstract class CiudadCentro {
         return fechaHora!!.dayOfWeek == DayOfWeek.SATURDAY || fechaHora.dayOfWeek == DayOfWeek.SUNDAY
     }
 
-    fun placaNumero(placa: String): String{
-        return placa.subSequence(0, placa.length-4).toString()
-    }
-
-
     companion object Builder {
         fun getCiudad(ciudad: String): CiudadCentro {
             return when (ciudad) {
