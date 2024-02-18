@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity() {
 
         phoneStateListener = MyPhoneStateListener(this)
 
-        // Register the PhoneStateListener
         telephonyManager.registerTelephonyCallback(
             applicationContext.mainExecutor,
             phoneStateListener
@@ -39,7 +38,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun requestPermissions() {
-        // Request READ_PHONE_STATE permission
         if (ContextCompat.checkSelfPermission(
                 this,
                 Manifest.permission.READ_PHONE_STATE
@@ -51,7 +49,6 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
-        // Request POST_NOTIFICATION permission
         if (ContextCompat.checkSelfPermission(
                 this,
                 Manifest.permission.POST_NOTIFICATIONS
@@ -87,30 +84,30 @@ class MainActivity : AppCompatActivity() {
         when (requestCode) {
             READ_PHONE_STATE_PERMISSION_REQUEST_CODE -> {
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // READ_PHONE_STATE permission granted
+
                 } else {
-                    // Handle permission denial
+
                 }
             }
 
             POST_NOTIFICATION_PERMISSION_REQUEST_CODE -> {
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // POST_NOTIFICATION permission granted
+
                 } else {
-                    // Handle permission denial
+
                 }
             }
 
             READ_PHONE_NUMBERS_PERMISSION_REQUEST_CODE -> {
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // READ_PHONE_NUMBERS permission granted
+
                 } else {
-                    // Handle permission denial
+
                 }
             }
 
             else -> {
-                // Handle other permission request codes if needed
+
             }
         }
     }
