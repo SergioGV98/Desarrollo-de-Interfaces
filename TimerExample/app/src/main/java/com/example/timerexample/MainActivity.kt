@@ -15,6 +15,12 @@ import android.widget.Button
 import android.widget.TimePicker
 import java.util.Calendar
 
+import android.app.*
+import android.content.*
+import android.os.*
+import android.util.*
+import android.widget.*
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var timePicker: TimePicker
@@ -22,6 +28,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        createNotificationChannel()
 
         findViewById<Button>(R.id.btnInitJob).setOnClickListener {
             if(Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP){
@@ -34,12 +42,24 @@ class MainActivity : AppCompatActivity() {
         timePicker.setIs24HourView(true)
     }
 
-    private fun initAlarmManager() {
+    private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val name = "Channel Name"
+            val descriptionText = "Channel Description"
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
+                description = descriptionText
+            }
+            val notificationManager: NotificationManager =
+                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
+        }
+    }
 
+    private fun initAlarmManager() {
         val intent = Intent("com.example.timer_intent")
         val pendingIntent = PendingIntent.getBroadcast(this, 123, intent, PendingIntent.FLAG_IMMUTABLE)
 
-        //A recoger el momento de la alarma que se ha establecido en el TimePicker
         val calendar = Calendar.getInstance()
         calendar.set(Calendar.HOUR_OF_DAY, timePicker.hour)
         calendar.set(Calendar.MINUTE, timePicker.minute)
@@ -49,10 +69,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun scheduleJob() {
-        //1. Recoger la instancia del JobScheduler (Servicio del sistema)
         val jobScheduler = getSystemService(Context.JOB_SCHEDULER_SERVICE) as JobScheduler
-
-        //2. ComponentName: definir el trabajo (servicio) que se quiere ejecutar
         val componentName = ComponentName (this, TimerJobService::class.java)
 
         val calendar = Calendar.getInstance()
@@ -61,17 +78,17 @@ class MainActivity : AppCompatActivity() {
         calendar.set(Calendar.SECOND, 0)
 
         val now = Calendar.getInstance()
-        now.timeInMillis = calendar.timeInMillis-now.timeInMillis
+        now.timeInMillis = calendar.timeInMillis - now.timeInMillis
 
         val jobInfo = JobInfo.Builder(JOB_ID, componentName)
             .setMinimumLatency(now.timeInMillis)
             .setOverrideDeadline(now.timeInMillis)
             .build()
         jobScheduler.schedule(jobInfo)
-
     }
 
     companion object {
+        const val CHANNEL_ID = "timer_channel"
         const val JOB_ID  = 123
         const val TAG = "JobSchedulerExample"
     }
