@@ -10,9 +10,11 @@ class TimerJobService: JobService() {
     override fun onStartJob(params: JobParameters?): Boolean {
         Log.d(TAG, "Se ha inicializado TimerJobService")
 
-        //Lanza un intent personalizado
-        val intent = Intent("com.example.timer_intent")
-        //Lanza el intent como broadCast
+        val intent = Intent(this, TimerBroadCast::class.java).apply {
+            putExtra(TimerBroadCast.EXTRA_TITLE, "Título de la notificación")
+            putExtra(TimerBroadCast.EXTRA_CONTENT, "Contenido de la notificación")
+        }
+
         sendBroadcast(intent)
         return false
     }

@@ -4,6 +4,9 @@
     package="com.example.timerexample">
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+
 
     <application
         android:allowBackup="true"
@@ -21,18 +24,12 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <action android:name="andoid.intent.com.example.timer_intent"/>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
 
-        <receiver android:name=".TimerBroadCast"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.example.timer_intent" />
-            </intent-filter>
-        </receiver>
+        <receiver android:name=".TimerBroadCast" />
 
         <service
             android:name=".TimerJobService"
@@ -41,4 +38,3 @@
     </application>
 
 </manifest>
-

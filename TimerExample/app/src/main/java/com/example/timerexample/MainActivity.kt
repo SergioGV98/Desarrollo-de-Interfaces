@@ -1,25 +1,24 @@
 package com.example.timerexample
 
-import android.app.AlarmManager
-import android.app.PendingIntent
+import android.Manifest
+import android.app.*
 import android.app.job.JobInfo
 import android.app.job.JobScheduler
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.TimePicker
-import java.util.Calendar
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import java.util.*
 
-import android.app.*
-import android.content.*
-import android.os.*
-import android.util.*
-import android.widget.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,30 +28,68 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        createNotificationChannel()
-
-        findViewById<Button>(R.id.btnInitJob).setOnClickListener {
-            if(Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP){
-                initAlarmManager()
-            } else {
-                scheduleJob()
-            }
-        }
+        // Inicializar el timePicker y configurar el botón
         timePicker = findViewById(R.id.timePicker)
         timePicker.setIs24HourView(true)
+
+        findViewById<Button>(R.id.btnInitJob).setOnClickListener {
+            if (arePermissionsGranted()) {
+                if(Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP){
+                    initAlarmManager()
+                } else {
+                    scheduleJob()
+                }
+            } else {
+                requestPermissions()
+            }
+        }
     }
 
-    private fun createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val name = "Channel Name"
-            val descriptionText = "Channel Description"
-            val importance = NotificationManager.IMPORTANCE_DEFAULT
-            val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
-                description = descriptionText
+    private fun arePermissionsGranted(): Boolean {
+        return ContextCompat.checkSelfPermission(
+            this,
+            Manifest.permission.RECEIVE_BOOT_COMPLETED
+        ) == PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.WAKE_LOCK
+                ) == PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.POST_NOTIFICATIONS
+                ) == PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun requestPermissions() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(
+                    Manifest.permission.RECEIVE_BOOT_COMPLETED,
+                    Manifest.permission.WAKE_LOCK,
+                    Manifest.permission.POST_NOTIFICATIONS
+                ),
+                PERMISSION_REQUEST_CODE
+            )
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            if (grantResults.isNotEmpty() && grantResults.all { it == PackageManager.PERMISSION_GRANTED }) {
+                if(Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP){
+                    initAlarmManager()
+                } else {
+                    scheduleJob()
+                }
+            } else {
+                Toast.makeText(this, "Los permisos son necesarios para enviar notificaciones.", Toast.LENGTH_SHORT).show()
             }
-            val notificationManager: NotificationManager =
-                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            notificationManager.createNotificationChannel(channel)
         }
     }
 
@@ -70,7 +107,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun scheduleJob() {
         val jobScheduler = getSystemService(Context.JOB_SCHEDULER_SERVICE) as JobScheduler
-        val componentName = ComponentName (this, TimerJobService::class.java)
+        val componentName = ComponentName(this, TimerJobService::class.java)
 
         val calendar = Calendar.getInstance()
         calendar.set(Calendar.HOUR_OF_DAY, timePicker.hour)
@@ -91,5 +128,6 @@ class MainActivity : AppCompatActivity() {
         const val CHANNEL_ID = "timer_channel"
         const val JOB_ID  = 123
         const val TAG = "JobSchedulerExample"
+        private const val PERMISSION_REQUEST_CODE = 123
     }
 }
