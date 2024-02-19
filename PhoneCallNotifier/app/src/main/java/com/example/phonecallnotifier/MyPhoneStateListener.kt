@@ -42,6 +42,7 @@ class MyPhoneStateListener(private val context: Context) : TelephonyCallback(),
         return telephonyManager.line1Number ?: "Unknown"
     }
 
+
     @SuppressLint("MissingPermission")
     private fun showNotification(title: String, message: String) {
         val builder = NotificationCompat.Builder(context, CHANNEL_ID)
