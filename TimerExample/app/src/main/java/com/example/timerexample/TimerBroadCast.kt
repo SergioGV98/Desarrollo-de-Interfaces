@@ -10,34 +10,18 @@ import androidx.core.app.NotificationManagerCompat
 
 class TimerBroadCast : BroadcastReceiver() {
 
-    @SuppressLint("MissingPermission")
     override fun onReceive(context: Context?, intent: Intent?) {
-        context ?: return
-
-        val title = intent?.getStringExtra(EXTRA_TITLE)
-        val content = intent?.getStringExtra(EXTRA_CONTENT)
-
-        if (!title.isNullOrBlank() && !content.isNullOrBlank()) {
-            val notification = NotificationCompat.Builder(context, MainActivity.CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_launcher_background)
-                .setContentTitle(title)
-                .setContentText(content)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setAutoCancel(true)
-                .build()
-
-            val notificationManager = NotificationManagerCompat.from(context)
-            notificationManager.notify(NOTIFICATION_ID, notification)
-        } else {
-            Log.e(TAG, "No se proporcionó título o contenido para la notificación")
-        }
+        //No se puede iniciar una Activity desde el conteo del BroadCastReceiver
+        //desde la version Android Q (API 29)
+        Log.d(TAG, "Se recibe el intent personalizado")
+        val intent = Intent(context, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        context?.startActivity(intent)
+        //Lanza una notificacion
     }
 
-
-    companion object {
-        private const val TAG = "TimerBroadCast"
-        private const val NOTIFICATION_ID = 123
-        const val EXTRA_TITLE = "extra_title"
-        const val EXTRA_CONTENT = "extra_content"
+    companion object{
+        const val TAG="JobSchedulerExample"
     }
+
 }
