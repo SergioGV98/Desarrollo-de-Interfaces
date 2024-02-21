@@ -4,16 +4,18 @@ import android.app.IntentService
 import android.content.Intent
 import android.util.Log
 
-/**
- * Este servicio se ejecuta en un hilo diferente al Main Thread y es finito
- */
-class IntentServiceDownload() : IntentService("IntentServiceDownload") {
+class IntentServiceDownload : IntentService("IntentServiceDownload") {
     override fun onHandleIntent(intent: Intent?) {
-        Log.d(TAG, "IntentService Iniciado")
-        ImageDownloadHelper.downloadFromUrl(intent?.getStringExtra("urlPath"), "image.png")
+        Log.d(TAG, "Servicio iniciado. Procesando descarga...")
+        val urlPath = intent?.getStringExtra("urlPath")
+        if (urlPath != null) {
+            ImageDownloadHelper.downloadFromUrlToGallery(this, urlPath, "image_${System.currentTimeMillis()}.jpg")
+        } else {
+            Log.e(TAG, "URL de la imagen no proporcionada o es incorrecta.")
+        }
     }
 
-    companion object{
+    companion object {
         const val TAG = "IntentServiceDownload"
     }
 }
