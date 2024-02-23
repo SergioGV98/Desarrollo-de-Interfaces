@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
             .setOverrideDeadline(now.timeInMillis)
             .build()
         jobScheduler.schedule(jobInfo)
-        finish() //Se finaliza la Activity
+        finish()
     }
     companion object{
         const val JOB_ID=234
