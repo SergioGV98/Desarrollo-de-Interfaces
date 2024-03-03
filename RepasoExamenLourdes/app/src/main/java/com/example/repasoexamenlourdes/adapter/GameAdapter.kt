@@ -13,6 +13,7 @@ import com.example.repasoexamenlourdes.databinding.ItemGameBinding
 class GameAdapter(private val listener: OnGameClick): ListAdapter<Juego, GameAdapter.GameViewHolder>(GAME_COMPARATOR) {
 
     private var selectedPosition = RecyclerView.NO_POSITION
+    private var isAscendingOrder = true
 
     interface OnGameClick{
         fun onGameLongClick(view: View, juego: Juego)
@@ -28,6 +29,14 @@ class GameAdapter(private val listener: OnGameClick): ListAdapter<Juego, GameAda
         holder.render(item)
     }
 
+    fun toggleSortOrder() {
+        isAscendingOrder = !isAscendingOrder
+        val sortedList = if (isAscendingOrder) currentList.sortedBy { it.nombre }
+        else currentList.sortedByDescending { it.nombre }
+
+        submitList(sortedList)
+    }
+
     inner class GameViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private val binding = ItemGameBinding.bind(itemView)
@@ -36,7 +45,7 @@ class GameAdapter(private val listener: OnGameClick): ListAdapter<Juego, GameAda
             with(binding){
                 gameId.text = juego.id.toString()
                 gameName.text = juego.nombre
-                //gameCategory.text = juego.category.toString()
+                gameCategory.text = juego.category.toString()
 
                 root.setOnLongClickListener {
                     selectedPosition = adapterPosition
@@ -60,4 +69,5 @@ class GameAdapter(private val listener: OnGameClick): ListAdapter<Juego, GameAda
 
         }
     }
+
 }

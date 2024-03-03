@@ -17,6 +17,7 @@ class GameCreationViewModel: ViewModel() {
     fun validateGame(){
         when{
             TextUtils.isEmpty(gameName.value) -> state.value = GameCreationState.NameIsMandatory
+            gameName.value!!.length > 10 -> state.value = GameCreationState.NameIsToLong
             else -> {
                 state.value = GameCreationState.OnSuccess
             }

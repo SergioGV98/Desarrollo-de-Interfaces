@@ -6,6 +6,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.repasoexamenlourdes.Locator
+import com.example.repasoexamenlourdes.converter.GameGenreConverter
 import com.example.repasoexamenlourdes.data.Genero
 import com.example.repasoexamenlourdes.data.Juego
 import kotlinx.coroutines.CoroutineScope
@@ -18,6 +19,10 @@ import kotlinx.coroutines.launch
     entities = [Juego::class],
     version = 1,
     exportSchema = false
+)
+
+@TypeConverters(
+    GameGenreConverter::class
 )
 
 abstract class GameDatabase : RoomDatabase() {
@@ -39,6 +44,7 @@ abstract class GameDatabase : RoomDatabase() {
             return Room.databaseBuilder(
                 Locator.requireApplication, GameDatabase::class.java, "Game"
             ).fallbackToDestructiveMigration().allowMainThreadQueries()
+                .addTypeConverter(GameGenreConverter())
                 .build()
         }
     }
