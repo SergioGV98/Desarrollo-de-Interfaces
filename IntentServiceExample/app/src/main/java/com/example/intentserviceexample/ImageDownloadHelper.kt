@@ -1,16 +1,14 @@
 package com.example.intentserviceexample
 
-
 import android.content.ContentValues
 import android.content.Context
 import android.provider.MediaStore
 import android.util.Log
 import java.io.IOException
-import java.io.InputStream
 import java.net.URL
 
 object ImageDownloadHelper {
-    fun downloadFromUrlToGallery(context: Context, imageURL: String, fileName: String) {
+    fun downloadFromUrlToGallery(context: Context, imageURL: String, fileName: String): Boolean {
         try {
             val url = URL(imageURL)
             val imageContentValues = ContentValues().apply {
@@ -27,12 +25,15 @@ object ImageDownloadHelper {
                         input.copyTo(outputStream!!, bufferSize = 1024)
                     }
                     Log.d("ImageDownloadHelper", "Imagen guardada en la galería: $fileName")
+                    return true
                 }
             } ?: run {
                 Log.e("ImageDownloadHelper", "Error al guardar imagen: no se pudo crear URI")
+                return false
             }
         } catch (e: IOException) {
             Log.e("ImageDownloadHelper", "Error al guardar la imagen en la galería", e)
+            return false
         }
     }
 }

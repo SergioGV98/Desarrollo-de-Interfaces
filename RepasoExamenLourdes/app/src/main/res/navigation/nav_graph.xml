@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/gameList">
+    <fragment
+        android:id="@+id/gameList"
+        android:name="com.example.repasoexamenlourdes.ui.GameList"
+        android:label="GameList" >
+        <action
+            android:id="@+id/action_gameList_to_gameCreation"
+            app:destination="@id/gameCreation" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameCreation"
+        android:name="com.example.repasoexamenlourdes.ui.GameCreation"
+        android:label="GameCreation" />
+</navigation>
