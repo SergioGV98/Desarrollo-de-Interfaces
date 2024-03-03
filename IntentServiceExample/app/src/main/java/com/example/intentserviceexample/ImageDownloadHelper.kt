@@ -10,7 +10,7 @@ import java.net.URL
 object ImageDownloadHelper {
     fun downloadFromUrlToGallery(context: Context, imageURL: String, fileName: String): Boolean {
         try {
-            val url = URL(imageURL)
+            URL(imageURL)
             val imageContentValues = ContentValues().apply {
                 put(MediaStore.Images.Media.DISPLAY_NAME, fileName)
                 put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg")
