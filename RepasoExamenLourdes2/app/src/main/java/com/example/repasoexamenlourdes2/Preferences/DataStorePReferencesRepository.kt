@@ -1,7 +1,6 @@
-package com.moronlu18.invoice.ui.preferences
+package com.example.repasoexamenlourdes2.Preferences
 
 import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.preference.PreferenceDataStore
@@ -12,9 +11,8 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
-class DataStorePreferencesRepository(private val dataStore: DataStore<Preferences>) :
+class DataStorePreferencesRepository(private val dataStore: DataStore<androidx.datastore.preferences.core.Preferences>) :
     PreferenceDataStore() {
-
     companion object UserStoreKeys{
         private val ID = stringPreferencesKey("id")
     }

@@ -56,10 +56,10 @@ class GameCreation: Fragment() {
         val id = gameRepositoryDB.getNextGameId()
         val juego = Juego(id.toInt(), binding.tietNameGame.text.toString(), spinnerGenreChoose())
         viewModel.insert(juego)
-        Locator.settingsPreferencesRepository.putSettingValue("NameGame", binding.tietNameGame.text.toString())
+        Locator.settingsPreferencesRepository.putSettingValue("Game", juego.toString())
         sendNotification(CHANNEL, requireContext(), "Juego creado", "Se ha creado el juego exitosamente")
         Toast.makeText(requireContext(), "Nombre del juego guardado: " +
-                Locator.settingsPreferencesRepository.getSettingValue("NameGame", ""), Toast.LENGTH_SHORT).show()
+                Locator.settingsPreferencesRepository.getSettingValue("Game", ""), Toast.LENGTH_SHORT).show()
         findNavController().popBackStack()
     }
 

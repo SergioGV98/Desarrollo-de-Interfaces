@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/libraryList">
+    <fragment
+        android:id="@+id/libraryList"
+        android:name="com.example.repasoexamenlourdes2.ui.LibraryList"
+        android:label="fragment_list_library"
+        tools:layout="@layout/fragment_list_library" >
+        <action
+            android:id="@+id/action_libraryList_to_libraryCreate"
+            app:destination="@id/libraryCreate" />
+    </fragment>
+    <fragment
+        android:id="@+id/libraryCreate"
+        android:name="com.example.repasoexamenlourdes2.ui.LibraryCreate"
+        android:label="LibraryCreate" />
+</navigation>
